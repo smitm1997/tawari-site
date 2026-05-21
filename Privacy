@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tawari · Privacy & Data Treatment Policy</title>
+<meta name="robots" content="all" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F3EE;--ink:#1F1B16;--ink-soft:#5A5249;--card:#FFFFFF;--line:#E4DFD5;
+    --moss:#3F5D45;--moss-deep:#2C4231;--clay:#B5552F;--gold:#C9A24B;
+    --shadow:0 1px 2px rgba(31,27,22,.04),0 8px 24px rgba(31,27,22,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:radial-gradient(circle at 1px 1px, rgba(31,27,22,.035) 1px, transparent 0);background-size:4px 4px}
+  .mono{font-family:"Fragment Mono",ui-monospace,monospace}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(245,243,238,.78);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:760px;margin:0 auto;padding:0 24px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.2rem;text-decoration:none;color:var(--ink)}
+  .brand .leaf{width:24px;height:24px}
+  .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .lang button{background:transparent;border:0;cursor:pointer;padding:5px 11px;font-family:"Fragment Mono",monospace;font-size:.72rem;color:var(--ink-soft)}
+  .lang button.active{background:var(--ink);color:var(--paper)}
+
+  main{padding:64px 0 80px}
+  .back{font-family:"Fragment Mono",monospace;font-size:.8rem;color:var(--moss);text-decoration:none;display:inline-block;margin-bottom:28px}
+  h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+  .updated{font-family:"Fragment Mono",monospace;font-size:.78rem;color:var(--ink-soft);margin-bottom:40px}
+  h2{font-size:1.35rem;font-weight:500;margin:40px 0 12px;letter-spacing:-.01em}
+  p{color:var(--ink-soft);font-weight:300;margin-bottom:14px;font-size:1.02rem}
+  ul{color:var(--ink-soft);font-weight:300;margin:0 0 16px 22px;font-size:1.02rem}
+  li{margin-bottom:8px}
+  a{color:var(--moss)}
+  .callout{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow);margin:20px 0}
+  .callout p{margin-bottom:0}
+  strong{color:var(--ink);font-weight:600}
+  footer{border-top:1px solid var(--line);padding:32px 0;font-family:"Fragment Mono",monospace;font-size:.74rem;color:var(--ink-soft);text-align:center;position:relative;z-index:1}
+
+  [data-en]{display:none}
+  html[lang="en"] [data-es]{display:none}
+  html[lang="en"] [data-en]{display:block}
+  html[lang="en"] li[data-en]{display:list-item}
+  html[lang="en"] span[data-en]{display:inline}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="leaf" viewBox="0 0 32 32" fill="none"><path d="M16 3C9 9 5 15 5 21a11 11 0 0 0 22 0c0-6-4-12-11-18Z" fill="#3F5D45"/><path d="M16 8v18M16 14l-5 4M16 18l5 4" stroke="#C9A24B" stroke-width="1.4" stroke-linecap="round"/></svg>
+      Tawari
+    </a>
+    <div class="lang">
+      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnEs" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <a href="index.html" class="back"><span data-es>‹ Volver a Tawari</span><span data-en>‹ Back to Tawari</span></a>
+
+    <!-- ============ SPANISH / ENGLISH TITLE ============ -->
+    <h1><span data-es>Política de Privacidad y Tratamiento de Datos</span><span data-en>Privacy &amp; Data Treatment Policy</span></h1>
+    <p class="updated"><span data-es>Última actualización: mayo de 2026</span><span data-en>Last updated: May 2026</span></p>
+
+    <div class="callout">
+      <p><span data-es>Esta política aplica a la lista de espera del sitio web tawari.id. Tawari es un proyecto en desarrollo; esta política se actualizará antes del lanzamiento de la aplicación, cuando se recolecten más datos.</span><span data-en>This policy applies to the waitlist on the tawari.id website. Tawari is a project in development; this policy will be updated before the app launches, when additional data is collected.</span></p>
+    </div>
+
+    <!-- 1. Who we are -->
+    <h2><span data-es>1. Quién es responsable de tus datos</span><span data-en>1. Who is responsible for your data</span></h2>
+    <p><span data-es>El responsable del tratamiento de tus datos personales es el equipo de Tawari («nosotros»). Puedes contactarnos en cualquier momento en <a href="mailto:hola@tawari.id">hola@tawari.id</a>.</span><span data-en>The party responsible for processing your personal data is the Tawari team ("we," "us"). You can contact us at any time at <a href="mailto:hello@tawari.id">hello@tawari.id</a>.</span></p>
+    <div class="callout">
+      <p><span data-es><strong>Nota:</strong> Antes del lanzamiento público debes reemplazar este apartado con la identidad legal completa del responsable (nombre o razón social, NIT/identificación y domicilio), según lo exige la Ley 1581 de 2012.</span><span data-en><strong>Note:</strong> Before public launch, replace this section with the full legal identity of the data controller (legal name, tax ID, and address), as required by Colombia's Law 1581 of 2012.</span></p>
+    </div>
+
+    <!-- 2. What we collect -->
+    <h2><span data-es>2. Qué datos recolectamos</span><span data-en>2. What data we collect</span></h2>
+    <p><span data-es>Cuando te unes a la lista de espera, recolectamos únicamente:</span><span data-en>When you join the waitlist, we collect only:</span></p>
+    <ul>
+      <li data-es>Tu dirección de correo electrónico.</li><li data-en>Your email address.</li>
+      <li data-es>El país que indicas (para saber cuándo Tawari estará disponible en tu región).</li><li data-en>The country you select (so we know when Tawari will be available in your region).</li>
+      <li data-es>El idioma del sitio y la fecha en que diste tu autorización.</li><li data-en>Your site language and the date you gave your authorization.</li>
+    </ul>
+    <p><span data-es>No recolectamos tu nombre, ubicación precisa, ni instalamos cookies de seguimiento o publicidad en este sitio.</span><span data-en>We do not collect your name, precise location, and we do not place tracking or advertising cookies on this site.</span></p>
+
+    <!-- 3. Why / purpose -->
+    <h2><span data-es>3. Para qué usamos tus datos</span><span data-en>3. How we use your data</span></h2>
+    <p><span data-es>Usamos tu correo y país con un solo fin: avisarte cuando Tawari abra acceso en tu región y, ocasionalmente, compartir noticias importantes del lanzamiento. No vendemos, alquilamos ni compartimos tus datos con terceros para fines publicitarios.</span><span data-en>We use your email and country for one purpose only: to notify you when Tawari opens access in your region and, occasionally, to share important launch news. We do not sell, rent, or share your data with third parties for advertising.</span></p>
+
+    <!-- 4. Where stored / transfer -->
+    <h2><span data-es>4. Dónde se almacenan tus datos</span><span data-en>4. Where your data is stored</span></h2>
+    <p><span data-es>Tus datos se almacenan de forma segura mediante Supabase, nuestro proveedor de base de datos, cuyos servidores pueden ubicarse fuera de Colombia (por ejemplo, en Estados Unidos). Al aceptar esta política, autorizas esta transferencia internacional con el único fin descrito arriba. Solo el equipo de Tawari tiene acceso a esta información.</span><span data-en>Your data is stored securely with Supabase, our database provider, whose servers may be located outside Colombia (for example, in the United States). By accepting this policy, you authorize this international transfer solely for the purpose described above. Only the Tawari team has access to this information.</span></p>
+
+    <!-- 5. Your rights -->
+    <h2><span data-es>5. Tus derechos</span><span data-en>5. Your rights</span></h2>
+    <p><span data-es>Conforme a la Ley 1581 de 2012 de Colombia y a buenas prácticas internacionales de privacidad, tienes derecho a:</span><span data-en>Under Colombia's Law 1581 of 2012 and international privacy best practices, you have the right to:</span></p>
+    <ul>
+      <li data-es>Conocer, actualizar y rectificar tus datos personales.</li><li data-en>Access, update, and correct your personal data.</li>
+      <li data-es>Solicitar prueba de la autorización que otorgaste.</li><li data-en>Request proof of the authorization you gave.</li>
+      <li data-es>Ser informado sobre el uso que se ha dado a tus datos.</li><li data-en>Be informed about how your data has been used.</li>
+      <li data-es>Revocar tu autorización y/o solicitar la eliminación de tus datos.</li><li data-en>Revoke your authorization and/or request deletion of your data.</li>
+      <li data-es>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) de Colombia.</li><li data-en>File complaints with Colombia's Superintendency of Industry and Commerce (SIC).</li>
+    </ul>
+    <p><span data-es>Para ejercer cualquiera de estos derechos —incluyendo darte de baja— escríbenos a <a href="mailto:hola@tawari.id">hola@tawari.id</a> y responderemos en los plazos que exige la ley.</span><span data-en>To exercise any of these rights — including unsubscribing — email us at <a href="mailto:hello@tawari.id">hello@tawari.id</a> and we will respond within the timeframes required by law.</span></p>
+
+    <!-- 6. US note -->
+    <h2><span data-es>6. Usuarios en Estados Unidos</span><span data-en>6. Users in the United States</span></h2>
+    <p><span data-es>Si resides en Estados Unidos, aplican los mismos principios: te informamos qué recolectamos, con qué fin, y te damos control sobre tus datos. Los residentes de California pueden, conforme a la legislación aplicable, solicitar acceso a sus datos, su eliminación, y optar por no recibir comunicaciones, escribiéndonos a la dirección anterior. No vendemos datos personales.</span><span data-en>If you reside in the United States, the same principles apply: we tell you what we collect, why, and give you control over your data. California residents may, under applicable law, request access to their data, request deletion, and opt out of communications by emailing the address above. We do not sell personal data.</span></p>
+
+    <!-- 7. Retention -->
+    <h2><span data-es>7. Cuánto tiempo conservamos tus datos</span><span data-en>7. How long we keep your data</span></h2>
+    <p><span data-es>Conservamos tu correo hasta el lanzamiento de Tawari o hasta que solicites tu eliminación, lo que ocurra primero. Si decides no continuar tras el lanzamiento, eliminaremos tu información de la lista de espera.</span><span data-en>We keep your email until Tawari launches or until you request deletion, whichever comes first. If you choose not to continue after launch, we will delete your waitlist information.</span></p>
+
+    <!-- 8. Children -->
+    <h2><span data-es>8. Menores de edad</span><span data-en>8. Minors</span></h2>
+    <p><span data-es>Esta lista de espera está dirigida a personas adultas. No recolectamos a sabiendas datos de menores de edad. Si crees que un menor nos ha proporcionado datos, escríbenos y los eliminaremos.</span><span data-en>This waitlist is intended for adults. We do not knowingly collect data from minors. If you believe a minor has provided us data, contact us and we will delete it.</span></p>
+
+    <!-- 9. Changes -->
+    <h2><span data-es>9. Cambios a esta política</span><span data-en>9. Changes to this policy</span></h2>
+    <p><span data-es>Podemos actualizar esta política a medida que Tawari evoluciona. Publicaremos cualquier cambio en esta página con una nueva fecha de actualización.</span><span data-en>We may update this policy as Tawari evolves. We will post any changes on this page with a new "last updated" date.</span></p>
+
+    <div class="callout">
+      <p><span data-es>Este documento es un borrador de trabajo del equipo de Tawari y no constituye asesoría legal. Antes del lanzamiento de la aplicación, recomendamos su revisión por un abogado especializado en protección de datos en Colombia.</span><span data-en>This document is a working draft by the Tawari team and does not constitute legal advice. Before the app launches, we recommend review by a data-protection lawyer in Colombia.</span></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span>© 2026 Tawari · tawari.id</span>
+</footer>
+
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.getElementById('btnEs').classList.toggle('active', lang==='es');
+    document.getElementById('btnEn').classList.toggle('active', lang==='en');
+    try{ localStorage.setItem('tawari_lang', lang); }catch(e){}
+  }
+  (function(){
+    let saved='en';
+    try{ saved = localStorage.getItem('tawari_lang') || (navigator.language.startsWith('es')?'es':'en'); }catch(e){}
+    setLang(saved);
+  })();
+</script>
+</body>
+</html>
