@@ -35,6 +35,10 @@
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* the header is a 61px sticky bar; without this an anchored section parks its
+   own eyebrow behind it */
+main [id] { scroll-margin-top: 76px; }
 body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.55; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--forest); text-decoration-thickness: 1px; text-underline-offset: 3px; }

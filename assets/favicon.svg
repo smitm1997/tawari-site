@@ -1,1 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect x="2" y="2" width="60" height="60" rx="12" fill="#FDF2DB" stroke="#3D5A3E" stroke-width="3"/><text x="32" y="45" text-anchor="middle" font-family="Gelasio, Georgia, serif" font-size="38" fill="#11110B">T</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tawari">
+  <!-- The specimen tag, the device the brand system retains at small sizes.
+       The full illustrated plate is the footer mark; at 28-64 px it turns to mud,
+       so the label is what survives: cream card, hairline frame, serif T. -->
+  <rect x="1.5" y="1.5" width="61" height="61" rx="10" fill="#FDF2DB" stroke="#3D5A3E" stroke-width="3"/>
+  <rect x="9" y="12" width="46" height="40" rx="3" fill="none" stroke="#11110B" stroke-width="1.4" opacity=".55"/>
+  <path d="M14 21h36M14 45h36" stroke="#11110B" stroke-width="1.2" opacity=".35"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Gelasio, Georgia, 'Times New Roman', serif" font-size="22" fill="#11110B">T</text>
+</svg>

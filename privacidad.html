@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Tawari · Privacy & Data Treatment Policy</title>
+<title>Tawari · Política de Privacidad y Tratamiento de Datos</title>
 <meta name="robots" content="all" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<!-- No third-party requests from this page of all pages: the two families below
+     are served from this domain, the same files the landing pages use. -->
+<style>
+@font-face { font-family: "Gelasio"; src: url("assets/fonts/Gelasio-400.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Gelasio"; src: url("assets/fonts/Gelasio-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("assets/fonts/IBMPlexMono-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
 <style>
   :root{
     --paper:#F5F3EE;--ink:#1F1B16;--ink-soft:#5A5249;--card:#FFFFFF;--line:#E4DFD5;
@@ -16,9 +21,9 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:"Fraunces",Georgia,serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  body{background:var(--paper);color:var(--ink);font-family:"Gelasio",Georgia,serif;line-height:1.65;-webkit-font-smoothing:antialiased}
   body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:radial-gradient(circle at 1px 1px, rgba(31,27,22,.035) 1px, transparent 0);background-size:4px 4px}
-  .mono{font-family:"Fragment Mono",ui-monospace,monospace}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
   .wrap{max-width:760px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 
   nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);background:rgba(245,243,238,.78);border-bottom:1px solid var(--line)}
@@ -26,13 +31,13 @@
   .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.2rem;text-decoration:none;color:var(--ink)}
   .brand .leaf{width:24px;height:24px}
   .lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-  .lang button{background:transparent;border:0;cursor:pointer;padding:5px 11px;font-family:"Fragment Mono",monospace;font-size:.72rem;color:var(--ink-soft)}
+  .lang button{background:transparent;border:0;cursor:pointer;padding:5px 11px;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-soft)}
   .lang button.active{background:var(--ink);color:var(--paper)}
 
   main{padding:64px 0 80px}
-  .back{font-family:"Fragment Mono",monospace;font-size:.8rem;color:var(--moss);text-decoration:none;display:inline-block;margin-bottom:28px}
+  .back{font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--moss);text-decoration:none;display:inline-block;margin-bottom:28px}
   h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:400;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
-  .updated{font-family:"Fragment Mono",monospace;font-size:.78rem;color:var(--ink-soft);margin-bottom:40px}
+  .updated{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--ink-soft);margin-bottom:40px}
   h2{font-size:1.35rem;font-weight:500;margin:40px 0 12px;letter-spacing:-.01em}
   p{color:var(--ink-soft);font-weight:300;margin-bottom:14px;font-size:1.02rem}
   ul{color:var(--ink-soft);font-weight:300;margin:0 0 16px 22px;font-size:1.02rem}
@@ -41,7 +46,7 @@
   .callout{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 24px;box-shadow:var(--shadow);margin:20px 0}
   .callout p{margin-bottom:0}
   strong{color:var(--ink);font-weight:600}
-  footer{border-top:1px solid var(--line);padding:32px 0;font-family:"Fragment Mono",monospace;font-size:.74rem;color:var(--ink-soft);text-align:center;position:relative;z-index:1}
+  footer{border-top:1px solid var(--line);padding:32px 0;font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--ink-soft);text-align:center;position:relative;z-index:1}
 
   [data-en]{display:none}
   html[lang="en"] [data-es]{display:none}
@@ -59,7 +64,7 @@
       Tawari
     </a>
     <div class="lang">
-      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnEn" onclick="setLang('en')">EN</button>
       <button id="btnEs" onclick="setLang('es')">ES</button>
     </div>
   </div>
@@ -79,7 +84,7 @@
 
     <!-- 1. Who we are -->
     <h2><span data-es>1. Quién es responsable de tus datos</span><span data-en>1. Who is responsible for your data</span></h2>
-    <p><span data-es>El responsable del tratamiento de tus datos personales es el equipo de Tawari («nosotros»). Puedes contactarnos en cualquier momento en <a href="mailto:hola@tawari.id">hola@tawari.id</a>.</span><span data-en>The party responsible for processing your personal data is the Tawari team ("we," "us"). You can contact us at any time at <a href="mailto:hello@tawari.id">hello@tawari.id</a>.</span></p>
+    <p><span data-es>El responsable del tratamiento de tus datos personales es el equipo de Tawari («nosotros»). Puedes contactarnos en cualquier momento en <a href="mailto:hello@tawari.id">hello@tawari.id</a>.</span><span data-en>The party responsible for processing your personal data is the Tawari team ("we," "us"). You can contact us at any time at <a href="mailto:hello@tawari.id">hello@tawari.id</a>.</span></p>
     <div class="callout">
       <p><span data-es><strong>Nota:</strong> Antes del lanzamiento público debes reemplazar este apartado con la identidad legal completa del responsable (nombre o razón social, NIT/identificación y domicilio), según lo exige la Ley 1581 de 2012.</span><span data-en><strong>Note:</strong> Before public launch, replace this section with the full legal identity of the data controller (legal name, tax ID, and address), as required by Colombia's Law 1581 of 2012.</span></p>
     </div>
@@ -112,7 +117,7 @@
       <li data-es>Revocar tu autorización y/o solicitar la eliminación de tus datos.</li><li data-en>Revoke your authorization and/or request deletion of your data.</li>
       <li data-es>Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) de Colombia.</li><li data-en>File complaints with Colombia's Superintendency of Industry and Commerce (SIC).</li>
     </ul>
-    <p><span data-es>Para ejercer cualquiera de estos derechos —incluyendo darte de baja— escríbenos a <a href="mailto:hola@tawari.id">hola@tawari.id</a> y responderemos en los plazos que exige la ley.</span><span data-en>To exercise any of these rights — including unsubscribing — email us at <a href="mailto:hello@tawari.id">hello@tawari.id</a> and we will respond within the timeframes required by law.</span></p>
+    <p><span data-es>Para ejercer cualquiera de estos derechos —incluyendo darte de baja— escríbenos a <a href="mailto:hello@tawari.id">hello@tawari.id</a> y responderemos en los plazos que exige la ley.</span><span data-en>To exercise any of these rights — including unsubscribing — email us at <a href="mailto:hello@tawari.id">hello@tawari.id</a> and we will respond within the timeframes required by law.</span></p>
 
     <!-- 6. US note -->
     <h2><span data-es>6. Usuarios en Estados Unidos</span><span data-en>6. Users in the United States</span></h2>
@@ -149,7 +154,7 @@
   }
   (function(){
     let saved='en';
-    try{ saved = localStorage.getItem('tawari_lang') || (navigator.language.startsWith('es')?'es':'en'); }catch(e){}
+    saved = 'es';   // this file IS the es page; its twin serves the other language
     setLang(saved);
   })();
 </script>
