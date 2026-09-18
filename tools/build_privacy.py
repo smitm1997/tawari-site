@@ -24,11 +24,11 @@ BLOCKERS = [
 
 PAGE = {
     "es": dict(file="privacidad.html", lang="es", other="privacy.html", other_lang="en",
-               other_label="English", back="‹ Volver a Tawari", home="index.html",
+               other_label="English", back="‹ Volver a Tawari", home="./",
                updated="Última actualización", title="Política de privacidad · Tawari",
                desc="Qué datos recoge la aplicación Tawari, para qué y qué puedes hacer al respecto."),
     "en": dict(file="privacy.html", lang="en", other="privacidad.html", other_lang="es",
-               other_label="Español", back="‹ Back to Tawari", home="en/index.html",
+               other_label="Español", back="‹ Back to Tawari", home="en/",
                updated="Last updated", title="Privacy policy · Tawari",
                desc="What the Tawari app collects, what it is used for, and what you can do about it."),
 }
@@ -132,11 +132,13 @@ def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True, help="directory holding privacy-policy.es.md / .en.md")
-    ap.add_argument("--date", default=datetime.date.today().isoformat(), help="effective date shown on the page")
+    ap.add_argument("--date", required=True, help="effective date, Spanish wording (e.g. 18 de septiembre de 2026)")
+    ap.add_argument("--date-en", dest="date_en", required=True, help="the same date in English wording (e.g. 18 September 2026)")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(__file__), ".."))
     a = ap.parse_args()
     src = os.path.expanduser(a.src)
-    pages = {lang: build(lang, src, a.date, "assets/site.css") for lang in ("es", "en")}  # both must pass before either is written
+    dates = {"es": a.date, "en": a.date_en}
+    pages = {lang: build(lang, src, dates[lang], "assets/site.css") for lang in ("es", "en")}  # both must pass before either is written
     for lang, doc in pages.items():
         dest = os.path.join(a.out, PAGE[lang]["file"])
         with open(dest, "w", encoding="utf-8") as f:
