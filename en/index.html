@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tawari · A living field guide to Colombia's biodiversity</title>
-<meta name="description" content="Identify what's around you, complete the gincana of a real place, and understand how each species lives: who eats whom, where it lives, and what it means to the people here. Pre-beta, Colombia.">
+<meta name="description" content="Meet your neighbours: who lives at Sonso Lagoon, the Cali Botanical Garden and Cerro de las Tres Cruces, what each one eats and what eats it. We start in Valle del Cauca.">
 <link rel="canonical" href="https://tawari.id/en/">
 <link rel="alternate" hreflang="es" href="https://tawari.id/">
 <link rel="alternate" hreflang="en" href="https://tawari.id/en/">
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://tawari.id/en/">
 <meta property="og:site_name" content="Tawari">
 <meta property="og:title" content="Tawari · A living field guide to Colombia's biodiversity">
-<meta property="og:description" content="9,493 species, 25 places, 3 gincanas. Identify what's around you and understand how it lives. Pre-beta in Colombia.">
+<meta property="og:description" content="Three hundred species from three places in Valle del Cauca, to look through right here. Who lives where, what it eats, and what eats it.">
 <meta property="og:image" content="https://tawari.id/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,10 +32,9 @@
 <header class="bar">
   <a class="wordmark" href="#top"><img src="../assets/mark-56.png" alt="" width="28" height="28">Tawari</a>
   <nav class="nav" aria-label="Sections">
-    <a href="#how-it-works">How it works</a>
+    <a href="#finds-section">The Field-finds</a>
     <a href="#spine">Who eats whom</a>
-    <a href="#places">Places</a>
-    <a href="#status">Status</a>
+    <a href="#app">The app</a>
     <a href="#waitlist">Waitlist</a>
   </nav>
   <div class="lang"><a href="../" hreflang="es" lang="es">Español</a></div>
@@ -46,135 +45,48 @@
 <section class="hero">
   <div class="wrap grid">
     <div>
-      <span class="pill">Pre-beta · Colombia · iPhone via TestFlight</span>
-      <h1>Identify what's around you. Complete the place's gincana. <em>Understand how it lives.</em></h1>
-      <p class="lede">Tawari is a living field guide to Colombia's biodiversity. A few questions — size, colour, where it was — take you to the species actually recorded at the place you're standing. And the card doesn't stop at the name: what it eats, who eats it, where it lives and, when there is a source to cite, what it means to the people here.</p>
+      <span class="pill">Pre-beta · Valle del Cauca</span>
+      <h1>You know that bird lives on your street. <em>Tawari tells you who it is, and who else depends on it.</em></h1>
+      <p class="lede">At Sonso Lagoon the bird that turns up most often in the records is the tropical kingbird: the yellow-and-grey one you have seen a thousand times on a wire, shouting. It hunts on the wing. It chases hawks three times its size out of its territory. That is what Tawari is for — it does not stop at the name.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
-        <a class="btn btn-ghost" href="#how-it-works">See how it works</a>
+        <a class="btn btn-primary" href="#finds-section">Look through the three Field-finds</a>
+        <a class="btn btn-ghost" href="#waitlist">Join the waitlist</a>
       </div>
-      <p class="counts"><b>9,493</b> species · <b>25</b> places · <b>3</b> gincanas · <b>3,535</b> written cards<br>Counted in the database on 17 September 2026.</p>
+      <p class="counts">Three places in Valle del Cauca, a hundred species each, and the list came from real records rather than a catalogue.</p>
     </div>
     <div class="phone">
       <figure>
-        <img src="../assets/screens/en/card-aguila-arpia.webp" alt="The harpy eagle card in Tawari: photo, name, identification traits and the ecological spine" width="360" height="780" fetchpriority="high">
-        <figcaption>The harpy eagle card, <span class="sci">Harpia harpyja</span>. Real capture from the app, September 2026.</figcaption>
+        <img src="../assets/screens/en/card-aguila-arpia.webp" alt="The harpy eagle card in Tawari, with its photo, its identification traits and its ecological relationships" width="360" height="780" fetchpriority="high">
+        <figcaption>The harpy eagle, <span class="sci">Harpia harpyja</span>.</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section id="numbers">
+<section id="finds-section">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">What's inside, counted</p>
-      <h2>Numbers you can check.</h2>
-      <p class="lede">No figure on this page is rounded or estimated. Each one came from a query against the database on 17 September 2026, and they change with every release.</p>
+      <p class="eyebrow">We start in Valle del Cauca</p>
+      <h2>Meet your neighbours.</h2>
+      <p class="lede">A Field-find is the list of who lives in one place. It is not a score: it is a way to meet your neighbours, and you do not have to finish it. There are three, and you can look through them right here without installing anything.</p>
     </div>
-    <div class="numbers">
-      <div class="num"><b>9,493</b><span>species in the catalogue</span></div>
-      <div class="num"><b>3,535</b><span>cards written and reviewed</span></div>
-      <div class="num"><b>5,958</b><span>draft cards, marked as such</span></div>
-      <div class="num"><b>4,050</b><span>species with a Spanish common name</span></div>
-      <div class="num"><b>25</b><span>published places, with their recorded species</span></div>
-      <div class="num"><b>3</b><span>active gincanas, 100 species each</span></div>
-      <div class="num"><b>140</b><span>species with at least one published relationship</span></div>
-      <div class="num"><b>8,453</b><span>species with at least one openly licensed photo</span></div>
+
+    <div class="finds" id="finds" data-base="../">
+      <div class="tabs" id="findTabs" role="tablist" aria-label="Field-finds"></div>
+      <p class="find-note" id="findLoading">Loading…</p>
+      <div id="findBody" hidden>
+        <div class="controls">
+          <input type="search" id="findQ" placeholder="Search for a name…" aria-label="Search species">
+          <span class="count" id="findCount"></span>
+        </div>
+        <div class="chips" id="findChips"></div>
+        <div class="sp-grid" id="findGrid"></div>
+        <button class="more" id="findMore" hidden></button>
+      </div>
     </div>
-    <p class="foot-note">A "written" card went through full drafting and a review. A "draft" card says how little is known and doesn't invent the rest — you'll see one further down.</p>
-  </div>
-</section>
 
-<section id="how-it-works">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">How it works</p>
-      <h2>From "what is this?" to "this is how it lives".</h2>
-    </div>
-    <div class="steps">
-
-      <div class="step">
-        <div class="txt">
-          <span class="n">01 · IDENTIFY</span>
-          <h3>A few questions, in order.</h3>
-          <p>First: fauna, flora or fungi? If it's an animal, what kind? For a bird it's five steps: what kind of animal it is, how big it is, what its main colours are (up to four, the most striking first), and where you saw it. Any step can be skipped.</p>
-          <p>What narrows the list is the place and the kind of animal: only species recorded where you are get in. Your other answers rule nobody out — they order that list, putting the best fits on top. So a similar species doesn't vanish because you misremembered a colour.</p>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/wizard-ave.webp" alt="Tawari's identification wizard asking for a bird's main colours" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>Step 4 of 5 — "What are the main colors you see?"</figcaption>
-        </figure>
-      </div>
-
-      <div class="step">
-        <div class="txt">
-          <span class="n">02 · RESULTS</span>
-          <h3>The ones that match, and why.</h3>
-          <p>The list shows each candidate with photo, common and scientific name, family and order, and how well it fits what you answered. In the capture: a small yellow-and-black bird seen in the canopy at the Cali Botanical Garden. The 186 in the list are every bird recorded at that garden, ordered by fit — flycatchers, tyrannulets, seedeaters and tanagers at the top. If none convinces you, you can log the sighting unidentified, with the closest one and a note, and come back to it later.</p>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/results-ave.webp" alt="Wizard results at the Cali Botanical Garden for a small yellow-and-black bird: 186 species match" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>"Best matches · At JB Cali · 186 species match".</figcaption>
-        </figure>
-      </div>
-
-      <div class="step">
-        <div class="txt">
-          <span class="n">03 · THE WHOLE CARD</span>
-          <h3>How to recognise it, what it eats, where it lives.</h3>
-          <ul>
-            <li><b>Identification:</b> each field mark as a short title with one line explaining it. For the harpy eagle: "double grey crest", "talons larger than a hand".</li>
-            <li><b>Who it lives with:</b> feeds on…, returns to ecosystem via…, lives in/on…, each naming the group it points to and where the claim came from.</li>
-            <li><b>Ecosystem role, distribution, taxonomy</b> and IUCN Red List status where an assessment exists.</li>
-            <li><b>Data and photo sources</b> on every card. Every photo carries its author and licence; we use only openly licensed images (CC0, CC BY, CC BY-SA).</li>
-          </ul>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/spine-aguila-arpia.webp" alt="The relationships section of the harpy eagle card" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>The harpy eagle's three rows, opened.</figcaption>
-        </figure>
-      </div>
-
-      <div class="step" id="places">
-        <div class="txt">
-          <span class="n">04 · REAL PLACES</span>
-          <h3>What lives here, according to the records.</h3>
-          <p>Twenty-five published places, from Tayrona National Natural Park to Puracé, from the Ciénaga Grande de Santa Marta to the botanical gardens of Bogotá, Medellín and Cali. Each place guide lists the species recorded there by real observations, not by what "should" be there.</p>
-          <p>At Tayrona, "What lives here" counts <b>1,134 species</b>: 471 birds, 260 plants, 47 mammals and 356 from other groups — insects, reptiles, fungi, amphibians, spiders. Every guide opens with "Identify a species" and highlights the most seen, the ones new to you, and the ones you're missing.</p>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/location-tayrona.webp" alt="The Tayrona National Natural Park field guide in Tawari, with its list of recorded species" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>Tayrona — "What lives here · 1134 species".</figcaption>
-        </figure>
-      </div>
-
-      <div class="step">
-        <div class="txt">
-          <span class="n">05 · GINCANA</span>
-          <h3>A reason to come back.</h3>
-          <p>A gincana is a short list of species to look for at a place. Today there are three, curated by the Tawari team: <b>Cali Botanical Garden</b>, <b>Cerro de las Tres Cruces</b> and <b>Laguna de Sonso</b>. Each carries one hundred species in two lists: fifty in the gincana and fifty more in the trophy, for whoever wants to keep going. In Cali: 19 plants, 16 birds, 1 mammal and 14 from other groups, with the count per group in view.</p>
-          <p>You don't have to finish it. Every species you mark stays in your journal. More places in the catalogue will get their own gincana.</p>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/gincana-cali.webp" alt="The Cali Botanical Garden gincana in Tawari, with its species grid" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>"Quest: Cali Botanical Garden" — 0/50, with the Trophy tab beside it.</figcaption>
-        </figure>
-      </div>
-
-      <div class="step">
-        <div class="txt">
-          <span class="n">06 · YOUR JOURNAL</span>
-          <h3>Keep it with its date and its place.</h3>
-          <p>Log what you saw with date, place, a note and a photo if you like. It's yours and nobody else sees it: in this version, nothing you log is published anywhere. If you sign in with Google or Apple, your journal follows you when you change phones.</p>
-          <p>The capture shows a brand-new journal with no entries: we'd rather show it empty than invent sightings for the photo.</p>
-        </div>
-        <figure class="shot">
-          <img src="../assets/screens/en/cuaderno.webp" alt="Tawari's sightings journal, empty, with the Explore places button" width="340" height="737" loading="lazy" decoding="async">
-          <figcaption>"My Journal · 0 species recorded".</figcaption>
-        </figure>
-      </div>
-
-    </div>
+    <p class="find-note" style="margin-top:18px">All three are in Valle del Cauca, two of them in Cali. <b>The evidence behind each one is very different:</b> at the Botanical Garden the most-recorded species, the arrayancito, has 428 observations; at Cerro de las Tres Cruces the most-recorded has three. The two lists take up the same room on screen and are not worth the same. Tap any species and we tell you how many records it has.</p>
+    <p class="find-note">Some species appear without a photograph. Usually because the ones that exist carry licences forbidding commercial use, and an app with a paid tier is exactly that. In nine cases the licence was fine and the herbarium server holding the photo did not answer on the day we built this page. Either way we would rather leave the gap than fill it with a picture of something else.</p>
   </div>
 </section>
 
@@ -183,69 +95,75 @@
     <div class="section-head">
       <p class="eyebrow">The ecological spine</p>
       <h2>Who eats whom.</h2>
-      <p class="lede">The section headed <em>Who it lives with</em> — the app labels it "THE WEB · 3 SOURCED" — holds up to three rows. The harpy eagle is one of five hand-written cards that fill all three — the best case in the catalogue, not the typical one. Here they are, with the group each relationship points to and the detail when you open the row:</p>
+      <p class="lede">It is the part no identification app has, and the reason Tawari exists. A card can carry three relationships. These are the harpy eagle's, as the app shows them under <em>Who it lives with</em>:</p>
     </div>
     <div class="spine">
-      <div class="slot"><div class="lbl">Feeds on…</div><p><b>Mammals.</b> Primary prey: three-toed sloths and howler monkeys, in the canopy.</p><small>Source: expert review</small></div>
-      <div class="slot"><div class="lbl">Returns to ecosystem via…</div><p><b>Decomposers &amp; detritivores.</b> An apex predator has no predators; the row says how it returns.</p><small>Source: expert review</small></div>
-      <div class="slot"><div class="lbl">Lives in/on…</div><p><b>Trees &amp; woody plants.</b> Nests in emergent trees, such as the ceiba, in intact lowland forest.</p><small>Source: expert review</small></div>
+      <div class="slot"><div class="lbl">Feeds on</div><p>Three-toed sloths and howler monkeys, taken from the canopy.</p><small>Manual curation · confidence 0.95</small></div>
+      <div class="slot"><div class="lbl">Returns to ecosystem via</div><p>Carrion. An apex predator has nothing hunting it; the slot says how it goes back.</p><small>Manual curation · confidence 0.95</small></div>
+      <div class="slot"><div class="lbl">Lives in/on</div><p>Emergent trees — ceibas — in lowland forest nobody has felled.</p><small>Manual curation · confidence 0.95</small></div>
     </div>
-    <p>Today <b>140 species</b> show at least one of these rows, <b>161 visible relationships</b> in all: 124 of those species fill a single row and five fill all three. Another 1,115 relationships already extracted are waiting for review and are not shown until they pass. We'd rather have an empty row than an invented one — and the rest of the catalogue shows none yet.</p>
+    <p>Today 140 species show their spine. Another thousand-odd relationships are extracted and waiting for review: they are not published until they pass it, because an empty slot beats an invented one.</p>
+  </div>
+</section>
+
+<section id="app">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The app</p>
+      <h2>What happens when you don't know the name.</h2>
+    </div>
+    <div class="step">
+      <div class="txt">
+        <p>You saw something. You open the wizard and answer what you can: animal or plant, what silhouette it had, what colours. Any step can be skipped. At the end you get the ones that match — but only from among those recorded at the place you are standing, because a species nobody has seen there does not belong in a list claiming to say what lives there.</p>
+        <p>When you reach the card you find how to recognise it, when it appears, what eats it, and what it means to the people here. And if you log the sighting it stays in your journal with its date and its place. Nobody else sees it.</p>
+      </div>
+      <figure class="shot">
+        <img src="../assets/screens/en/wizard-ave.webp" alt="Tawari's identification wizard asking for a bird's main colours" width="340" height="737" loading="lazy" decoding="async">
+        <figcaption>One of the wizard's questions.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
 <section id="drafts">
-  <div class="wrap">
+  <div class="wrap cols">
     <div>
       <p class="eyebrow">When we don't know</p>
       <h2>The card says so.</h2>
-      <p>Of 9,493 species, 3,535 have a written card. The other 5,958 are <b>draft cards</b>. A draft card says in one sentence that there is very little verifiable public information about the species, shows what is documented — name, taxonomy, records, photos — and invents nothing more.</p>
-      <p>And it tells you how to help that species get studied more: log your sightings here, with a photo and notes; upload them to iNaturalist too, because verified records reach GBIF, the open database science works from; or tell us about a published source.</p>
-      <div class="absence">
-        <p class="eyebrow">Draft card</p>
-        <p style="margin:0">This is how it looks in the app. Drawn as a draft, not a finished card — no warning colour, no icon.</p>
-      </div>
+      <p>For a great many Colombian species there is almost nothing published. When that is the case the card says so and stays short, instead of filling the gap. It shows what is documented — name, taxonomy, records, photographs — and nothing more.</p>
+      <p>And it tells you how to help: log your sightings with a photo and notes, upload them to iNaturalist too — verified records reach GBIF, the open database science works from — or tell us about a published source.</p>
     </div>
-    </div>
-</section>
-
-<section id="cultural">
-  <div class="wrap cols">
     <div>
       <p class="eyebrow">Knowledge with a name attached</p>
       <h2>Who says so, and where from.</h2>
-      <p>Some species mean something to someone in particular. When a source exists to cite, the card says so with specific attribution: a people, a place, an author. The card for <span class="sci">Panthera onca</span>, the jaguar, cites the cosmology of the Kogi of the Sierra Nevada de Santa Marta, documented by the ethnographer Gerardo Reichel-Dolmatoff.</p>
-      <p>When there is no attributable source, the section doesn't exist. That is the writing rule: a people and a place, never a bare "indigenous peoples" or "traditional medicine" as a category; no dose, no preparation method, no medical claim. It is a rule we are applying to a catalogue that already exists, not a guarantee that no card has slipped past it: if you find one that breaks it, write to us and we'll fix it. It's one section among several, not the headline.</p>
-    </div>
-    <div>
-      <p class="eyebrow">Learn</p>
-      <h2>The bigger picture.</h2>
-      <p>The <b>Learn</b> tab currently holds 25 biomes — from páramo to mangrove — 63 family, order and group pages, and 17 short essays of six to nine minutes, connected to the species you find: "What the Red List actually measures", "How seasons work in the tropics", "The morning mixed-flock: why fifteen bird species suddenly arrive together".</p>
+      <p>The jaguar's card cites the cosmology of the Kogi of the Sierra Nevada de Santa Marta, where the animal — <span class="sci">Kaku Shenbuta</span> — joins the spiritual and material worlds, and the ethnographer Gerardo Reichel-Dolmatoff's work on the Muisca of the Bogotá savanna.</p>
+      <p>When there is no source to cite, the section does not exist. Never "indigenous peoples". Never "traditional medicine". Never preparation instructions or medical claims.</p>
     </div>
   </div>
 </section>
 
-<section id="status">
+<section id="sources">
   <div class="wrap cols">
     <div>
       <p class="eyebrow">Where we are</p>
-      <h2>Pre-beta. Carefully.</h2>
+      <h2>Pre-beta, and it shows.</h2>
       <ul class="list-plain">
-        <li><b>Today:</b> closed pre-beta, Colombia only. iPhone first, via TestFlight. Android later.</li>
-        <li><b>What you'll see:</b> written cards for 3,535 species, honest drafts for the rest, and mistakes. Every correction you send goes in.</li>
-        <li><b>Deliberately not there yet:</b> social features. Nobody sees your journal and there are no comparisons with other people.</li>
-        <li><b>No advertising:</b> no ads, no advertising identifiers, no third-party trackers, in the app or on this site. This site uses no cookies and no analytics. The app does send crash reports and records how the wizard went, so we can fix it.</li>
+        <li><b>Today:</b> closed pre-beta. iPhone first, via TestFlight; Android after.</li>
+        <li><b>What's playable:</b> three Field-finds, all in Valle del Cauca. More coming.</li>
+        <li><b>What you'll see:</b> mistakes. Every correction you send goes in.</li>
+        <li><b>Deliberately absent:</b> social features. Nobody sees your journal.</li>
+        <li><b>No advertising, no tracking</b> — not in the app, not on this site. <a href="status.html">The full figures are here</a>.</li>
       </ul>
     </div>
     <div>
       <p class="eyebrow">Where the data comes from</p>
       <h2>Sources, not opinions.</h2>
       <ul class="list-plain">
-        <li><b>Names and taxonomy:</b> GBIF and eBird/Clements, cross-checked against SiB Colombia.</li>
-        <li><b>What lives at each place:</b> GBIF and eBird records at those coordinates — 20,460 place–species rows across the 25 published places.</li>
-        <li><b>Ecological relationships:</b> GloBI and manual curation, with a confidence level on every row.</li>
-        <li><b>Photos:</b> Wikimedia Commons and GBIF, openly licensed only, with author credit.</li>
-        <li><b>Writing:</b> AI helps us draft cards from cited sources, not invent them. Every written card goes through a review, and cards for toxic or psychoactive species through an additional safety screen.</li>
+        <li><b>Names and taxonomy:</b> SACC, IOC, eBird/Clements, Avibase, GBIF and SiB Colombia.</li>
+        <li><b>What lives at each place:</b> GBIF and eBird records at those coordinates.</li>
+        <li><b>Ecological relationships:</b> GloBI and manual curation, each with its confidence.</li>
+        <li><b>Photos:</b> Wikimedia Commons, GBIF and iNaturalist, openly licensed only, with author credit.</li>
+        <li><b>Writing:</b> AI helps us draft from cited sources, not invent them. Every written card is reviewed; toxic and psychoactive species get one more safety screen.</li>
       </ul>
     </div>
   </div>
@@ -256,7 +174,7 @@
     <div class="wait">
       <p class="eyebrow">Waitlist</p>
       <h2>Be among the first to try it.</h2>
-      <p class="lede" style="margin-bottom:0">We'll write to you once, when your TestFlight invitation is ready. Nothing else.</p>
+      <p class="lede" style="margin-bottom:0">We write to you once, when your TestFlight invitation is ready.</p>
       <form id="waitlist-form" novalidate>
         <div class="form-row">
           <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required aria-label="Email address">
@@ -286,16 +204,12 @@
 </section>
 
 <section id="collaborate">
-  <div class="wrap cols">
+  <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Reserves, botanical gardens and birding clubs</p>
-      <h2>A place guide starts with its records.</h2>
-      <p class="lede">If you run a reserve, a botanical garden or a birding club in Colombia and want your place to have its guide and its gincana, write to <a href="mailto:hello@tawari.id">hello@tawari.id</a>. The first thing we need is your species lists.</p>
+      <h2>A Field-find starts with a place's records.</h2>
+      <p class="lede">If you run a reserve, a botanical garden or a birding club and want your place to have one, write to <a href="mailto:hello@tawari.app">hello@tawari.app</a>. The first thing we need is your species lists.</p>
     </div>
-    <figure class="shot">
-      <img src="../assets/screens/en/explorar-colombia.webp" alt="Tawari's map with the 25 published places marked across Colombia" width="340" height="737" loading="lazy" decoding="async">
-      <figcaption>The 25 published places, from La Guajira to Nariño.</figcaption>
-    </figure>
   </div>
 </section>
 
@@ -306,8 +220,9 @@
     <img class="plate" src="../assets/plate.webp" alt="Tawari illustration: a toucan, morpho butterflies, heliconias and mushrooms around a specimen tag" width="96" height="96" loading="lazy" decoding="async">
     <p style="margin:0"><b>Tawari</b> · A living field guide to Colombia's biodiversity.</p>
     <div class="links">
-      <a href="mailto:hello@tawari.id">hello@tawari.id</a>
+      <a href="mailto:hello@tawari.app">hello@tawari.app</a>
       <a href="https://www.instagram.com/tawari.id" rel="me noopener">Instagram @tawari.id</a>
+      <a href="status.html">Project status</a>
       <a href="../privacy.html">Privacy</a>
       <a href="../" hreflang="es" lang="es">Español</a>
     </div>
@@ -315,11 +230,22 @@
   </div>
 </footer>
 
+<dialog class="sp" id="dlgSp" aria-labelledby="dlgName">
+  <div id="dlgFig"></div>
+  <div class="dbody">
+    <div class="dname" id="dlgName"></div>
+    <div class="dsci" id="dlgSci"></div>
+    <div class="badges" id="dlgBadges" style="margin-top:12px"></div>
+    <p class="dcredit" id="dlgCredit"></p>
+    <button class="dclose" id="dlgClose">Close</button>
+  </div>
+</dialog>
+
+<script src="../assets/explorer.js" defer></script>
 <script>
 (function () {
   // Waitlist: one insert into public.waitlist through Supabase's REST API with the
-  // publishable key. Row-level security on the table allows anon INSERT only
-  // (no read, update or delete), so this key can add a row and nothing else.
+  // publishable key. Row-level security on the table allows anon INSERT only.
   var URL = 'https://yiwgwojxuisdqfvxlciu.supabase.co/rest/v1/waitlist';
   var KEY = 'sb_publishable_mxH-YkTK-XC0DHm3KndsQw_IhlfsHcq';
   var form = document.getElementById('waitlist-form');
@@ -342,10 +268,10 @@
       body: JSON.stringify({ email: email, country: country, lang: 'en', source: 'landing', consent: true, consent_at: new Date().toISOString() })
     }).then(function (r) {
       if (r.status === 201) { say('ok', "Done. We'll write when the pre-beta opens."); form.reset(); }
-      else if (r.status === 409) { say('ok', "Done. We'll write when the pre-beta opens."); form.reset(); }
+      else if (r.status === 409) { say('ok', 'That email is already on the list.'); form.reset(); }
       else { throw new Error('status ' + r.status); }
     }).catch(function () {
-      say('err', "We couldn't save it. Email hello@tawari.id and we'll add you by hand.");
+      say('err', "We couldn't save it. Email hello@tawari.app and we'll add you by hand.");
     }).then(function () { btn.disabled = false; });
   });
 })();
