@@ -10,14 +10,14 @@
     none: 'Ninguna coincide con eso.', more: 'Ver más', records: 'registros', record: 'registro',
     noimg: 'sin foto por ahora',
     noimgLong: 'Todavía no tenemos una foto de esta especie que podamos mostrar.',
-    endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', close: 'Cerrar',
+    endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', illustration: 'Ilustración', close: 'Cerrar',
     unknown: 'autor no indicado'
   } : {
     all: 'All', of: 'of', species: 'species', search: 'Search for a name…',
     none: 'Nothing matches that.', more: 'Show more', records: 'records', record: 'record',
     noimg: 'no photo yet',
     noimgLong: "We don't have a photo of this species we can show yet.",
-    endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', close: 'Close',
+    endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', illustration: 'Illustration', close: 'Close',
     unknown: 'photographer not recorded'
   };
 
@@ -122,7 +122,7 @@
     el('dlgBadges').innerHTML = b;
     // CC BY and CC BY-SA require attribution; it ships with the photo, always.
     el('dlgCredit').textContent = s.img
-      ? T.photo + ': ' + (s.by || T.unknown) + ' · ' + s.lic + (s.src ? ' · ' + s.src : '')
+      ? (s.kind === 'illustration' ? T.illustration : T.photo) + ': ' + (s.by || T.unknown) + ' · ' + s.lic + (s.src ? ' · ' + s.src : '')
       : T.noimgLong;
     el('dlgSp').showModal();
   }
