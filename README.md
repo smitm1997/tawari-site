@@ -73,6 +73,29 @@ Keep the places ordered best-documented first. Alphabetical puts Cerro de las Tr
 Cruces — whose most-recorded species has three observations — in front of the
 Botanical Garden's 428, which is the weakest possible first impression.
 
+## Footer collage
+
+`assets/collage/` is the WS-D142 collage, baked from the canvas boards and the app's
+own icon set (`final-icons/` in the app repo): a 495 × 230 phone vignette at 2× under
+480 px, and the 1280 × 280 band at 1×, 1.5× and 2× from 480 px up (cropped to centre
+below 1280, scaled above it). A visitor downloads one of the four, and only when the
+footer comes near: 72 KB on a phone, 107 to 316 KB on a desktop. The band is
+decorative (`aria-hidden`, `alt=""`). The specimen label in its centre is HTML, not
+pixels, so it stays sharp and reads «Guía de campo viva» / "Living field guide".
+
+To change it, edit `tools/collage-layout.json` (each icon's box, rotation, flip and
+paint order, read off the boards) and run:
+
+```
+node tools/bake_collage.js --icons ~/dev/Tawari/final-icons --sharp ~/dev/Tawari/node_modules/sharp
+```
+
+On unchanged inputs it reproduces the committed files byte for byte. The icons are
+family- and order-level drawings, not portraits of species, and the set has no morpho,
+toucan, heliconia or cat: never caption the band with a species it does not show. The
+script refuses the platypus wildcard (`other/buckets/other`), the generic mammal and
+the cultivated plants.
+
 ## Privacy pages
 
 Edit the Markdown in the app repo, then:
@@ -92,8 +115,12 @@ or delete. Table and policy: `docs/handoff/sql/WS-D133-081-waitlist.sql`.
 
 ## Weight
 
-Gzipped, as GitHub Pages serves them: `index.html` ~6 KB, `site.css` ~4 KB,
-`explorer.js` ~3 KB, `finds.json` ~23 KB. Thumbnails are ~15 KB each and lazy-load,
-24 at a time. A first visit that never scrolls past the hero costs roughly 130 KB;
-working through a whole Field-find costs roughly 500 KB. Check it before shipping a
-change that adds images — most of this audience is on mobile data.
+Gzipped, as GitHub Pages serves them: `index.html` ~6 KB, `site.css` ~5 KB,
+`explorer.js` ~3 KB, `finds.json` ~24 KB. Thumbnails are ~15 KB each and lazy-load, 24
+at a time. A first visit that never scrolls past the hero costs roughly 185 KB,
+measured at 375 px on 2026-09-21: fonts 75 KB and the hero screenshot 66 KB of it.
+Opening all 100 cards of one Field-find adds 1.2 to 1.5 MB of thumbnails (measured
+from `assets/finds/`), and the footer collage another 72 KB on a phone. Every
+decorative image carries `loading="lazy"`; the only eager one is the explorer's
+loading icon. Check it before shipping a change that adds images — most of this
+audience is on mobile data.
