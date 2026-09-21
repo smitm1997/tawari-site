@@ -45,10 +45,10 @@
   <div class="wrap grid">
     <div>
       <span class="pill">Pre-beta · Valle del Cauca</span>
-      <h1>Sabes que ese pájaro vive en tu calle. <em>Tawari te dice quién es, y de quién más depende.</em></h1>
-      <p class="lede">En la Laguna de Sonso el ave que más aparece en los registros es el tirano tropical: ese pájaro amarillo y gris que has visto mil veces en un cable, gritando. Caza al vuelo. Persigue gavilanes tres veces más grandes que él para sacarlos de su territorio. Eso es lo que hace Tawari — no se queda en el nombre.</p>
+      <h1>Sabes que ese pajarito vive cerca tuyo. <em>Tawari te dice quién es, y con quién vive.</em></h1>
+      <p class="lede">Una de las aves que más se registran en la Laguna de Sonso es el tirano tropical: ese pajarito amarillo y gris que has visto mil veces en un cable, gritando. Caza insectos al vuelo y persigue gavilanes mucho más grandes que él para sacarlos de su territorio. Eso es lo que hace Tawari: no se queda en el nombre.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#gincanas">Mira las tres gincanas</a>
+        <a class="btn btn-primary" href="#gincanas">Mira las gincanas</a>
         <a class="btn btn-ghost" href="#lista">Únete a la lista</a>
       </div>
       <p class="counts">Tres lugares del Valle del Cauca, cien especies cada uno, y la lista salió de registros reales, no de un catálogo.</p>
@@ -67,12 +67,13 @@
     <div class="section-head">
       <p class="eyebrow">Empezamos por el Valle del Cauca</p>
       <h2>Conoce a tus vecinos.</h2>
-      <p class="lede">Una gincana es la lista de quienes viven en un lugar. No es un puntaje: es una manera de conocer a tus vecinos, y no hace falta terminarla. Hay tres, y puedes mirarlas aquí mismo sin instalar nada.</p>
+      <p class="lede">Una gincana es la lista de quienes viven en un lugar. Reúne las especies que más se ven ahí, y también algunas de las más llamativas, las que vale la pena salir a buscar. No es un puntaje y no hace falta terminarla. Es una buena forma de explorar un lugar y conectar más con la naturaleza, a cualquier edad. Hay tres por ahora.</p>
     </div>
 
     <div class="finds" id="finds" data-base="">
       <div class="tabs" id="findTabs" role="tablist" aria-label="Gincanas"></div>
       <p class="find-note" id="findLoading">Cargando…</p>
+      <noscript><p class="find-note">Para ver las gincanas aquí hace falta JavaScript. También puedes verlas en la app.</p></noscript>
       <div id="findBody" hidden>
         <div class="controls">
           <input type="search" id="findQ" placeholder="Busca un nombre…" aria-label="Buscar especie">
@@ -83,9 +84,6 @@
         <button class="more" id="findMore" hidden></button>
       </div>
     </div>
-
-    <p class="find-note" style="margin-top:18px">Las tres están en el Valle del Cauca, dos de ellas en Cali. <b>La evidencia detrás de cada una es muy distinta:</b> en el Jardín Botánico la especie más registrada, el arrayancito, tiene 428 observaciones; en el Cerro de las Tres Cruces la más registrada tiene tres. Las dos listas ocupan lo mismo en pantalla y no valen lo mismo. Toca cualquier especie y te decimos cuántos registros tiene.</p>
-    <p class="find-note">Algunas especies aparecen sin foto. Casi siempre porque las que existen llevan licencias que no permiten uso comercial, y una app con plan de pago lo es. En nueve casos la licencia sí servía y el servidor del herbario que aloja la foto no respondió el día que armamos esta página. En ambos casos preferimos el hueco a rellenarlo con la foto de otra especie.</p>
   </div>
 </section>
 
@@ -94,14 +92,13 @@
     <div class="section-head">
       <p class="eyebrow">La columna ecológica</p>
       <h2>Quién come a quién.</h2>
-      <p class="lede">Es la parte que ninguna app de identificar tiene, y la razón de que Tawari exista. Cada ficha puede llevar tres relaciones. Estas son las del águila arpía, tal como las muestra la app:</p>
+      <p class="lede">Aquí es donde otras guías de campo y apps se quedan cortas. Estas son las relaciones del águila arpía, tal como las muestra la app:</p>
     </div>
     <div class="spine">
       <div class="slot"><div class="lbl">Se alimenta de</div><p>Perezosos de tres dedos y monos aulladores, arrancados del dosel.</p><small>Curación manual · confianza 0,95</small></div>
       <div class="slot"><div class="lbl">Retorna al ecosistema vía</div><p>Carroña. Un depredador ápice no tiene quien lo cace; la ranura dice cómo vuelve.</p><small>Curación manual · confianza 0,95</small></div>
-      <div class="slot"><div class="lbl">Vive en/sobre</div><p>Árboles emergentes —ceibas— en bosque bajo que nadie ha tumbado.</p><small>Curación manual · confianza 0,95</small></div>
+      <div class="slot"><div class="lbl">Vive en/sobre</div><p>Anida en árboles emergentes, como las ceibas, en selva de tierras bajas que sigue en pie.</p><small>Curación manual · confianza 0,95</small></div>
     </div>
-    <p>Hoy son 140 especies las que muestran su columna. Otras mil y pico de relaciones están extraídas y esperando revisión: no se publican hasta pasarla, porque una ranura vacía es mejor que una inventada.</p>
   </div>
 </section>
 
@@ -113,8 +110,9 @@
     </div>
     <div class="step">
       <div class="txt">
-        <p>Viste algo. Abres el asistente y respondes lo que puedas: si es fauna o flora, qué silueta tenía, de qué colores era. Cualquier paso se puede omitir. Al final salen las que coinciden — pero solo entre las registradas en el lugar donde estás, porque una especie que nadie ha visto ahí no debería aparecer en una lista que dice qué vive ahí.</p>
-        <p>Cuando llegas a la ficha, encuentras cómo reconocerla, cuándo aparece, quién la come y qué significa para la gente de aquí. Y si registras el avistamiento, se queda en tu cuaderno con su fecha y su lugar. Nadie más lo ve.</p>
+        <p>Viste algo. Abres el asistente y respondes lo que sepas: si era un animal o una planta, y después detalles como la silueta o los colores. Cualquier paso se puede omitir. Al final salen las especies que coinciden, pero solo entre las registradas en el lugar donde estás, porque una especie que nadie ha visto ahí no debería aparecer en una lista que dice qué vive ahí.</p>
+        <p>En la ficha encuentras cómo reconocerla, cuándo aparece, quién la come y qué significa para la gente de aquí. Si registras el avistamiento, se queda en tu cuaderno con su fecha y su lugar. Por ahora nadie más lo ve; pronto podrás compartirlo con tu comunidad.</p>
+        <p>Y si no encuentras lo que viste, igual puedes registrarlo sin identificar, con foto y notas, y volver a él después. Si crees que a un lugar le falta una especie, escríbenos a <a href="mailto:hello@tawari.app">hello@tawari.app</a> y la revisamos.</p>
       </div>
       <figure class="shot">
         <img src="assets/screens/wizard-ave.webp" alt="El asistente de identificación de Tawari preguntando por los colores principales de un ave" width="340" height="737" loading="lazy" decoding="async">
@@ -129,14 +127,14 @@
     <div>
       <p class="eyebrow">Cuando no sabemos</p>
       <h2>La ficha lo dice.</h2>
-      <p>De muchas especies colombianas casi no hay nada publicado. Cuando es así, la ficha lo dice y se queda corta, en vez de rellenar el hueco. Muestra lo que sí está documentado —nombre, taxonomía, registros, fotos— y nada más.</p>
-      <p>Y te dice cómo ayudar: registra tus avistamientos con foto y notas, súbelos también a iNaturalist —los registros verificados llegan a GBIF, la base abierta con la que trabaja la ciencia— o cuéntanos de una fuente publicada.</p>
+      <p>De muchas especies colombianas casi no hay nada publicado. Cuando es así, la ficha lo dice y se queda corta, en vez de rellenar el hueco. Muestra lo que sí está documentado, como el nombre, la taxonomía, los registros y las fotos, y nada más.</p>
+      <p>Y te dice cómo ayudar: registra tus avistamientos con foto y notas, o súbelos también a iNaturalist, porque sus registros verificados llegan a GBIF, la base abierta con la que trabaja la ciencia. También puedes contarnos de una fuente publicada.</p>
     </div>
     <div>
       <p class="eyebrow">Conocimiento con nombre y apellido</p>
       <h2>Quién lo dice, y de dónde.</h2>
-      <p>La ficha del jaguar cita la cosmología de los kogi de la Sierra Nevada de Santa Marta, donde el animal —<span class="sci">Kaku Shenbuta</span>— une el mundo espiritual y el material, y el trabajo del etnógrafo Gerardo Reichel-Dolmatoff sobre los muiscas de la sabana de Bogotá.</p>
-      <p>Cuando no hay una fuente que citar, la sección no existe. Nunca «los indígenas». Nunca «la medicina tradicional». Nunca instrucciones de preparación ni afirmaciones médicas.</p>
+      <p>La ficha del jaguar cita la cosmología de los kogi de la Sierra Nevada de Santa Marta, donde el animal, al que llaman <span class="sci">Kaku Shenbuta</span>, encarna el vínculo entre el mundo espiritual y el material. También cita el trabajo del etnógrafo Gerardo Reichel-Dolmatoff sobre los muiscas de la sabana de Bogotá.</p>
+      <p>Si no hay una fuente que citar, esa sección simplemente no aparece. Preferimos nombrar a un pueblo y un lugar concretos antes que hablar de «los indígenas» en general, y en ninguna ficha damos instrucciones de preparación ni consejos médicos.</p>
     </div>
   </div>
 </section>
@@ -149,9 +147,9 @@
       <ul class="list-plain">
         <li><b>Hoy:</b> pre-beta cerrada. Primero en iPhone, por TestFlight; Android va después.</li>
         <li><b>Lo jugable:</b> tres gincanas, todas en el Valle del Cauca. Vienen más.</li>
-        <li><b>Lo que verás:</b> errores. Cada corrección que nos mandes entra.</li>
-        <li><b>Lo que no hay, a propósito:</b> funciones sociales. Nadie ve tu cuaderno.</li>
-        <li><b>Sin publicidad ni rastreo</b> — ni en la app ni en este sitio. <a href="estado.html">Las cifras completas, aquí</a>.</li>
+        <li><b>Lo que verás:</b> errores, y fichas que todavía se quedan cortas. Cualquier retroalimentación o sugerencia es bienvenida.</li>
+        <li><b>Por ahora:</b> tu cuaderno es solo tuyo. Pronto podrás compartirlo con tu comunidad.</li>
+        <li><b>Sin publicidad ni rastreo</b>, ni en la app ni en este sitio. <a href="estado.html">Las cifras completas, aquí</a>.</li>
       </ul>
     </div>
     <div>

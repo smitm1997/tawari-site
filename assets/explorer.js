@@ -8,15 +8,15 @@
   var T = ES ? {
     all: 'Todas', of: 'de', species: 'especies', search: 'Busca un nombre…',
     none: 'Ninguna coincide con eso.', more: 'Ver más', records: 'registros', record: 'registro',
-    noimg: 'sin foto de licencia abierta',
-    noimgLong: 'Esta especie tiene fotos, pero ninguna con una licencia que permita uso comercial, así que no la mostramos.',
+    noimg: 'sin foto por ahora',
+    noimgLong: 'Todavía no tenemos una foto de esta especie que podamos mostrar.',
     endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', close: 'Cerrar',
     unknown: 'autor no indicado'
   } : {
     all: 'All', of: 'of', species: 'species', search: 'Search for a name…',
     none: 'Nothing matches that.', more: 'Show more', records: 'records', record: 'record',
-    noimg: 'no openly licensed photo',
-    noimgLong: 'This species has photographs, but none under a licence that permits commercial use, so we do not show one.',
+    noimg: 'no photo yet',
+    noimgLong: "We don't have a photo of this species we can show yet.",
     endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', close: 'Close',
     unknown: 'photographer not recorded'
   };
@@ -147,9 +147,17 @@
   el('findQ').addEventListener('input', function (e) { term = e.target.value; shown = PAGE; render(); });
   el('dlgClose').addEventListener('click', function () { el('dlgSp').close(); });
 
+  // If the list has not arrived in 10 s, say so instead of sitting on "Cargando…" —
+  // a stuck loading line reads as "nothing here" to a visitor.
+  var slow = setTimeout(function () {
+    if (!DATA) el('findLoading').textContent = ES
+      ? 'Está tardando más de lo normal. Si no aparece, recarga la página.'
+      : 'This is taking longer than usual. If nothing appears, reload the page.';
+  }, 10000);
+
   fetch(base + 'assets/finds.json')
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function (d) { DATA = d; el('findLoading').hidden = true; el('findBody').hidden = false; render(); })
+    .then(function (d) { clearTimeout(slow); DATA = d; el('findLoading').hidden = true; el('findBody').hidden = false; render(); })
     .catch(function () {
       el('findLoading').textContent = ES
         ? 'No se pudo cargar la lista. Recarga la página.'

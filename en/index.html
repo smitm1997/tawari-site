@@ -46,10 +46,10 @@
   <div class="wrap grid">
     <div>
       <span class="pill">Pre-beta · Valle del Cauca</span>
-      <h1>You know that bird lives on your street. <em>Tawari tells you who it is, and who else depends on it.</em></h1>
-      <p class="lede">At Sonso Lagoon the bird that turns up most often in the records is the tropical kingbird: the yellow-and-grey one you have seen a thousand times on a wire, shouting. It hunts on the wing. It chases hawks three times its size out of its territory. That is what Tawari is for — it does not stop at the name.</p>
+      <h1>You know that little bird lives near you. <em>Tawari tells you who it is, and who it lives with.</em></h1>
+      <p class="lede">One of the most recorded birds at Sonso Lagoon is the tropical kingbird: the little yellow-and-grey bird you have seen a thousand times on a wire, shouting. It catches insects on the wing and chases hawks much bigger than itself out of its territory. That is what Tawari does: it doesn't stop at the name.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#finds-section">Look through the three Field-finds</a>
+        <a class="btn btn-primary" href="#finds-section">See the Field-finds</a>
         <a class="btn btn-ghost" href="#waitlist">Join the waitlist</a>
       </div>
       <p class="counts">Three places in Valle del Cauca, a hundred species each, and the list came from real records rather than a catalogue.</p>
@@ -68,12 +68,13 @@
     <div class="section-head">
       <p class="eyebrow">We start in Valle del Cauca</p>
       <h2>Meet your neighbours.</h2>
-      <p class="lede">A Field-find is the list of who lives in one place. It is not a score: it is a way to meet your neighbours, and you do not have to finish it. There are three, and you can look through them right here without installing anything.</p>
+      <p class="lede">A Field-find is the list of who lives in one place. It gathers the species seen most often there, and some of the most striking ones too, the ones worth going out to look for. It isn't a score and you don't have to finish it. It's a good way to explore a place and feel closer to nature, at any age. There are three for now.</p>
     </div>
 
     <div class="finds" id="finds" data-base="../">
       <div class="tabs" id="findTabs" role="tablist" aria-label="Field-finds"></div>
       <p class="find-note" id="findLoading">Loading…</p>
+      <noscript><p class="find-note">Looking through the Field-finds here needs JavaScript. You can also see them in the app.</p></noscript>
       <div id="findBody" hidden>
         <div class="controls">
           <input type="search" id="findQ" placeholder="Search for a name…" aria-label="Search species">
@@ -84,9 +85,6 @@
         <button class="more" id="findMore" hidden></button>
       </div>
     </div>
-
-    <p class="find-note" style="margin-top:18px">All three are in Valle del Cauca, two of them in Cali. <b>The evidence behind each one is very different:</b> at the Botanical Garden the most-recorded species, the arrayancito, has 428 observations; at Cerro de las Tres Cruces the most-recorded has three. The two lists take up the same room on screen and are not worth the same. Tap any species and we tell you how many records it has.</p>
-    <p class="find-note">Some species appear without a photograph. Usually because the ones that exist carry licences forbidding commercial use, and an app with a paid tier is exactly that. In nine cases the licence was fine and the herbarium server holding the photo did not answer on the day we built this page. Either way we would rather leave the gap than fill it with a picture of something else.</p>
   </div>
 </section>
 
@@ -95,14 +93,13 @@
     <div class="section-head">
       <p class="eyebrow">The ecological spine</p>
       <h2>Who eats whom.</h2>
-      <p class="lede">It is the part no identification app has, and the reason Tawari exists. A card can carry three relationships. These are the harpy eagle's, as the app shows them under <em>Who it lives with</em>:</p>
+      <p class="lede">This is where other field guides and apps fall short. These are the harpy eagle's relationships, as the app shows them under <em>Who it lives with</em>:</p>
     </div>
     <div class="spine">
       <div class="slot"><div class="lbl">Feeds on</div><p>Three-toed sloths and howler monkeys, taken from the canopy.</p><small>Manual curation · confidence 0.95</small></div>
       <div class="slot"><div class="lbl">Returns to ecosystem via</div><p>Carrion. An apex predator has nothing hunting it; the slot says how it goes back.</p><small>Manual curation · confidence 0.95</small></div>
-      <div class="slot"><div class="lbl">Lives in/on</div><p>Emergent trees — ceibas — in lowland forest nobody has felled.</p><small>Manual curation · confidence 0.95</small></div>
+      <div class="slot"><div class="lbl">Lives in/on</div><p>Nests in emergent trees, such as ceibas, in lowland forest that is still standing.</p><small>Manual curation · confidence 0.95</small></div>
     </div>
-    <p>Today 140 species show their spine. Another thousand-odd relationships are extracted and waiting for review: they are not published until they pass it, because an empty slot beats an invented one.</p>
   </div>
 </section>
 
@@ -114,8 +111,9 @@
     </div>
     <div class="step">
       <div class="txt">
-        <p>You saw something. You open the wizard and answer what you can: animal or plant, what silhouette it had, what colours. Any step can be skipped. At the end you get the ones that match — but only from among those recorded at the place you are standing, because a species nobody has seen there does not belong in a list claiming to say what lives there.</p>
-        <p>When you reach the card you find how to recognise it, when it appears, what eats it, and what it means to the people here. And if you log the sighting it stays in your journal with its date and its place. Nobody else sees it.</p>
+        <p>You saw something. You open the wizard and answer what you know: whether it was an animal or a plant, then details like its silhouette or colours. Any step can be skipped. At the end you get the species that match, but only from among those recorded at the place you are standing, because a species nobody has seen there doesn't belong in a list claiming to say what lives there.</p>
+        <p>On the card you find how to recognise it, when it appears, what eats it, and what it means to the people here. If you log the sighting it stays in your journal with its date and place. For now nobody else sees it; soon you'll be able to share it with your community.</p>
+        <p>And if you can't find what you saw, you can still log it unidentified, with a photo and notes, and come back to it later. If you think a place is missing a species, write to <a href="mailto:hello@tawari.app">hello@tawari.app</a> and we'll look into it.</p>
       </div>
       <figure class="shot">
         <img src="../assets/screens/en/wizard-ave.webp" alt="Tawari's identification wizard asking for a bird's main colours" width="340" height="737" loading="lazy" decoding="async">
@@ -130,14 +128,14 @@
     <div>
       <p class="eyebrow">When we don't know</p>
       <h2>The card says so.</h2>
-      <p>For a great many Colombian species there is almost nothing published. When that is the case the card says so and stays short, instead of filling the gap. It shows what is documented — name, taxonomy, records, photographs — and nothing more.</p>
-      <p>And it tells you how to help: log your sightings with a photo and notes, upload them to iNaturalist too — verified records reach GBIF, the open database science works from — or tell us about a published source.</p>
+      <p>For a great many Colombian species there is almost nothing published. When that's the case the card says so and stays short, rather than filling the gap. It shows what is documented, such as the name, taxonomy, records and photographs, and nothing more.</p>
+      <p>And it tells you how to help: log your sightings with a photo and notes, or upload them to iNaturalist too, since its verified records reach GBIF, the open database science works from. You can also tell us about a published source.</p>
     </div>
     <div>
       <p class="eyebrow">Knowledge with a name attached</p>
       <h2>Who says so, and where from.</h2>
-      <p>The jaguar's card cites the cosmology of the Kogi of the Sierra Nevada de Santa Marta, where the animal — <span class="sci">Kaku Shenbuta</span> — joins the spiritual and material worlds, and the ethnographer Gerardo Reichel-Dolmatoff's work on the Muisca of the Bogotá savanna.</p>
-      <p>When there is no source to cite, the section does not exist. Never "indigenous peoples". Never "traditional medicine". Never preparation instructions or medical claims.</p>
+      <p>The jaguar's card cites the cosmology of the Kogi of the Sierra Nevada de Santa Marta, where the animal, known as <span class="sci">Kaku Shenbuta</span>, embodies the link between the spiritual and material worlds. It also cites the ethnographer Gerardo Reichel-Dolmatoff's work on the Muisca of the Bogotá savanna.</p>
+      <p>If there is no source to cite, that section simply doesn't appear. We would rather name a specific people and place than speak of "indigenous peoples" in general, and no card gives preparation instructions or medical advice.</p>
     </div>
   </div>
 </section>
@@ -150,9 +148,9 @@
       <ul class="list-plain">
         <li><b>Today:</b> closed pre-beta. iPhone first, via TestFlight; Android after.</li>
         <li><b>What's playable:</b> three Field-finds, all in Valle del Cauca. More coming.</li>
-        <li><b>What you'll see:</b> mistakes. Every correction you send goes in.</li>
-        <li><b>Deliberately absent:</b> social features. Nobody sees your journal.</li>
-        <li><b>No advertising, no tracking</b> — not in the app, not on this site. <a href="status.html">The full figures are here</a>.</li>
+        <li><b>What you'll see:</b> mistakes, and cards that still fall short. Any feedback or suggestion is welcome.</li>
+        <li><b>For now:</b> your journal is yours alone. Soon you'll be able to share it with your community.</li>
+        <li><b>No advertising, no tracking</b>, not in the app and not on this site. <a href="status.html">The full figures are here</a>.</li>
       </ul>
     </div>
     <div>
