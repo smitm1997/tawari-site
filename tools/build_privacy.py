@@ -110,12 +110,12 @@ def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
 <link rel="canonical" href="https://tawari.id/{p['file']}">
 <link rel="alternate" hreflang="es" href="https://tawari.id/privacidad.html">
 <link rel="alternate" hreflang="en" href="https://tawari.id/privacy.html">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="stylesheet" href="{css_href}">
 </head>
 <body class="doc">
 <header class="bar">
-  <a class="wordmark" href="{p['home']}">Tawari</a>
+  <a class="wordmark" href="{p['home']}"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
   <nav class="lang" aria-label="Idioma"><a href="{p['other']}" hreflang="{p['other_lang']}" lang="{p['other_lang']}">{p['other_label']}</a></nav>
 </header>
 <main class="prose">

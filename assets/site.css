@@ -34,6 +34,8 @@
 }
 
 * { box-sizing: border-box; }
+/* author display rules (.find-state is flex) must not beat the hidden attribute */
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 /* the header is a 61px sticky bar; without this an anchored section parks its
@@ -137,7 +139,6 @@ section + section { border-top: 1px solid var(--line); }
 .foot { border-top: 1px solid var(--line); padding: 32px 20px 44px; color: var(--ink-2); font-size: .9rem; }
 .foot .wrap { display: grid; gap: 10px; }
 .foot .links { display: flex; flex-wrap: wrap; gap: 8px 18px; font-family: var(--mono); font-size: .78rem; }
-.foot .plate { width: 96px; border-radius: 10px; margin-bottom: 8px; }
 
 /* document pages (privacy) */
 body.doc { background: var(--surface); }
@@ -146,6 +147,10 @@ body.doc { background: var(--surface); }
 .prose h2 { font-size: 1.45rem; margin-top: 2em; }
 .prose table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: .95rem; }
 .prose th, .prose td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+/* a table too wide for a phone scrolls inside its own box, never the page */
+.prose .tbl { overflow-x: auto; margin: 1em 0; }
+.prose .tbl table { margin: 0; }
+.prose code { overflow-wrap: anywhere; }
 .prose blockquote { margin: 1em 0; padding: 12px 16px; background: var(--amber-soft); border-left: 3px solid var(--amber-deep); border-radius: 6px; }
 .prose .meta { font-family: var(--mono); font-size: .8rem; color: var(--ink-3); margin-top: 3em; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin: 2em 0; }
@@ -197,3 +202,44 @@ dialog.sp img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius
 .dsci { font-family: var(--serif); font-style: italic; color: var(--ink-2); margin-top: 3px; }
 .dcredit { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); margin-top: 14px; line-height: 1.5; }
 .dclose { font: inherit; font-family: var(--mono); font-size: .82rem; margin-top: 16px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); cursor: pointer; width: 100%; }
+
+/* ─── Footer collage (WS-D142, option A) ───────────────────────────────────
+   The canvas's collage, baked into rasters from the app's own illustrated taxa
+   (final-icons/), so a visitor fetches one image. Under 480 px: the phone vignette
+   the canvas drew for 375, drawn 60 px wider each side and cropped to centre. From
+   480 px: the 1280 × 280 band, cropped to centre below 1280 and scaled above it
+   (capped at 420 px tall). Decorative: the whole band is aria-hidden, alt="".
+   The specimen label is HTML, not pixels, so it stays sharp and can speak English
+   on /en/. --u is one canvas pixel: 1px up to 1280, then it grows with the band. */
+.collage { position: relative; overflow: hidden; background: var(--card); border-top: 1px solid var(--line); container-type: inline-size; --u: 1px; }
+@supports (width: 1cqw) { .collage { --u: max(1px, .078125cqw); } }
+.collage picture, .collage img { display: block; }
+.collage img { width: 100%; height: 230px; object-fit: cover; object-position: 50% 50%; }
+.collage .tag { display: none; }
+@media (min-width: 480px) {
+  .collage img { height: 280px; height: clamp(280px, 21.875cqw, 420px); }
+  .collage .tag { display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(290 * var(--u)); height: calc(156 * var(--u)); padding: calc(7 * var(--u)); background: var(--card); border: calc(1.5 * var(--u)) solid var(--ink); border-radius: calc(5 * var(--u)); box-shadow: 0 calc(2 * var(--u)) 0 rgba(17, 17, 11, .12); }
+  .collage .tag .in { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: calc(7 * var(--u)) 0; border-top: calc(1 * var(--u)) solid var(--ink); border-bottom: calc(1 * var(--u)) solid var(--ink); }
+  .collage .tag .no, .collage .tag .place { font-family: var(--mono); font-size: calc(11 * var(--u)); line-height: 1.55; letter-spacing: .08em; color: var(--dark); }
+  .collage .tag .place { letter-spacing: .06em; }
+  .collage .tag .mid { display: flex; flex-direction: column; align-items: center; gap: calc(7 * var(--u)); }
+  .collage .tag .wm { font-family: var(--serif); font-weight: 600; font-size: calc(38 * var(--u)); line-height: 1; letter-spacing: .05em; color: var(--ink); }
+  .collage .tag .rule { width: calc(200 * var(--u)); height: calc(1 * var(--u)); background: var(--ink); }
+  .collage .tag .sub { font-family: var(--serif); font-style: italic; font-size: calc(16 * var(--u)); line-height: 1.2; color: var(--ink); }
+}
+
+/* one species beside each section eyebrow: 28 px, unlabelled, alt="" */
+.eyebrow { display: flex; align-items: center; gap: 10px; }
+.eyebrow .eb { width: 28px; height: 28px; flex-shrink: 0; }
+
+/* explorer loading and empty states: an icon only where no photo can be */
+.find-state { min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; text-align: center; padding: 20px 8px; }
+.find-state img { width: 60px; height: 60px; }
+.find-state p { margin: 0; font-family: var(--mono); font-size: .8rem; color: var(--ink-2); }
+.find-state .hint { font-family: var(--sans); font-size: .9rem; line-height: 1.5; max-width: 260px; }
+@keyframes tw-hover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+.find-state img.hover { animation: tw-hover 1.8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .find-state img.hover { animation: none; } }
+
+/* the band sits directly on the footer: one line above it, none below */
+.collage + .foot { border-top: 0; }
