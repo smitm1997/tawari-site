@@ -6,15 +6,15 @@
   var ES = document.documentElement.lang !== 'en';
 
   var T = ES ? {
-    all: 'Todas', of: 'de', species: 'especies', search: 'Busca un nombre…',
-    none: 'Ninguna coincide con eso.', noneHint: 'Solo busca en esta gincana. Prueba en las otras, o con el nombre científico.', more: 'Ver más', records: 'registros', record: 'registro',
+    all: 'Todas', search: 'Busca un nombre…',
+    none: 'Ninguna coincide con eso.', noneHint: 'Solo busca en esta gincana. Prueba en las otras, o con el nombre científico.', more: 'Ver más',
     noimg: 'sin foto por ahora',
     noimgLong: 'Todavía no tenemos una foto de esta especie que podamos mostrar.',
     endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', illustration: 'Ilustración', close: 'Cerrar',
     unknown: 'autor no indicado'
   } : {
-    all: 'All', of: 'of', species: 'species', search: 'Search for a name…',
-    none: 'Nothing matches that.', noneHint: 'It only searches this Field-find. Try the others, or the scientific name.', more: 'Show more', records: 'records', record: 'record',
+    all: 'All', search: 'Search for a name…',
+    none: 'Nothing matches that.', noneHint: 'It only searches this Field-find. Try the others, or the scientific name.', more: 'Show more',
     noimg: 'no photo yet',
     noimgLong: "We don't have a photo of this species we can show yet.",
     endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', illustration: 'Illustration', close: 'Close',
@@ -72,20 +72,23 @@
 
     el('findTabs').innerHTML = DATA.map(function (p, i) {
       return '<button class="tab" role="tab" data-i="' + i + '" aria-selected="' + (i === qi) + '">' +
-        esc(ES ? p.nameEs : p.name) + '<span class="n">' + p.species.length + '</span></button>';
+        esc(ES ? p.nameEs : p.name) + '</button>';
     }).join('');
 
     var counts = {};
     all.forEach(function (s) { counts[s.group] = (counts[s.group] || 0) + 1; });
     el('findChips').innerHTML =
       '<button class="chip" data-g="" aria-pressed="' + (group === null) + '">' + T.all + '</button>' +
-      Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; }).map(function (g) {
+      // Largest group first, as the app orders them, with the catch-all «Otros» last. The
+      // figures stay internal: founder ruling 2026-09-23, no count is shown to a reader.
+      Object.keys(counts).sort(function (a, b) {
+        return (a === 'other') - (b === 'other') || counts[b] - counts[a];
+      }).map(function (g) {
         return '<button class="chip" data-g="' + esc(g) + '" aria-pressed="' + (group === g) + '">' +
-          esc(GROUP[g] || g) + '<span class="n">' + counts[g] + '</span></button>';
+          esc(GROUP[g] || g) + '</button>';
       }).join('');
 
     var list = visible();
-    el('findCount').textContent = list.length + ' ' + T.of + ' ' + all.length + ' ' + T.species;
 
     if (!list.length) {
       el('findGrid').innerHTML = '<div class="find-state" style="grid-column:1/-1"><img src="' + base + 'assets/eyebrow/state-empty.webp" alt="" width="60" height="60"><p role="status">' + T.none + '</p>' +
@@ -107,7 +110,7 @@
     }).join('');
     var rest = list.length - shown;
     el('findMore').hidden = rest <= 0;
-    if (rest > 0) el('findMore').textContent = T.more + ' (' + rest + ')';
+    if (rest > 0) el('findMore').textContent = T.more;
   }
 
   function open(s) {
@@ -120,7 +123,6 @@
     if (s.endemic) b += '<span class="b end">' + T.endemicLong + '</span>';
     if (s.iucn) b += '<span class="b' + (THREATENED[s.iucn] ? ' thr' : '') + '">' + esc(IUCN[s.iucn] || s.iucn) + '</span>';
     b += '<span class="b">' + esc(GROUP[s.group] || s.group) + '</span>';
-    if (s.obs != null) b += '<span class="b">' + s.obs + ' ' + (s.obs === 1 ? T.record : T.records) + '</span>';
     el('dlgBadges').innerHTML = b;
     // CC BY and CC BY-SA require attribution; it ships with the photo, always.
     el('dlgCredit').textContent = s.img
