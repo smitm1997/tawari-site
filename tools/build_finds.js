@@ -16,6 +16,16 @@
 //     the credit carries the author, the licence with its version and its deed, and
 //     the source link.
 //
+// Where the site is stricter than the app (each entry below says why, and each is
+// matched on the stored value, so it stops applying once the database is put right):
+//   - SITE_HIDES_ES: a Spanish name whose only source is non-commercial is not shown
+//     (founder ruling D-NAME-SOURCES: never NC); the scientific name leads instead;
+//   - SITE_HIDES_EN: an "English" name that is Spanish text is not shown as English;
+//   - CREDIT_FIX: a credit whose stored author is not the photo's author;
+//   - LICENCE_VERSION: the licence version read today from the source when the
+//     database stores none. A licence with no version known links to its generic page
+//     at creativecommons.org (which forwards to the current version), not to a deed.
+//
 //   node tools/build_finds.js [--app ~/dev/Tawari]
 //   node tools/fetch_find_photos.js assets/finds.json assets/finds
 //
@@ -43,6 +53,28 @@ const PLACES = [
   { questId: 'a2912929-c9ef-42b0-a5e7-fe23e6d79b33', label: 'Laguna de Sonso' },
   { questId: 'ec58a04f-0e76-4d59-a274-5e493272b380', label: 'Tres Cruces' },
 ];
+
+// Read 12 Oct 2026: SiB Catálogo record 56c77cf4f0106c67230e73ef gives «Tingua de Pico
+// Rojo» under CC BY-NC-SA 4.0, rights Asociación Bogotana de Ornitología, and the ACO
+// 2007 list has no other name for it (WP-199, bucket C). Pending the founder's ruling.
+const SITE_HIDES_ES = { 'Gallinula galeata': 'Tingua de pico rojo' };
+// Spanish text stored in common_name_en (the Spanish page still shows the Spanish name).
+const SITE_HIDES_EN = { 'Sciurus granatensis': 'Ardilla de cola roja', 'Alcantarea imperialis': 'Bromelia Imperial' };
+// Read 12 Oct 2026, GBIF occurrence 4601936523 (Kew K002085707): media rightsHolder
+// «Royal Botanic Gardens, Kew», no creator; «Croat, T.B.» is the specimen's collector.
+const KEW_K002085707 = { by: 'Royal Botanic Gardens, Kew', src: 'GBIF', srcUrl: 'https://www.gbif.org/occurrence/4601936523' };
+const CREDIT_FIX = {
+  'https://d2jcv3kl45hlgi.cloudfront.net/386433e2f08d216197dc2aa058d0425b.jpg': KEW_K002085707,
+  'https://d2jcv3kl45hlgi.cloudfront.net/8a2d4238a5c89edd2e8e5c4df6750e2f.jpg': KEW_K002085707,
+};
+// Read 12 Oct 2026 from GBIF's iNaturalist Research-grade Observations dataset, the
+// photo's own media licence (occurrence key in the comment). The database stores only
+// iNaturalist's unversioned code (cc-by, cc-by-sa).
+const LICENCE_VERSION = {
+  'https://inaturalist-open-data.s3.amazonaws.com/photos/690782089/large.jpg': '4.0', // GBIF 6480224471, by-sa/4.0
+  'https://inaturalist-open-data.s3.amazonaws.com/photos/6715134/large.jpeg': '4.0', // GBIF 1457587162, by-sa/4.0
+  'https://inaturalist-open-data.s3.amazonaws.com/photos/11722205/large.jpeg': '4.0', // GBIF 3070265432, by/4.0
+};
 
 const NAME_PLACEHOLDER = /^(sin(\s+nombre)?|s\/n|n\/a|desconocido)$/i; // utils/species.ts
 function cleanName(raw) {
@@ -80,8 +112,10 @@ function licenceOf(row) {
     const rv = classifyLicense(row.raw_license);
     if (rv.allowed && rv.code === v.code) ver = one(row.raw_license);
   }
+  if (!ver && LICENCE_VERSION[row.image_url]) ver = LICENCE_VERSION[row.image_url];
   const base = v.code === 'by' ? 'CC BY' : 'CC BY-SA';
-  if (!ver) return { name: base, url: null };
+  // No version known: the licence's generic page, printed as is (no deed suffix).
+  if (!ver) return { name: base, url: `https://creativecommons.org/licenses/${v.code}/`, exact: true };
   const port = v.jurisdiction ? `${v.jurisdiction}/` : '';
   return { name: `${base} ${ver}${v.jurisdiction ? ' ' + v.jurisdiction.toUpperCase() : ''}`, url: `https://creativecommons.org/licenses/${v.code}/${ver}/${port}` };
 }
@@ -90,9 +124,10 @@ function sourceOf(row) {
   if (u.includes('wikimedia') || u.includes('wikipedia')) return 'Wikimedia Commons';
   if (u.includes('inaturalist')) return 'iNaturalist';
   if (u.includes('gbif')) return 'GBIF';
-  return row.source || null;
+  const named = { gbif: 'GBIF', inaturalist: 'iNaturalist', wikimedia: 'Wikimedia Commons' };
+  return named[String(row.source || '').toLowerCase()] || row.source || null;
 }
-const author = (s) => (s ? String(s).replace(/^photo by\s+/i, '').trim() : null);
+const author = (s) => (s ? String(s).replace(/^photo by\s+/i, '').replace(/\s+/g, ' ').trim() : null);
 
 (async () => {
   const oldPath = path.join(SITE, 'assets/finds.json');
@@ -130,7 +165,7 @@ const author = (s) => (s ? String(s).replace(/^photo by\s+/i, '').trim() : null)
 
   const out = [];
   const stale = [];
-  const report = { pulled: [], noPhoto: [], newPhoto: [], renamed: [] };
+  const report = { pulled: [], noPhoto: [], newPhoto: [], renamed: [], siteHidden: [], creditFixed: [] };
   for (const place of PLACES) {
     const q = quests.find((x) => x.id === place.questId);
     if (!q || !q.is_active || !q.is_published) throw new Error(`${place.label}: the quest is not active on a published place`);
@@ -143,9 +178,11 @@ const author = (s) => (s ? String(s).replace(/^photo by\s+/i, '').trim() : null)
       // The most recorded first; the score only breaks ties and is never shown.
       .sort((a, b) => (b.obs - a.obs) || (b.difficulty_score - a.difficulty_score) || a.sci.localeCompare(b.sci));
     const species = list.map((r) => {
-      const es = cleanName(r.es);
+      let es = cleanName(r.es);
       let en = cleanName(r.en);
       if (en && es && en.toLowerCase() === es.toLowerCase()) en = null; // Spanish stored as English
+      if (en && SITE_HIDES_EN[r.sci] === en) { en = null; report.siteHidden.push(`EN «${r.en}» (${r.sci})`); }
+      if (es && SITE_HIDES_ES[r.sci] === es) { es = null; report.siteHidden.push(`ES «${r.es}» (${r.sci})`); }
       const s = {
         id: r.id, sci: r.sci, es, en, group: r.group, family: r.family || null,
         iucn: r.iucn && r.iucn !== 'NE' ? r.iucn : null,
@@ -163,6 +200,9 @@ const author = (s) => (s ? String(s).replace(/^photo by\s+/i, '').trim() : null)
         src: sourceOf(hero), srcUrl: /^https?:\/\//.test(hero.source_link || '') ? hero.source_link : null,
         img: null, imgSrc: hero.image_url,
       });
+      if (lic.exact) s.licExact = true;
+      const fix = CREDIT_FIX[hero.image_url];
+      if (fix) { Object.assign(s, fix); report.creditFixed.push(`${r.sci}: ${author(hero.creator)} -> ${fix.by}`); }
       // A thumbnail stays only while it is still this hero's (same author and licence).
       const thumb = path.join(SITE, 'assets/finds', r.id + '.webp');
       const same = o && o.img && author(o.by) && author(o.by).toLowerCase() === s.by.toLowerCase()

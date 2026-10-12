@@ -52,7 +52,14 @@ no session. Pieces:
 - `assets/explorer.js`: rendering, bilingual off `<html lang>`. Names follow the app's
   `localSpeciesName` (the common name in the page's language, else the scientific name in
   italics; Spanish is never shown as English), and a species introduced at that place
-  carries the app's «Introducida» / "Introduced" tag.
+  carries the app's «Introducida» / "Introduced" tag. Where the site is stricter than the
+  app, `tools/build_finds.js` says so in four short lists, each matched on the stored
+  value so it lapses once the database is put right: a Spanish name whose only source is
+  non-commercial is not shown (D-NAME-SOURCES), an "English" name that is Spanish text
+  is not shown as English, a credit that names the wrong person is corrected, and a
+  licence version the database lacks is read from the source. A licence with no known
+  version links to its generic page at creativecommons.org (`licExact`), and the public
+  domain prints as «dominio público» / "public domain".
 - `assets/finds/<species-uuid>.webp`: 320 px thumbnails **we host**.
 
 ### Why the photos are self-hosted

@@ -12,14 +12,16 @@
     noimg: 'sin foto por ahora',
     noimgLong: 'Todavía no tenemos una foto de esta especie que podamos mostrar.',
     endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', illustration: 'Ilustración', close: 'Cerrar',
-    unknown: 'autor no indicado', introduced: 'Introducida', cropped: 'recortada', deed: 'deed.es'
+    unknown: 'autor no indicado', introduced: 'Introducida', cropped: 'recortada', deed: 'deed.es',
+    publicDomain: 'dominio público'
   } : {
     all: 'All', search: 'Search for a name…',
     none: 'Nothing matches that.', noneHint: 'It only searches this Field-find. Try the others, or the scientific name.', more: 'Show more',
     noimg: 'no photo yet',
     noimgLong: "We don't have a photo of this species we can show yet.",
     endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', illustration: 'Illustration', close: 'Close',
-    unknown: 'photographer not recorded', introduced: 'Introduced', cropped: 'cropped', deed: 'deed.en'
+    unknown: 'photographer not recorded', introduced: 'Introduced', cropped: 'cropped', deed: 'deed.en',
+    publicDomain: 'public domain'
   };
 
   var GROUP = ES ? {
@@ -155,7 +157,11 @@
       return a;
     }
     c.appendChild(document.createTextNode((s.kind === 'illustration' ? T.illustration : T.photo) + ': ' + (s.by || T.unknown) + ' · '));
-    c.appendChild(link(s.lic, s.licUrl ? s.licUrl + T.deed : null));
+    // The bare public-domain statement prints in the reader's language (the app's
+    // sourcePublicDomain). A licence with no known version links to its generic page
+    // as is (licExact), because CC publishes no deed without a version.
+    var lic = s.lic === 'Public domain' ? T.publicDomain : s.lic;
+    c.appendChild(link(lic, s.licUrl ? (s.licExact ? s.licUrl : s.licUrl + T.deed) : null));
     if (s.src) { c.appendChild(document.createTextNode(' · ')); c.appendChild(link(s.src, s.srcUrl)); }
     c.appendChild(document.createTextNode(' · ' + T.cropped));
     el('dlgSp').showModal();
