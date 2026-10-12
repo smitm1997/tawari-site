@@ -14,7 +14,7 @@ const fs = require('fs');
 const https = require('https');
 
 const [inPath, outPath] = process.argv.slice(2);
-const UA = 'TawariSiteBuild/1.0 (+https://tawari.id; hello@tawari.app) Node';
+const UA = 'Tawari-research/1.0 (https://tawari.id)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const PER_SPECIES = 4;
 

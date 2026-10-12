@@ -22,13 +22,18 @@ BLOCKERS = [
     ("## Reviewer notes", "reviewer notes section"),
 ]
 
+# The policy's own contact address (docs/legal; the app's CONTACT_EMAIL, utils/contact.ts). The
+# footer repeats it, so a page never names two addresses. It named an old .app domain until 11 Oct
+# 2026, a domain Tawari does not own.
+CONTACT = "hello@tawari.id"
+
 PAGE = {
     "es": dict(file="privacidad.html", lang="es", other="privacy.html", other_lang="en",
-               other_label="English", back="‹ Volver a Tawari", home="./",
+               other_label="English", back="‹ Volver a Tawari", home="./", lang_nav="Idioma",
                updated="Última actualización", title="Política de privacidad · Tawari",
                desc="Qué datos recoge la aplicación Tawari, para qué y qué puedes hacer al respecto."),
     "en": dict(file="privacy.html", lang="en", other="privacidad.html", other_lang="es",
-               other_label="Español", back="‹ Back to Tawari", home="en/",
+               other_label="Español", back="‹ Back to Tawari", home="en/", lang_nav="Language",
                updated="Last updated", title="Privacy policy · Tawari",
                desc="What the Tawari app collects, what it is used for, and what you can do about it."),
 }
@@ -116,14 +121,14 @@ def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
 <body class="doc">
 <header class="bar">
   <a class="wordmark" href="{p['home']}"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
-  <nav class="lang" aria-label="Idioma"><a href="{p['other']}" hreflang="{p['other_lang']}" lang="{p['other_lang']}">{p['other_label']}</a></nav>
+  <nav class="lang" aria-label="{p['lang_nav']}"><a href="{p['other']}" hreflang="{p['other_lang']}" lang="{p['other_lang']}">{p['other_label']}</a></nav>
 </header>
 <main class="prose">
 <p class="eyebrow"><a href="{p['home']}">{p['back']}</a></p>
 {body}
 <p class="meta">{p['updated']}: {date}</p>
 </main>
-<footer class="foot"><p>© 2026 Tawari · <a href="mailto:hello@tawari.app">hello@tawari.app</a></p></footer>
+<footer class="foot"><p>© 2026 Tawari · <a href="mailto:{CONTACT}">{CONTACT}</a></p></footer>
 </body>
 </html>
 """
