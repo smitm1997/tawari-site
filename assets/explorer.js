@@ -1,5 +1,6 @@
-/* Field-find explorer — the three playable places, browsable with no install.
-   Data: assets/finds.json, generated from the production database (see README).
+/* Field-find explorer: three of the app's Field-finds, browsable with no install.
+   Data: assets/finds.json, generated from the production database by
+   tools/build_finds.js (see README), with the app's own list, name and photo rules.
    Bilingual by the `lang` attribute on <html>; no framework, no third-party request. */
 (function () {
   'use strict';
@@ -11,14 +12,14 @@
     noimg: 'sin foto por ahora',
     noimgLong: 'Todavía no tenemos una foto de esta especie que podamos mostrar.',
     endemic: 'ENDÉMICA', endemicLong: 'ENDÉMICA DE COLOMBIA', photo: 'Foto', illustration: 'Ilustración', close: 'Cerrar',
-    unknown: 'autor no indicado'
+    unknown: 'autor no indicado', introduced: 'Introducida', cropped: 'recortada', deed: 'deed.es'
   } : {
     all: 'All', search: 'Search for a name…',
     none: 'Nothing matches that.', noneHint: 'It only searches this Field-find. Try the others, or the scientific name.', more: 'Show more',
     noimg: 'no photo yet',
     noimgLong: "We don't have a photo of this species we can show yet.",
     endemic: 'ENDEMIC', endemicLong: 'ENDEMIC TO COLOMBIA', photo: 'Photo', illustration: 'Illustration', close: 'Close',
-    unknown: 'photographer not recorded'
+    unknown: 'photographer not recorded', introduced: 'Introduced', cropped: 'cropped', deed: 'deed.en'
   };
 
   var GROUP = ES ? {
@@ -55,7 +56,15 @@
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
     });
   }
-  function name(s) { return (ES ? s.es || s.en : s.en || s.es) || s.sci; }
+  // The app's localSpeciesName (utils/species.ts): the common name in the page's language
+  // headlines; without one the scientific name does, in italics. A Spanish name is never
+  // shown as English. On the Spanish page an English name, when there is one, goes under
+  // the scientific name instead.
+  function label(s) {
+    var common = ES ? s.es : s.en;
+    if (common) return { primary: common, italic: false, secondary: s.sci, secItalic: true };
+    return { primary: s.sci, italic: true, secondary: ES && s.en ? s.en : null, secItalic: false };
+  }
   function el(id) { return document.getElementById(id); }
 
   function visible() {
@@ -63,7 +72,7 @@
     return DATA[qi].species.filter(function (s) {
       if (group && s.group !== group) return false;
       if (!t) return true;
-      return name(s).toLowerCase().indexOf(t) > -1 || s.sci.toLowerCase().indexOf(t) > -1;
+      return [s.es, s.en, s.sci].some(function (v) { return v && v.toLowerCase().indexOf(t) > -1; });
     });
   }
 
@@ -71,7 +80,7 @@
     var place = DATA[qi], all = place.species;
 
     el('findTabs').innerHTML = DATA.map(function (p, i) {
-      return '<button class="tab" role="tab" data-i="' + i + '" aria-selected="' + (i === qi) + '">' +
+      return '<button class="tab" data-i="' + i + '" aria-pressed="' + (i === qi) + '">' +
         esc(ES ? p.nameEs : p.name) + '</button>';
     }).join('');
 
@@ -102,10 +111,12 @@
         : '<div class="noimg">' + T.noimg + '</div>';
       var b = '';
       if (s.endemic) b += '<span class="b end">' + T.endemic + '</span>';
+      if (s.introduced) b += '<span class="b">' + T.introduced + '</span>';
       if (s.iucn && THREATENED[s.iucn]) b += '<span class="b thr">' + esc(s.iucn) + '</span>';
+      var n = label(s);
       return '<button class="card" data-id="' + esc(s.id) + '">' + thumb +
-        '<div class="cbody"><div class="cname">' + esc(name(s)) + '</div>' +
-        '<div class="csci">' + esc(s.sci) + '</div>' +
+        '<div class="cbody"><div class="cname' + (n.italic ? ' sci' : '') + '">' + esc(n.primary) + '</div>' +
+        (n.secondary ? '<div class="csci' + (n.secItalic ? '' : ' roman') + '">' + esc(n.secondary) + '</div>' : '') +
         (b ? '<div class="badges">' + b + '</div>' : '') + '</div></button>';
     }).join('');
     var rest = list.length - shown;
@@ -117,17 +128,36 @@
     el('dlgFig').innerHTML = s.img
       ? '<img src="' + base + esc(s.img) + '" alt="">'
       : '<div class="noimg" style="aspect-ratio:4/3;border-radius:17px 17px 0 0;border-bottom:0">' + T.noimg + '</div>';
-    el('dlgName').textContent = name(s);
-    el('dlgSci').textContent = s.sci + (s.family ? ' · ' + s.family : '');
+    var n = label(s);
+    el('dlgName').textContent = n.primary;
+    el('dlgName').className = 'dname' + (n.italic ? ' sci' : '');
+    // Under the headline: the scientific name (or, when it headlines, the English name),
+    // then the family.
+    el('dlgSci').textContent = (n.secondary || '') + (n.secondary && s.family ? ' · ' : '') + (s.family || '');
+    el('dlgSci').className = 'dsci' + (n.secItalic || !n.secondary ? '' : ' roman');
     var b = '';
     if (s.endemic) b += '<span class="b end">' + T.endemicLong + '</span>';
+    if (s.introduced) b += '<span class="b">' + T.introduced + '</span>';
     if (s.iucn) b += '<span class="b' + (THREATENED[s.iucn] ? ' thr' : '') + '">' + esc(IUCN[s.iucn] || s.iucn) + '</span>';
     b += '<span class="b">' + esc(GROUP[s.group] || s.group) + '</span>';
     el('dlgBadges').innerHTML = b;
-    // CC BY and CC BY-SA require attribution; it ships with the photo, always.
-    el('dlgCredit').textContent = s.img
-      ? (s.kind === 'illustration' ? T.illustration : T.photo) + ': ' + (s.by || T.unknown) + ' · ' + s.lic + (s.src ? ' · ' + s.src : '')
-      : T.noimgLong;
+    // CC BY and CC BY-SA require attribution; it ships with the photo, always: the author,
+    // the licence linked to its deed (when its version is known), the source linked to the
+    // original, and «recortada», because the dialog draws the photo cropped to 4:3 (the
+    // app's photoCreditLine does the same).
+    var c = el('dlgCredit');
+    c.textContent = '';
+    if (!s.img) { c.textContent = T.noimgLong; el('dlgSp').showModal(); return; }
+    function link(text, href) {
+      if (!href) return document.createTextNode(text);
+      var a = document.createElement('a');
+      a.href = href; a.textContent = text; a.rel = 'noopener'; a.target = '_blank';
+      return a;
+    }
+    c.appendChild(document.createTextNode((s.kind === 'illustration' ? T.illustration : T.photo) + ': ' + (s.by || T.unknown) + ' · '));
+    c.appendChild(link(s.lic, s.licUrl ? s.licUrl + T.deed : null));
+    if (s.src) { c.appendChild(document.createTextNode(' · ')); c.appendChild(link(s.src, s.srcUrl)); }
+    c.appendChild(document.createTextNode(' · ' + T.cropped));
     el('dlgSp').showModal();
   }
 

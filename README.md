@@ -29,7 +29,11 @@ Do not write "Quest" on the site; the app moved off that word.
 
 - Every number is a live `COUNT(*)` from the production database on the date stated.
   Do not round, do not estimate, do not reuse a figure from a document. When the
-  numbers change, change the date. Queries: `docs/handoff/WEBSITE_CLAIM_AUDIT.md`.
+  numbers change, change the date. Count with the app's own filters: `species.is_listed`
+  for the catalogue, the place-list statuses of `utils/locationListStatuses.js` (no
+  `unconfirmed`), `excluded_by_expert = false` for every Field-find, and
+  `requires_review = false AND relationship_category IS NULL` for the spine. The status
+  pages say in plain words what each figure counts.
 - **Never show difficulty.** `difficulty_tier` and `difficulty_score` are internal and
   never reach a reader, here or in the app. An eBird-frequency "easy" bird presented
   as easy promises something the field does not deliver. Say "recorded often".
@@ -39,12 +43,17 @@ Do not write "Quest" on the site; the app moved off that word.
 
 ## The Field-find explorer
 
-`index.html` and `en/index.html` embed a browsable view of the three active
-Field-finds — 300 species, no install, no session. Pieces:
+`index.html` and `en/index.html` embed a browsable view of three of the app's 25
+Field-finds (the first three, in Valle del Cauca): 222 entries, 177 species, no install,
+no session. Pieces:
 
-- `assets/finds.json` — the data, generated from the production database.
-- `assets/explorer.js` — rendering, bilingual off `<html lang>`.
-- `assets/finds/<species-uuid>.webp` — 320 px thumbnails **we host**.
+- `assets/finds.json`: the data, generated from the production database by
+  `tools/build_finds.js`.
+- `assets/explorer.js`: rendering, bilingual off `<html lang>`. Names follow the app's
+  `localSpeciesName` (the common name in the page's language, else the scientific name in
+  italics; Spanish is never shown as English), and a species introduced at that place
+  carries the app's «Introducida» / "Introduced" tag.
+- `assets/finds/<species-uuid>.webp`: 320 px thumbnails **we host**.
 
 ### Why the photos are self-hosted
 
@@ -53,21 +62,29 @@ observation hosts. Hot-linking them would pull megabytes per card on the mobile
 connections this audience uses, leak every visitor's IP to twelve third parties
 (contradicting the privacy policy), and break whenever one of those servers moved a
 file. Every photo is CC0, CC BY, CC BY-SA or public domain — all of which permit
-derivatives and commercial use — so resizing and re-hosting is allowed **provided the
-credit travels with it**, which it does: `by` and `lic` are in `finds.json` and render
-in every card's detail view. NC and ND licences are excluded entirely, because an app
+derivatives and commercial use, so resizing and re-hosting is allowed **provided the
+credit travels with it**, which it does: `by`, `lic` (with its version when the source
+gives one), `licUrl` (the deed), `src` and `srcUrl` (the original) are in `finds.json`,
+and every card's detail view prints the author, links the licence to its deed and the
+source to the original, and says «recortada» / "cropped", because the dialog crops the
+photo to 4:3. NC and ND licences are excluded entirely, because an app
 with a paid tier is commercial use.
 
 ### Regenerating it
 
-1. Run the query in `docs/handoff/WEBSITE_CLAIM_AUDIT.md` (§ Field-finds) against the
-   production database, read-only, and save the result as `assets/finds.json`.
+1. `NODE_PATH=~/dev/Tawari/node_modules node tools/build_finds.js` reads the three lists
+   read-only (the app repo's `openReadOnly`, `READONLY_DATABASE_URL`), with the app's
+   rules: `excluded_by_expert = false`, the psychoactive or ceremonial hold pulled, names
+   live, the introduced mark, and the card's hero photo (licence gate, NC/ND veto, https,
+   the hero order of `services/speciesService.ts`). It writes `assets/finds.json` with
+   `imgSrc`, deletes a thumbnail whose credit no longer matches the hero and every
+   thumbnail no species uses, and prints what changed.
 2. `node tools/fetch_find_photos.js assets/finds.json assets/finds`
 
 The fetcher is idempotent for thumbnails but **consumes `imgSrc`** from the JSON, so
-regenerate `finds.json` from the query before each run rather than re-running against
-its own output. Unreachable sources are reported and leave `img: null`, which renders
-as an honest gap rather than a substituted photograph.
+run step 1 before each run rather than re-running against its own output. Unreachable
+sources are reported and leave `img: null`, which renders as an honest gap rather than
+a substituted photograph.
 
 Keep the places ordered best-documented first. Alphabetical puts Cerro de las Tres
 Cruces — whose most-recorded species has three observations — in front of the
@@ -115,12 +132,12 @@ or delete. Table and policy: `docs/handoff/sql/WS-D133-081-waitlist.sql`.
 
 ## Weight
 
-Gzipped, as GitHub Pages serves them: `index.html` ~6 KB, `site.css` ~5 KB,
-`explorer.js` ~3 KB, `finds.json` ~24 KB. Thumbnails are ~15 KB each and lazy-load, 24
+Gzipped, as GitHub Pages serves them: `index.html` ~7 KB, `site.css` ~5 KB,
+`explorer.js` ~4 KB, `finds.json` ~21 KB (12 Oct 2026). Thumbnails are ~15 KB each and lazy-load, 24
 at a time. A first visit that never scrolls past the hero costs roughly 185 KB,
-measured at 375 px on 2026-09-21: fonts 75 KB and the hero screenshot 66 KB of it.
-Opening all 100 cards of one Field-find adds 1.2 to 1.5 MB of thumbnails (measured
-from `assets/finds/`), and the footer collage another 72 KB on a phone. Every
+measured at 375 px on 2026-09-21: fonts 75 KB and the hero screenshot 66 KB of it (the 12 Oct recapture is 86 KB to 88 KB).
+Opening every card of one Field-find adds 0.7 to 1.4 MB of thumbnails (measured from
+`assets/finds/` on 12 Oct 2026), and the footer collage another 72 KB on a phone. Every
 decorative image carries `loading="lazy"`; the only eager one is the explorer's
 loading icon. Check it before shipping a change that adds images — most of this
 audience is on mobile data.
