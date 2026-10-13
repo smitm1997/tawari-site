@@ -16,10 +16,10 @@
 <meta property="og:site_name" content="Tawari">
 <meta property="og:title" content="Tawari · Guía de campo viva de la biodiversidad de Colombia">
 <meta property="og:description" content="Una guía de campo viva de la naturaleza de Colombia: quién vive en 25 lugares del país, del Santuario de Los Flamencos al Lago La Cocha. Tres de esas listas se pueden mirar aquí mismo.">
-<meta property="og:image" content="https://tawari.id/assets/og.jpg">
+<meta property="og:image" content="https://tawari.id/assets/og-es.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Ilustración: un tucán, mariposas azules, un felino, helechos y hongos alrededor de una etiqueta que dice «TAWARI, A Living Field Guide».">
+<meta property="og:image:alt" content="Ilustración: un tucán, mariposas azules, un felino, helechos y hongos alrededor de una etiqueta que dice «TAWARI, Guía de campo viva».">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F7F6F2">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
@@ -30,10 +30,10 @@
 <body>
 
 <header class="bar">
-  <a class="wordmark" href="#top"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
+  <a class="wordmark" href="./"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
   <nav class="nav" aria-label="Secciones">
-    <a href="#gincanas">Las gincanas</a>
-    <a href="#columna">Quién come a quién</a>
+    <a href="gincanas.html">Gincanas</a>
+    <a href="aprender.html">Aprender</a>
     <a href="#app">La app</a>
     <a href="#lista">Lista de espera</a>
   </nav>
@@ -46,18 +46,23 @@
   <div class="wrap grid">
     <div>
       <span class="pill">Beta · Colombia</span>
-      <h1>Sabes que ese pajarito vive cerca tuyo. <em>Tawari te dice quién es, y con quién vive.</em></h1>
-      <p class="lede">Una de las aves que más se registran en la Laguna de Sonso es el sirirí: ese pajarito amarillo y gris que has visto mil veces en un cable, gritando. Caza insectos al vuelo y persigue gavilanes mucho más grandes que él para sacarlos de su territorio. Eso es lo que hace Tawari: no se queda en el nombre. Es, ante todo, una herramienta educativa, para apreciar, entender y conocer de cerca la naturaleza que tienes alrededor, como quien conoce a sus vecinos.</p>
+      <h1>Esa hormiga, ese árbol, ese pajarito: <em>tus vecinos.</em></h1>
+      <p class="sub">Tawari te dice quiénes son, y con quién viven.</p>
+      <p class="lede">Una guía de campo viva de la naturaleza de Colombia. Es, ante todo, una herramienta educativa, para conocer de cerca la naturaleza que tienes alrededor.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#gincanas">Mira las gincanas</a>
+        <a class="btn btn-primary" href="gincanas.html">Mira las gincanas</a>
         <a class="btn btn-ghost" href="#lista">Únete a la lista</a>
       </div>
-      <p class="counts">25 gincanas en lugares de todo el país, del Santuario de Los Flamencos, en La Guajira, al Lago La Cocha, en Nariño, y cada lista sale de registros reales, no de un catálogo.</p>
+      <ul class="facts">
+        <li>25 gincanas</li>
+        <li>De La Guajira a Nariño</li>
+        <li>iPhone, en beta</li>
+      </ul>
     </div>
     <div class="phone">
       <figure>
-        <img src="assets/screens/card-aguila-arpia.webp" alt="Ficha del águila arpía en Tawari, con su foto y una primera descripción del ave" width="360" height="783" fetchpriority="high">
-        <figcaption>El águila arpía, <span class="sci">Harpia harpyja</span>. Foto: Tommy Andriollo (<a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener">CC BY 4.0</a>, <a href="https://www.gbif.org/occurrence/6130916333" rel="noopener">GBIF</a>), recortada.</figcaption>
+        <img src="assets/screens/card-hormiga-arriera.webp" alt="Ficha de la hormiga arriera roja en Tawari: la foto de una hormiga cargando una hoja y la primera frase de la ficha" width="360" height="783" fetchpriority="high">
+        <figcaption>La hormiga arriera roja, <span class="sci">Atta cephalotes</span>. Foto: Stephen Lewis (<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es" rel="noopener">CC0</a>, <a href="https://www.gbif.org/occurrence/5938191745" rel="noopener">GBIF</a>), recortada.</figcaption>
       </figure>
     </div>
   </div>
@@ -65,56 +70,79 @@
 
 <section id="gincanas">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/thraupidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">De La Guajira a Nariño</p>
+    <div class="section-head reveal">
+      <p class="eyebrow">Las gincanas</p>
       <h2>Conoce a tus vecinos.</h2>
-      <p class="lede">Una gincana es la lista de quienes viven en un lugar. Reúne las especies que más se ven ahí, y también algunas de las más llamativas, las que vale la pena salir a buscar. No es un puntaje y no hace falta terminarla. Es una buena forma de explorar un lugar y conectar más con la naturaleza, a cualquier edad. En la app hay 25, de 36 a 93 especies cada una. Aquí puedes mirar las tres primeras, todas en el Valle del Cauca.</p>
+      <p class="lede">Una gincana es la lista de quienes viven en un lugar. No es un puntaje y no hace falta terminarla. Mira tres:</p>
     </div>
-
-    <div class="finds" id="finds" data-base="">
-      <div class="tabs" id="findTabs" role="group" aria-label="Gincanas"></div>
-      <div class="find-state" id="findLoading"><img class="hover" id="findLoadingImg" src="assets/eyebrow/state-loading.webp" alt="" width="60" height="60"><p role="status" id="findLoadingMsg">Cargando…</p></div>
-      <noscript><p class="find-note">Para ver las gincanas aquí hace falta JavaScript. También puedes verlas en la app.</p></noscript>
-      <div id="findBody" hidden>
-        <div class="controls">
-          <input type="search" id="findQ" placeholder="Busca un nombre…" aria-label="Buscar especie">
-        </div>
-        <div class="chips" id="findChips"></div>
-        <div class="sp-grid" id="findGrid"></div>
-        <button class="more" id="findMore" hidden></button>
-      </div>
+    <div class="places">
+      <a class="place reveal" href="gincanas.html#jb-cali">
+        <div class="ph"><img src="assets/places/jardin-botanico-cali.webp" alt="El Jardín Botánico de Cali visto desde arriba: un estanque con nenúfares entre árboles" width="720" height="450" loading="lazy" decoding="async"><span class="n">87 especies</span></div>
+        <div class="pb"><span class="pn">Jardín Botánico de Cali</span><span class="pw">Cali, Valle del Cauca</span></div>
+      </a>
+      <a class="place reveal" href="gincanas.html#sonso">
+        <div class="ph"><img src="assets/places/laguna-de-sonso.webp" alt="La Laguna de Sonso: agua quieta bajo un cielo con nubes" width="720" height="450" loading="lazy" decoding="async"><span class="n">55 especies</span></div>
+        <div class="pb"><span class="pn">Laguna de Sonso</span><span class="pw">Buga, Valle del Cauca</span></div>
+      </a>
+      <a class="place reveal" href="gincanas.html#tres-cruces">
+        <div class="ph"><img src="assets/places/cerro-tres-cruces-cali.webp" alt="El Cerro de las Tres Cruces sobre la ciudad de Cali" width="720" height="450" loading="lazy" decoding="async"><span class="n">80 especies</span></div>
+        <div class="pb"><span class="pn">Cerro de las Tres Cruces</span><span class="pw">Cali, Valle del Cauca</span></div>
+      </a>
     </div>
+    <div class="after">
+      <a class="btn btn-primary" href="gincanas.html">Ver las especies</a>
+      <p>En la app hay 25 gincanas, del Santuario de Los Flamencos al Lago La Cocha.</p>
+    </div>
+    <p class="credits">Fotos: Mfrancoavellaneda (<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.es" rel="noopener">CC0</a>, <a href="https://commons.wikimedia.org/wiki/File:Vista_Jard%C3%ADn_Bot%C3%A1nico_Cali.jpg" rel="noopener">Wikimedia Commons</a>) · Estefani Sandoval (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="noopener">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Laguna_de_Sonso_Sept_2017_26.jpg" rel="noopener">Wikimedia Commons</a>) · David (<a href="https://creativecommons.org/licenses/by/2.0/deed.es" rel="noopener">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/wiki/File:El_cerro_de_las_tres_cruces.jpg" rel="noopener">Wikimedia Commons</a>). Recortadas.</p>
   </div>
 </section>
 
 <section id="columna">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/accipitridae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">La columna ecológica</p>
-      <h2>Quién come a quién.</h2>
-      <p class="lede">Aquí es donde otras guías de campo y apps se quedan cortas. Estas son las relaciones del águila arpía, con las notas de su ficha en «Con quién vive»:</p>
+    <div class="section-head reveal">
+      <p class="eyebrow">Quién come a quién</p>
+      <h2>Un nombre es apenas el comienzo.</h2>
+      <p class="lede">Cada ficha cuenta con quién vive esa especie. Así se ve en la de la mariposa monarca:</p>
     </div>
-    <div class="spine">
-      <div class="slot"><div class="lbl">Se alimenta de</div><p>Presas principales: perezosos de tres dedos y monos aulladores en el dosel.</p><small>Curación manual</small></div>
-      <div class="slot"><div class="lbl">Retorna al ecosistema vía</div><p>Vuelve al ecosistema como carroña tras su muerte.</p><small>Curación manual</small></div>
-      <div class="slot"><div class="lbl">Vive en/sobre</div><p>Anida en árboles emergentes (ceibas) en bosque de tierras bajas intacto.</p><small>Curación manual</small></div>
+    <div class="web">
+      <article class="who reveal">
+        <div class="pics">
+          <img src="assets/spine/monarca.webp" alt="Una mariposa monarca tomando néctar de las flores rojas y amarillas del algodonero" width="560" height="420" loading="lazy" decoding="async">
+          <img src="assets/spine/oruga.webp" alt="Una oruga de monarca, con rayas negras, amarillas y blancas, sobre un tallo" width="320" height="420" loading="lazy" decoding="async">
+        </div>
+        <div class="wb">
+          <div class="wn">Mariposa Monarca</div>
+          <div class="sci">Danaus plexippus</div>
+        </div>
+      </article>
+      <div class="side eats reveal">
+        <h3>Se alimenta de</h3>
+        <div class="mate"><img src="assets/spine/apocynaceae.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Algodonero</div><div class="ms">Asclepias curassavica</div><div class="mw">La mariposa toma el néctar de sus flores, y sus orugas se comen las hojas.</div></div></div>
+      </div>
+      <div class="side eaten reveal">
+        <h3>Se la comen</h3>
+        <div class="mate"><img src="assets/spine/araneidae.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Araña de seda dorada</div><div class="ms">Trichonephila clavipes</div></div></div>
+        <div class="mate"><img src="assets/spine/birds.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Golondrina púrpura</div><div class="ms">Progne subis</div></div></div>
+      </div>
     </div>
+    <p class="credits">Tres de las siete relaciones de su ficha, de GloBI. Fotos: Juan Carlos Caicedo Hernández y Sebastian Serna Muñoz (<a href="https://creativecommons.org/licenses/by/4.0/deed.es" rel="noopener">CC BY 4.0</a>, <a href="https://www.inaturalist.org/photos/59198241" rel="noopener">iNaturalist</a>, <a href="https://www.inaturalist.org/photos/150059994" rel="noopener">iNaturalist</a>), recortadas. Dibujos: Tawari.</p>
   </div>
 </section>
 
 <section id="app">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/troglodytidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">La app</p>
-      <h2>Lo que pasa cuando no sabes el nombre.</h2>
-    </div>
     <div class="step">
-      <div class="txt">
-        <p>Viste algo. Abres el asistente y respondes lo que sepas: si era un animal, una planta o un hongo, y después detalles como la silueta o los colores. Cualquier paso se puede omitir. Al final salen las especies que coinciden. Si le dices dónde estás, solo entre las registradas en ese lugar o muy cerca, porque una especie que nadie ha visto por ahí no debería aparecer en una lista que dice qué vive ahí; si omites ese paso, busca en todos los lugares de Tawari.</p>
-        <p>Cuando lo sabemos, la ficha te cuenta cómo reconocerla, cuándo aparece, quién la come y qué significa para la gente de aquí. Si registras el avistamiento, queda en Mi Lista con su fecha y su lugar. Por defecto también lo compartes con el equipo de Tawari, que lo usa para mejorar la guía; nadie más lo ve. Pronto podrás compartirlo con tu comunidad.</p>
-        <p>Y si no encuentras lo que viste, igual puedes registrarlo sin identificar, con una foto, una descripción o ambas, y el equipo de Tawari intentará identificarlo. Si crees que a un lugar le falta una especie, escríbenos a <a href="mailto:hola@tawari.id">hola@tawari.id</a> y la revisamos.</p>
+      <div class="txt reveal">
+        <p class="eyebrow">La app</p>
+        <h2>Y cuando no sabes el nombre.</h2>
+        <ol class="steps3">
+          <li><div><b>Responde lo que sepas.</b><span>Si era un animal, una planta o un hongo, su silueta, sus colores. Cualquier paso se puede omitir.</span></div></li>
+          <li><div><b>Mira quién coincide.</b><span>Si le dices dónde estás, solo entre las especies registradas en ese lugar o muy cerca.</span></div></li>
+          <li><div><b>Guárdalo en Mi Lista.</b><span>Con su fecha y su lugar. Por defecto lo ve también el equipo de Tawari, que lo usa para mejorar la guía; nadie más.</span></div></li>
+        </ol>
+        <p class="aside">¿No aparece lo que viste? Regístralo igual, con una foto o una descripción, y el equipo intenta identificarlo.</p>
       </div>
-      <figure class="shot">
+      <figure class="shot reveal">
         <img src="assets/screens/wizard-ave.webp" alt="El asistente de identificación de Tawari preguntando por los colores principales de un ave" width="340" height="739" loading="lazy" decoding="async">
         <figcaption>Una de las preguntas del asistente.</figcaption>
       </figure>
@@ -122,47 +150,49 @@
   </div>
 </section>
 
-<section id="borrador">
-  <div class="wrap cols">
-    <div>
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/noctuidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Cuando no sabemos</p>
-      <h2>La ficha lo dice.</h2>
-      <p>De muchas especies colombianas casi no hay nada publicado. Cuando es así, la ficha lo dice y se queda corta, en vez de rellenar el hueco. Muestra lo que sí está documentado, como el nombre, la taxonomía, los registros y las fotos, y nada más.</p>
-      <p>Y te dice cómo ayudar: registra tus avistamientos con foto y notas, o súbelos también a iNaturalist, porque sus registros verificados llegan a GBIF, la base abierta con la que trabaja la ciencia. También puedes contarnos de una fuente publicada.</p>
-    </div>
-    <div>
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/plants.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Conocimiento con nombre y apellido</p>
-      <h2>Quién lo dice, y de dónde.</h2>
-      <p>Preferimos nombrar a un pueblo y un lugar concretos antes que hablar de «los indígenas» en general, y cada ficha escrita cita sus fuentes al final. Lo que una ficha cuenta sobre usos y creencias viene con su fuente; si no hay una fuente que citar, esa parte simplemente no aparece.</p>
-      <p>Nuestra regla es que ninguna ficha dé instrucciones de preparación ni consejos médicos: los usos medicinales se cuentan como historia, no como receta.</p>
+<section id="ficha">
+  <div class="wrap">
+    <div class="duo">
+      <div class="note reveal">
+        <p class="eyebrow">Cuando no sabemos</p>
+        <h3>La ficha lo dice.</h3>
+        <p>De muchas especies casi no hay nada publicado. Entonces la ficha se queda corta en vez de rellenar el hueco, y te dice cómo ayudar: con tus avistamientos, o subiéndolos a iNaturalist.</p>
+      </div>
+      <div class="note reveal">
+        <p class="eyebrow">Con nombre y apellido</p>
+        <h3>Quién lo dice, y de dónde.</h3>
+        <p>Cada ficha escrita cita sus fuentes. Preferimos nombrar un pueblo y un lugar antes que hablar de «los indígenas» en general. Y ninguna ficha da recetas ni consejos médicos.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="fuentes">
+<section id="beta">
   <div class="wrap cols">
-    <div>
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/hylidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Dónde estamos</p>
+    <div class="reveal">
+      <p class="eyebrow">Dónde estamos</p>
       <h2>En beta, y se nota.</h2>
-      <ul class="list-plain">
-        <li><b>Hoy:</b> beta en iPhone, por TestFlight; Android va después. Pronto la lanzamos al público.</li>
-        <li><b>Las gincanas:</b> 25, del Santuario de Los Flamencos al Lago La Cocha. Vienen más.</li>
-        <li><b>Lo que verás:</b> errores, y fichas que todavía se quedan cortas. Cualquier comentario o sugerencia nos sirve.</li>
-        <li><b>Por ahora:</b> lo que registras en Mi Lista solo lo ves tú y, si lo compartes, el equipo de Tawari. Pronto podrás compartirlo con tu comunidad.</li>
-        <li><b>Sin publicidad ni rastreo</b>, ni en la app ni en este sitio. <a href="estado.html">Las cifras completas, aquí</a>.</li>
+      <ul class="beta">
+        <li><b>Hoy:</b> beta en iPhone, por TestFlight. Android va después, y pronto la lanzamos al público.</li>
+        <li><b>Lo que verás:</b> errores, y fichas que todavía se quedan cortas. Cualquier comentario nos sirve.</li>
+        <li><b>Las cifras:</b> cuántas especies, fichas y fotos hay hoy, en el <a href="estado.html">estado del proyecto</a>.</li>
       </ul>
     </div>
-    <div>
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/formicidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">De dónde salen los datos</p>
+    <div class="reveal">
+      <p class="eyebrow">De dónde salen los datos</p>
       <h2>Fuentes, no opiniones.</h2>
-      <ul class="list-plain">
-        <li><b>Nombres en español:</b> primero las fuentes colombianas, como la lista de nombres de aves de la Asociación Colombiana de Ornitología (2007), <a href="https://catalogo.biodiversidad.co" rel="noopener">SiB Colombia</a>, el <a href="https://datosabiertos.bogota.gov.co/dataset/nombres-comunes-plantas-bogota" rel="noopener">Jardín Botánico de Bogotá</a>, el <a href="https://datos.cali.gov.co/dataset/censo-arboreo-de-santiago-de-cali" rel="noopener">DAGMA de Cali</a> y el <a href="https://doi.org/10.15472/tozuue" rel="noopener">Instituto Humboldt</a>; donde no hay una local, <a href="https://ebird.org" rel="noopener">eBird</a>, <a href="https://doi.org/10.15468/39omei" rel="noopener">GBIF</a>, <a href="https://www.inaturalist.org" rel="noopener">iNaturalist</a> y <a href="https://es.wikipedia.org" rel="noopener">Wikipedia</a>.</li>
-        <li><b>Especies y taxonomía:</b> GBIF y eBird.</li>
-        <li><b>Qué vive en cada lugar:</b> registros de GBIF y eBird en esas coordenadas.</li>
-        <li><b>Relaciones ecológicas:</b> de GloBI y de curación manual. Una relación de GloBI aparece cuando la sostienen varios conjuntos de datos o varios registros, con un registro en Colombia o tres conjuntos independientes, o cuando la revisamos y la aprobamos. Las demás esperan revisión.</li>
-        <li><b>Fotos:</b> Wikimedia Commons, GBIF e iNaturalist, solo con licencias abiertas y con crédito al autor y a la licencia.</li>
-        <li><b>Redacción:</b> la IA nos ayuda a redactar a partir de fuentes citadas, no a inventarlas. Cada ficha escrita pasa después por una revisión automática contra esas fuentes; las de especies tóxicas o psicoactivas, además, por un filtro de seguridad.</li>
-      </ul>
+      <p class="lede">Primero las fuentes colombianas, siempre con licencias abiertas y con crédito.</p>
+      <details class="fold">
+        <summary>Ver las fuentes</summary>
+        <ul class="list-plain">
+          <li><b>Nombres en español:</b> primero las fuentes colombianas, como la lista de nombres de aves de la Asociación Colombiana de Ornitología (2007), <a href="https://catalogo.biodiversidad.co" rel="noopener">SiB Colombia</a>, el <a href="https://datosabiertos.bogota.gov.co/dataset/nombres-comunes-plantas-bogota" rel="noopener">Jardín Botánico de Bogotá</a>, el <a href="https://datos.cali.gov.co/dataset/censo-arboreo-de-santiago-de-cali" rel="noopener">DAGMA de Cali</a> y el <a href="https://doi.org/10.15472/tozuue" rel="noopener">Instituto Humboldt</a>; donde no hay una local, <a href="https://ebird.org" rel="noopener">eBird</a>, <a href="https://doi.org/10.15468/39omei" rel="noopener">GBIF</a>, <a href="https://www.inaturalist.org" rel="noopener">iNaturalist</a> y <a href="https://es.wikipedia.org" rel="noopener">Wikipedia</a>.</li>
+          <li><b>Especies y taxonomía:</b> GBIF y eBird.</li>
+          <li><b>Qué vive en cada lugar:</b> registros de GBIF y eBird en esas coordenadas.</li>
+          <li><b>Relaciones ecológicas:</b> de GloBI y de curación manual. Una relación de GloBI aparece cuando la sostienen varios conjuntos de datos o varios registros, con un registro en Colombia o tres conjuntos independientes, o cuando la revisamos y la aprobamos. Las demás esperan revisión.</li>
+          <li><b>Fotos:</b> Wikimedia Commons, GBIF e iNaturalist, solo con licencias abiertas y con crédito al autor y a la licencia.</li>
+          <li><b>Redacción:</b> la IA nos ayuda a redactar a partir de fuentes citadas, no a inventarlas. Cada ficha escrita pasa después por una revisión automática contra esas fuentes; las de especies tóxicas o psicoactivas, además, por un filtro de seguridad.</li>
+        </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -171,7 +201,7 @@
 <section id="lista">
   <div class="wrap">
     <div class="wait">
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/trochilidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Lista de espera</p>
+      <p class="eyebrow">Lista de espera</p>
       <h2>Sé de los primeros en probarla.</h2>
       <p class="lede" style="margin-bottom:0">Te escribimos una sola vez, cuando tu invitación a TestFlight esté lista.</p>
       <form id="waitlist-form" novalidate>
@@ -204,10 +234,10 @@
 
 <section id="colabora">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="assets/eyebrow/bromeliaceae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Reservas, jardines botánicos y clubes de observación</p>
-      <h2>Una gincana empieza por los registros de un lugar.</h2>
-      <p class="lede">Si administras una reserva, un jardín botánico o un club de observación y quieres que tu lugar tenga la suya, escríbenos a <a href="mailto:hola@tawari.id">hola@tawari.id</a>. Lo primero que necesitamos son tus listas de especies.</p>
+    <div class="section-head reveal" style="margin-bottom:0">
+      <p class="eyebrow">Reservas, jardines botánicos y clubes de observación</p>
+      <h2>¿Quieres una gincana para tu lugar?</h2>
+      <p class="lede" style="margin-bottom:0">Escríbenos a <a href="mailto:hola@tawari.id">hola@tawari.id</a>.</p>
     </div>
   </div>
 </section>

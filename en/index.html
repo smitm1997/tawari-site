@@ -31,10 +31,10 @@
 <body>
 
 <header class="bar">
-  <a class="wordmark" href="#top"><img src="../assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
+  <a class="wordmark" href="./"><img src="../assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
   <nav class="nav" aria-label="Sections">
-    <a href="#finds-section">The Field-finds</a>
-    <a href="#spine">Who eats whom</a>
+    <a href="field-finds.html">Field-finds</a>
+    <a href="learn.html">Learn</a>
     <a href="#app">The app</a>
     <a href="#waitlist">Waitlist</a>
   </nav>
@@ -47,18 +47,23 @@
   <div class="wrap grid">
     <div>
       <span class="pill">Beta · Colombia</span>
-      <h1>You know that little bird lives near you. <em>Tawari tells you who it is, and who it lives with.</em></h1>
-      <p class="lede">One of the most recorded birds at Sonso Lagoon is the tropical kingbird: the little yellow-and-grey bird you have seen a thousand times on a wire, shouting. It catches insects on the wing and chases hawks much bigger than itself out of its territory. That is what Tawari does: it doesn't stop at the name. Above all, it is an educational tool, to help you appreciate, understand and get to know the nature around you up close, the way you know your neighbours.</p>
+      <h1>That ant, that tree, that little bird: <em>your neighbours.</em></h1>
+      <p class="sub">Tawari tells you who they are, and who they live with.</p>
+      <p class="lede">A living field guide to the nature of Colombia. Above all, it is an educational tool, to help you get to know the nature around you up close.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#finds-section">See the Field-finds</a>
+        <a class="btn btn-primary" href="field-finds.html">See the Field-finds</a>
         <a class="btn btn-ghost" href="#waitlist">Join the waitlist</a>
       </div>
-      <p class="counts">25 Field-finds at places across the country, from Los Flamencos Sanctuary in La Guajira to La Cocha Lake in Nariño, and each list comes from real records rather than a catalogue.</p>
+      <ul class="facts">
+        <li>25 Field-finds</li>
+        <li>From La Guajira to Nariño</li>
+        <li>iPhone, in beta</li>
+      </ul>
     </div>
     <div class="phone">
       <figure>
-        <img src="../assets/screens/en/card-aguila-arpia.webp" alt="The harpy eagle card in Tawari, with its photo and a first description of the bird" width="360" height="783" fetchpriority="high">
-        <figcaption>The harpy eagle, <span class="sci">Harpia harpyja</span>. Photo: Tommy Andriollo (<a href="https://creativecommons.org/licenses/by/4.0/deed.en" rel="noopener">CC BY 4.0</a>, <a href="https://www.gbif.org/occurrence/6130916333" rel="noopener">GBIF</a>), cropped.</figcaption>
+        <img src="../assets/screens/en/card-hormiga-arriera.webp" alt="The hairy-headed leafcutter ant card in Tawari: a photo of an ant carrying a leaf and the card's first sentence" width="360" height="783" fetchpriority="high">
+        <figcaption>The hairy-headed leafcutter ant, <span class="sci">Atta cephalotes</span>. Photo: Stephen Lewis (<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener">CC0</a>, <a href="https://www.gbif.org/occurrence/5938191745" rel="noopener">GBIF</a>), cropped.</figcaption>
       </figure>
     </div>
   </div>
@@ -66,56 +71,79 @@
 
 <section id="finds-section">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/thraupidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">From La Guajira to Nariño</p>
+    <div class="section-head reveal">
+      <p class="eyebrow">The Field-finds</p>
       <h2>Meet your neighbours.</h2>
-      <p class="lede">A Field-find is the list of who lives in one place. It gathers the species seen most often there, and some of the most striking ones too, the ones worth going out to look for. It isn't a score and you don't have to finish it. It's a good way to explore a place and feel closer to nature, at any age. The app has 25, with 36 to 93 species each. Here you can look through the first three, all in Valle del Cauca.</p>
+      <p class="lede">A Field-find is the list of who lives in one place. It is not a score, and you don't have to finish it. Here are three:</p>
     </div>
-
-    <div class="finds" id="finds" data-base="../">
-      <div class="tabs" id="findTabs" role="group" aria-label="Field-finds"></div>
-      <div class="find-state" id="findLoading"><img class="hover" id="findLoadingImg" src="../assets/eyebrow/state-loading.webp" alt="" width="60" height="60"><p role="status" id="findLoadingMsg">Loading…</p></div>
-      <noscript><p class="find-note">Looking through the Field-finds here needs JavaScript. You can also see them in the app.</p></noscript>
-      <div id="findBody" hidden>
-        <div class="controls">
-          <input type="search" id="findQ" placeholder="Search for a name…" aria-label="Search species">
-        </div>
-        <div class="chips" id="findChips"></div>
-        <div class="sp-grid" id="findGrid"></div>
-        <button class="more" id="findMore" hidden></button>
-      </div>
+    <div class="places">
+      <a class="place reveal" href="field-finds.html#jb-cali">
+        <div class="ph"><img src="../assets/places/jardin-botanico-cali.webp" alt="Cali Botanical Garden from above: a pond with water lilies among trees" width="720" height="450" loading="lazy" decoding="async"><span class="n">87 species</span></div>
+        <div class="pb"><span class="pn">Cali Botanical Garden</span><span class="pw">Cali, Valle del Cauca</span></div>
+      </a>
+      <a class="place reveal" href="field-finds.html#sonso">
+        <div class="ph"><img src="../assets/places/laguna-de-sonso.webp" alt="Sonso Lagoon: still water under a cloudy sky" width="720" height="450" loading="lazy" decoding="async"><span class="n">55 species</span></div>
+        <div class="pb"><span class="pn">Sonso Lagoon</span><span class="pw">Buga, Valle del Cauca</span></div>
+      </a>
+      <a class="place reveal" href="field-finds.html#tres-cruces">
+        <div class="ph"><img src="../assets/places/cerro-tres-cruces-cali.webp" alt="Cerro de las Tres Cruces above the city of Cali" width="720" height="450" loading="lazy" decoding="async"><span class="n">80 species</span></div>
+        <div class="pb"><span class="pn">Cerro de las Tres Cruces</span><span class="pw">Cali, Valle del Cauca</span></div>
+      </a>
     </div>
+    <div class="after">
+      <a class="btn btn-primary" href="field-finds.html">See the species</a>
+      <p>The app has 25 Field-finds, from Los Flamencos Sanctuary to La Cocha Lake.</p>
+    </div>
+    <p class="credits">Photos: Mfrancoavellaneda (<a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en" rel="noopener">CC0</a>, <a href="https://commons.wikimedia.org/wiki/File:Vista_Jard%C3%ADn_Bot%C3%A1nico_Cali.jpg" rel="noopener">Wikimedia Commons</a>) · Estefani Sandoval (<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" rel="noopener">CC BY-SA 4.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Laguna_de_Sonso_Sept_2017_26.jpg" rel="noopener">Wikimedia Commons</a>) · David (<a href="https://creativecommons.org/licenses/by/2.0/deed.en" rel="noopener">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/wiki/File:El_cerro_de_las_tres_cruces.jpg" rel="noopener">Wikimedia Commons</a>). Cropped.</p>
   </div>
 </section>
 
 <section id="spine">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/accipitridae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">The ecological spine</p>
-      <h2>Who eats whom.</h2>
-      <p class="lede">This is where other field guides and apps fall short. These are the harpy eagle's relationships, with the notes from its card's <em>Who it lives with</em> section:</p>
+    <div class="section-head reveal">
+      <p class="eyebrow">Who eats whom</p>
+      <h2>A name is only the beginning.</h2>
+      <p class="lede">Every card tells you who a species lives with. This is how it looks on the monarch's:</p>
     </div>
-    <div class="spine">
-      <div class="slot"><div class="lbl">Feeds on</div><p>Primary prey: three-toed sloths and howler monkeys in canopy.</p><small>Manual curation</small></div>
-      <div class="slot"><div class="lbl">Returns to ecosystem via</div><p>Returns to ecosystem as carrion after death.</p><small>Manual curation</small></div>
-      <div class="slot"><div class="lbl">Lives in/on</div><p>Nests in emergent trees (Ceiba) in intact lowland forest.</p><small>Manual curation</small></div>
+    <div class="web">
+      <article class="who reveal">
+        <div class="pics">
+          <img src="../assets/spine/monarca.webp" alt="A monarch butterfly drinking nectar from the red and yellow flowers of bloodflower" width="560" height="420" loading="lazy" decoding="async">
+          <img src="../assets/spine/oruga.webp" alt="A monarch caterpillar, striped black, yellow and white, on a stem" width="320" height="420" loading="lazy" decoding="async">
+        </div>
+        <div class="wb">
+          <div class="wn">Monarch</div>
+          <div class="sci">Danaus plexippus</div>
+        </div>
+      </article>
+      <div class="side eats reveal">
+        <h3>Feeds on</h3>
+        <div class="mate"><img src="../assets/spine/apocynaceae.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Bloodflower</div><div class="ms">Asclepias curassavica</div><div class="mw">The butterfly drinks the nectar of its flowers, and its caterpillars eat the leaves.</div></div></div>
+      </div>
+      <div class="side eaten reveal">
+        <h3>Eaten by</h3>
+        <div class="mate"><img src="../assets/spine/araneidae.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Banana Orbweaver</div><div class="ms">Trichonephila clavipes</div></div></div>
+        <div class="mate"><img src="../assets/spine/birds.webp" alt="" width="64" height="64" loading="lazy"><div><div class="mn">Purple Martin</div><div class="ms">Progne subis</div></div></div>
+      </div>
     </div>
+    <p class="credits">Three of the seven relationships on its card, from GloBI. Photos: Juan Carlos Caicedo Hernández and Sebastian Serna Muñoz (<a href="https://creativecommons.org/licenses/by/4.0/deed.en" rel="noopener">CC BY 4.0</a>, <a href="https://www.inaturalist.org/photos/59198241" rel="noopener">iNaturalist</a>, <a href="https://www.inaturalist.org/photos/150059994" rel="noopener">iNaturalist</a>), cropped. Drawings: Tawari.</p>
   </div>
 </section>
 
 <section id="app">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/troglodytidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">The app</p>
-      <h2>What happens when you don't know the name.</h2>
-    </div>
     <div class="step">
-      <div class="txt">
-        <p>You saw something. You open the wizard and answer what you know: whether it was an animal, a plant or a fungus, then details like its silhouette or colours. Any step can be skipped. At the end you get the species that match. Tell it where you are and it only offers those recorded at that place or close by, because a species nobody has seen around there doesn't belong in a list claiming to say what lives there; skip that step and it searches every place in Tawari.</p>
-        <p>Where we know it, the card tells you how to recognise it, when it appears, what eats it and what it means to the people here. If you log the sighting it goes into My List with its date and place. By default it is also shared with the Tawari team, who use it to improve the guide; nobody else sees it. Soon you'll be able to share it with your community.</p>
-        <p>And if you can't find what you saw, you can still log it unidentified, with a photo, a description or both, and the Tawari team will try to identify it. If you think a place is missing a species, write to <a href="mailto:hello@tawari.id">hello@tawari.id</a> and we'll look into it.</p>
+      <div class="txt reveal">
+        <p class="eyebrow">The app</p>
+        <h2>And when you don't know the name.</h2>
+        <ol class="steps3">
+          <li><div><b>Answer what you know.</b><span>Whether it was an animal, a plant or a fungus, its shape, its colours. Any step can be skipped.</span></div></li>
+          <li><div><b>See who matches.</b><span>If you tell it where you are, only among the species recorded at that place or very near it.</span></div></li>
+          <li><div><b>Save it in My List.</b><span>With its date and place. By default the Tawari team can see it too, and uses it to improve the guide; nobody else does.</span></div></li>
+        </ol>
+        <p class="aside">Can't find what you saw? Log it anyway, with a photo or a description, and the team will try to identify it.</p>
       </div>
-      <figure class="shot">
+      <figure class="shot reveal">
         <img src="../assets/screens/en/wizard-ave.webp" alt="Tawari's identification wizard asking for a bird's main colours" width="340" height="739" loading="lazy" decoding="async">
         <figcaption>One of the wizard's questions.</figcaption>
       </figure>
@@ -123,40 +151,41 @@
   </div>
 </section>
 
-<section id="drafts">
-  <div class="wrap cols">
-    <div>
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/noctuidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">When we don't know</p>
-      <h2>The card says so.</h2>
-      <p>For a great many Colombian species there is almost nothing published. When that's the case the card says so and stays short, rather than filling the gap. It shows what is documented, such as the name, taxonomy, records and photographs, and nothing more.</p>
-      <p>And it tells you how to help: log your sightings with a photo and notes, or upload them to iNaturalist too, since its verified records reach GBIF, the open database science works from. You can also tell us about a published source.</p>
-    </div>
-    <div>
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/plants.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Knowledge with a name attached</p>
-      <h2>Who says so, and where from.</h2>
-      <p>We would rather name a specific people and place than speak of "indigenous peoples" in general, and every written card cites its sources at the end. What a card says about uses and beliefs comes with its source; if there is no source to cite, that part simply doesn't appear.</p>
-      <p>Our rule is that no card gives preparation instructions or medical advice: medicinal uses are told as history, not as a recipe.</p>
+<section id="card">
+  <div class="wrap">
+    <div class="duo">
+      <div class="note reveal">
+        <p class="eyebrow">When we don't know</p>
+        <h3>The card says so.</h3>
+        <p>For many species almost nothing is published. Then the card stays short instead of filling the gap, and tells you how to help: with your sightings, or by sharing them on iNaturalist.</p>
+      </div>
+      <div class="note reveal">
+        <p class="eyebrow">Named knowledge</p>
+        <h3>Who says it, and where from.</h3>
+        <p>Every written card cites its sources. We would rather name a people and a place than speak of "indigenous people" in general. And no card gives recipes or medical advice.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="sources">
+<section id="beta">
   <div class="wrap cols">
-    <div>
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/hylidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Where we are</p>
+    <div class="reveal">
+      <p class="eyebrow">Where we are</p>
       <h2>In beta, and it shows.</h2>
-      <ul class="list-plain">
-        <li><b>Today:</b> a beta on iPhone, through TestFlight; Android after. We launch publicly soon.</li>
-        <li><b>The Field-finds:</b> 25, from Los Flamencos Sanctuary to La Cocha Lake. More coming.</li>
-        <li><b>What you'll see:</b> mistakes, and cards that still fall short. Any comment or suggestion helps.</li>
-        <li><b>For now:</b> what you log in My List is seen only by you and, if you share it, the Tawari team. Soon you'll be able to share it with your community.</li>
-        <li><b>No advertising, no tracking</b>, not in the app and not on this site. <a href="status.html">The full figures are here</a>.</li>
+      <ul class="beta">
+        <li><b>Today:</b> a beta on iPhone, through TestFlight. Android comes later, and we launch to the public soon.</li>
+        <li><b>What you'll see:</b> bugs, and cards that still fall short. Any feedback helps.</li>
+        <li><b>The numbers:</b> how many species, cards and photos there are today, on the <a href="status.html">project status</a> page.</li>
       </ul>
     </div>
-    <div>
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/formicidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Where the data comes from</p>
+    <div class="reveal">
+      <p class="eyebrow">Where the data comes from</p>
       <h2>Sources, not opinions.</h2>
-      <ul class="list-plain">
+      <p class="lede">Colombian sources first, always openly licensed and credited.</p>
+      <details class="fold">
+        <summary>See the sources</summary>
+        <ul class="list-plain">
         <li><b>Spanish names:</b> Colombian sources first, such as the Asociación Colombiana de Ornitología's list of bird names (2007), <a href="https://catalogo.biodiversidad.co" rel="noopener">SiB Colombia</a>, the <a href="https://datosabiertos.bogota.gov.co/dataset/nombres-comunes-plantas-bogota" rel="noopener">Bogotá Botanical Garden</a>, <a href="https://datos.cali.gov.co/dataset/censo-arboreo-de-santiago-de-cali" rel="noopener">DAGMA in Cali</a> and the <a href="https://doi.org/10.15472/tozuue" rel="noopener">Humboldt Institute</a>; where there is no local one, <a href="https://ebird.org" rel="noopener">eBird</a>, <a href="https://doi.org/10.15468/39omei" rel="noopener">GBIF</a>, <a href="https://www.inaturalist.org" rel="noopener">iNaturalist</a> and <a href="https://es.wikipedia.org" rel="noopener">Wikipedia</a>.</li>
         <li><b>Species and taxonomy:</b> GBIF and eBird.</li>
         <li><b>What lives at each place:</b> GBIF and eBird records at those coordinates.</li>
@@ -164,6 +193,7 @@
         <li><b>Photos:</b> Wikimedia Commons, GBIF and iNaturalist, openly licensed only, crediting the author and the licence.</li>
         <li><b>Writing:</b> AI helps us draft from cited sources, not invent them. Every written card then goes through an automated review against those sources; toxic and psychoactive species also get a safety screen.</li>
       </ul>
+      </details>
     </div>
   </div>
 </section>
@@ -171,7 +201,7 @@
 <section id="waitlist">
   <div class="wrap">
     <div class="wait">
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/trochilidae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Waitlist</p>
+      <p class="eyebrow">Waitlist</p>
       <h2>Be among the first to try it.</h2>
       <p class="lede" style="margin-bottom:0">We write to you once, when your TestFlight invitation is ready.</p>
       <form id="waitlist-form" novalidate>
@@ -205,10 +235,10 @@
 
 <section id="collaborate">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><img class="eb" src="../assets/eyebrow/bromeliaceae.webp" alt="" width="28" height="28" loading="lazy" decoding="async">Reserves, botanical gardens and birding clubs</p>
-      <h2>A Field-find starts with a place's records.</h2>
-      <p class="lede">If you run a reserve, a botanical garden or a birding club and want your place to have one, write to <a href="mailto:hello@tawari.id">hello@tawari.id</a>. The first thing we need is your species lists.</p>
+    <div class="section-head reveal" style="margin-bottom:0">
+      <p class="eyebrow">Reserves, botanical gardens and birding clubs</p>
+      <h2>Would you like a Field-find for your place?</h2>
+      <p class="lede" style="margin-bottom:0">Write to <a href="mailto:hello@tawari.id">hello@tawari.id</a>.</p>
     </div>
   </div>
 </section>

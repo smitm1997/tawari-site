@@ -167,10 +167,17 @@
     el('dlgSp').showModal();
   }
 
+  // A place can be opened by link: gincanas.html#sonso (the home page's three cards link
+  // here). One bare token per place, in finds.json's order; the tab keeps the hash current.
+  var HASHES = ['jb-cali', 'sonso', 'tres-cruces'];
+  var fromHash = HASHES.indexOf((location.hash || '').slice(1));
+  if (fromHash >= 0) qi = fromHash;
+
   root.addEventListener('click', function (e) {
     var tab = e.target.closest('.tab');
     if (tab) {
       qi = +tab.dataset.i; group = null; term = ''; shown = PAGE;
+      if (HASHES[qi] && history.replaceState) history.replaceState(null, '', '#' + HASHES[qi]);
       el('findQ').value = '';
       render();
       return;
