@@ -18,6 +18,20 @@ no analytics, no tracking, and **no third-party request of any kind** — verify
 `performance.getEntriesByType('resource')` in the console; the list should contain
 only `tawari.id`.
 
+**Every stylesheet and script link carries a content stamp** (`assets/site.css?v=8551d974`).
+GitHub Pages lets a browser keep an asset for 10 minutes, so without the stamp a deploy
+can pair new HTML with the old stylesheet: on 16 Oct 2026 revision 2's place cards showed
+as full-width bare photos to anyone who had visited before. After editing any
+`assets/*.css` or `assets/*.js`, or regenerating a page, run last:
+
+```
+node tools/stamp_assets.js
+```
+
+`node tools/stamp_assets.js --check` changes nothing and exits 1 when a stamp is missing or
+stale; run it before every push. `assets/finds.json` is fetched with `cache: 'no-cache'`
+for the same reason.
+
 ## Vocabulary
 
 **Spanish is the source.** English is the second version, never a translation that
