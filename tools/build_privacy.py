@@ -11,7 +11,7 @@ Usage:
   python3 tools/build_privacy.py --src ~/dev/Tawari/docs/legal --date 2026-09-30
 Writes ./privacidad.html and ./privacy.html next to index.html.
 """
-import argparse, html, os, re, sys, datetime
+import argparse, hashlib, html, os, re, sys, datetime
 
 BLOCKERS = [
     ("[POR DEFINIR]", "placeholder"),
@@ -143,7 +143,9 @@ if __name__ == "__main__":
     a = ap.parse_args()
     src = os.path.expanduser(a.src)
     dates = {"es": a.date, "en": a.date_en}
-    pages = {lang: build(lang, src, dates[lang], "assets/site.css") for lang in ("es", "en")}  # both must pass before either is written
+    with open(os.path.join(os.path.dirname(__file__), "..", "assets", "site.css"), "rb") as f:
+        css_v = hashlib.sha256(f.read()).hexdigest()[:8]  # the stamp tools/stamp_assets.js gives
+    pages = {lang: build(lang, src, dates[lang], f"assets/site.css?v={css_v}") for lang in ("es", "en")}  # both must pass before either is written
     for lang, doc in pages.items():
         dest = os.path.join(a.out, PAGE[lang]["file"])
         with open(dest, "w", encoding="utf-8") as f:

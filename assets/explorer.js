@@ -206,7 +206,9 @@
       : 'This is taking longer than usual. If nothing appears, reload the page.');
   }, 10000);
 
-  fetch(base + 'assets/finds.json')
+  // no-cache: ask the server every time (a 304 when unchanged), so the data never lags
+  // the page that renders it
+  fetch(base + 'assets/finds.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then(function (d) { clearTimeout(slow); DATA = d; el('findLoading').hidden = true; el('findBody').hidden = false; render(); })
     .catch(function () {
