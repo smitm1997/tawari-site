@@ -18,7 +18,7 @@
   --line: #E0D9CC;
   --ink: #11110B;
   --ink-2: #6B6556;
-  --ink-3: #A09880;
+  --ink-3: #756E5A; /* was #A09880 (2.6:1); now at least 4.5:1 on ground, surface and card */
   --forest: #3D5A3E;
   --forest-deep: #2C4231;
   --green: #38B68B;
@@ -122,7 +122,9 @@ section + section { border-top: 1px solid var(--line); }
 /* waitlist */
 .wait { background: var(--card); border: 1px solid var(--card-edge); border-radius: 20px; padding: 28px 22px; }
 @media (min-width: 720px) { .wait { padding: 40px; } }
+.field-label { display: block; margin: 18px 0 0; font-family: var(--mono); font-size: .78rem; color: var(--ink-2); }
 .form-row { display: grid; gap: 12px; margin: 18px 0 12px; }
+.field-label + .form-row { margin-top: 6px; }
 @media (min-width: 640px) { .form-row { grid-template-columns: 1fr 180px auto; } }
 .form-row input, .form-row select { font: inherit; padding: 13px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); width: 100%; }
 .form-row input:focus, .form-row select:focus { outline: 2px solid var(--green); outline-offset: 1px; border-color: var(--green); }
@@ -133,7 +135,7 @@ section + section { border-top: 1px solid var(--line); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .form-msg { font-family: var(--mono); font-size: .82rem; min-height: 1.4em; margin-top: 12px; }
 .form-msg.ok { color: var(--forest); }
-.form-msg.err { color: var(--amber-deep); }
+.form-msg.err { color: #9A5F1C; } /* 4.7:1 on the card; --amber-deep is 3.0:1 */
 
 /* footer */
 .foot { border-top: 1px solid var(--line); padding: 32px 20px 44px; color: var(--ink-2); font-size: .9rem; }
@@ -164,7 +166,7 @@ body.doc { background: var(--surface); }
 .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tab { flex: 0 0 auto; font: inherit; font-family: var(--mono); font-size: .82rem; padding: 10px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink-2); cursor: pointer; white-space: nowrap; }
-.tab[aria-selected="true"] { background: var(--forest); border-color: var(--forest); color: #fff; }
+.tab[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: #fff; }
 .tab .n { opacity: .65; margin-left: 6px; }
 .find-note { font-size: .95rem; color: var(--ink-2); margin: 14px 0 0; }
 .find-note b { color: var(--ink); font-weight: 600; }
@@ -186,6 +188,7 @@ body.doc { background: var(--surface); }
 .cbody { padding: 9px 10px 11px; }
 .cname { font-size: .88rem; line-height: 1.25; }
 .csci { font-family: var(--serif); font-style: italic; font-size: .76rem; color: var(--ink-3); margin-top: 2px; }
+.csci.roman, .dsci.roman { font-family: inherit; font-style: normal; }
 .badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 7px; }
 .b { font-family: var(--mono); font-size: .6rem; letter-spacing: .04em; padding: 2px 6px; border-radius: 4px; background: var(--ground); border: 1px solid var(--line); color: var(--ink-2); }
 .b.end { background: var(--amber-soft); border-color: var(--amber-deep); color: var(--forest-deep); }
@@ -243,3 +246,119 @@ dialog.sp img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius
 
 /* the band sits directly on the footer: one line above it, none below */
 .collage + .foot { border-top: 0; }
+
+/* ─── 13 Oct 2026 revision (founder notes on WP-85) ────────────────────────
+   Less text, more to look at: the Field-finds have their own page (gincanas.html),
+   the home page shows three places and one species' web, the section icons that read
+   as bullets are gone, and the page moves a little: cross-page view transitions, a
+   rise as sections scroll in (transform and a light fade, never hidden at rest), and
+   hover lifts. All of it stops under prefers-reduced-motion. */
+
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; }
+
+/* the nav on phones: a second row that scrolls sideways, never the page */
+@media (max-width: 819px) {
+  .bar { flex-wrap: wrap; row-gap: 8px; }
+  .nav { display: flex; order: 3; width: 100%; gap: 18px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: 0 0 auto; }
+  main [id] { scroll-margin-top: 104px; }
+}
+.nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--amber-deep); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+
+/* the eyebrow carries words only now */
+.eyebrow { display: block; }
+.eyebrow::before { content: ""; display: inline-block; width: 18px; height: 2px; background: var(--amber-deep); vertical-align: middle; margin-right: 10px; transform: translateY(-2px); }
+
+/* hero */
+.hero h1 em { color: var(--forest); }
+.hero .sub { font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.55rem); line-height: 1.3; color: var(--ink); margin: -.1em 0 .7em; max-width: 26em; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.facts li { font-family: var(--mono); font-size: .76rem; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
+
+/* three places, each a door into the Field-find page */
+.places { display: grid; gap: 16px; }
+@media (min-width: 720px) { .places { grid-template-columns: repeat(3, 1fr); } }
+.place { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--card-edge); border-radius: 18px; overflow: hidden; text-decoration: none; color: var(--ink); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.place:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(17,17,11,.12); border-color: var(--amber-deep); color: var(--ink); }
+.place:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.place .ph { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ground); }
+.place .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.place:hover .ph img { transform: scale(1.04); }
+.place .n { position: absolute; left: 12px; bottom: 12px; font-family: var(--mono); font-size: .74rem; color: #fff; background: rgba(17,17,11,.62); border-radius: 999px; padding: 5px 10px; }
+.place .pb { padding: 14px 16px 16px; display: grid; gap: 4px; }
+.place .pn { font-family: var(--serif); font-size: 1.3rem; line-height: 1.2; }
+.place .pw { font-size: .92rem; color: var(--ink-2); }
+.credits { font-family: var(--mono); font-size: .68rem; line-height: 1.6; color: var(--ink-3); margin: 14px 0 0; }
+.credits a { color: inherit; }
+.after { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; margin-top: 22px; }
+.after p { margin: 0; color: var(--ink-2); }
+
+/* one species' web: what it eats on one side, who eats it on the other */
+.web { display: grid; gap: 14px; align-items: center; }
+@media (min-width: 860px) { .web { grid-template-columns: 1fr 1.15fr 1fr; gap: 22px; } }
+.web .who { background: var(--card); border: 1px solid var(--card-edge); border-radius: 20px; overflow: hidden; }
+@media (min-width: 860px) { .web .who { order: 2; } .web .eats { order: 1; } .web .eaten { order: 3; } }
+.web .who .pics { display: grid; grid-template-columns: 1fr .58fr; gap: 3px; background: var(--card-edge); }
+.web .who .pics img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
+.web .who .wb { padding: 14px 16px 16px; }
+.web .who .wn { font-family: var(--serif); font-size: 1.5rem; line-height: 1.15; }
+.web .side { display: grid; gap: 10px; }
+.web .side h3 { font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest); margin: 0 0 2px; font-weight: 600; }
+.web .side h3 .arrow { color: var(--amber-deep); margin: 0 4px; }
+.mate { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 10px 14px 10px 10px; transition: transform .25s ease, border-color .25s ease; }
+.mate:hover { transform: translateX(2px); border-color: var(--card-edge); }
+.mate img { width: 64px; height: 64px; }
+.mate .mn { font-family: var(--serif); font-size: 1.1rem; line-height: 1.2; }
+.mate .ms { font-family: var(--serif); font-style: italic; font-size: .85rem; color: var(--ink-2); }
+.mate .mw { font-size: .86rem; color: var(--ink-2); margin-top: 3px; line-height: 1.4; }
+
+/* the app in three steps, numbered, no icons */
+.steps3 { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 18px; }
+.steps3 li { counter-increment: s; display: grid; grid-template-columns: 40px 1fr; gap: 14px; }
+.steps3 li::before { content: counter(s); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--amber-soft); border: 1px solid var(--card-edge); font-family: var(--serif); font-size: 1.15rem; color: var(--forest-deep); }
+.steps3 b { display: block; font-family: var(--serif); font-weight: 400; font-size: 1.25rem; color: var(--ink); margin-bottom: 2px; }
+.steps3 span { color: var(--ink-2); }
+.aside { margin-top: 22px; color: var(--ink-2); font-size: .95rem; }
+
+/* two short notes side by side */
+.duo { display: grid; gap: 16px; }
+@media (min-width: 820px) { .duo { grid-template-columns: 1fr 1fr; gap: 20px; } }
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 18px; }
+.note h3 { font-size: 1.45rem; margin-bottom: .4em; }
+.note p { color: var(--ink-2); margin-bottom: .6em; }
+
+/* the beta in three lines, the sources folded */
+.beta { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.beta li { padding: 12px 0; border-top: 1px solid var(--line); color: var(--ink-2); }
+.beta li:first-child { border-top: 0; padding-top: 0; }
+.beta b { color: var(--ink); font-weight: 600; }
+details.fold { margin-top: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 18px; }
+details.fold summary { cursor: pointer; padding: 12px 0; font-family: var(--mono); font-size: .82rem; color: var(--forest); list-style: none; }
+details.fold summary::-webkit-details-marker { display: none; }
+details.fold summary::after { content: "+"; float: right; color: var(--amber-deep); }
+details.fold[open] summary::after { content: "–"; }
+details.fold .list-plain { padding-bottom: 8px; }
+
+/* a page's own short head (gincanas.html, aprender.html) */
+.page-head { padding: 44px 0 8px; }
+@media (min-width: 820px) { .page-head { padding: 64px 0 12px; } }
+.page-head h1 { font-size: clamp(2rem, 5.4vw, 3.1rem); }
+.page-head + section { border-top: 0; padding-top: 20px; }
+
+/* motion */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes tw-rise { from { opacity: .35; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .hero .grid > * { animation: tw-rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .hero .grid > *:nth-child(2) { animation-delay: .12s; }
+  @supports (animation-timeline: view()) {
+    .reveal { animation: tw-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .place, .place .ph img, .mate { transition: none; }
+  .place:hover, .place:hover .ph img, .mate:hover { transform: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+.prose .eyebrow::before { content: none; }

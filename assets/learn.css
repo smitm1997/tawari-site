@@ -1,0 +1,99 @@
+/* Tawari: the Learn page (aprender.html, en/learn.html).
+   Loaded after site.css and only on these two pages. Every class here starts
+   with lr- so nothing collides with site.css while the home page is redesigned.
+   Tokens come from site.css (:root); each use carries the current value as a
+   fallback, so the page keeps its look if a token is renamed there.
+   No motion: nothing animates, nothing waits for scroll. */
+
+.lr {
+  --lr-gold: #8B6914;      /* the app's accentInk: the group eyebrow colour, 4.9:1 on the card */
+  --lr-gold-on-dark: #E8AB49;
+  --lr-dark: #2C4231;      /* forest-deep */
+}
+
+/* ─── Hero ───────────────────────────────────────────────────────────────── */
+.lr-hero { padding: 40px 0 44px; }
+.lr-hero-grid { display: grid; gap: 32px; align-items: center; }
+.lr-hero h1 { max-width: 12em; text-wrap: balance; }
+.lr .lr-head h2, .lr-cta h2, .lr-essays .tt, .lr-fam span { text-wrap: balance; }
+.lr-hero .lede { margin-bottom: 0; }
+@media (min-width: 820px) {
+  .lr-hero { padding: 64px 0 64px; }
+  .lr-hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 56px; }
+}
+
+/* the three counts, also the page's own index */
+.lr-index { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 28px 0 0; border-top: 1px solid var(--line, #E0D9CC); border-bottom: 1px solid var(--line, #E0D9CC); }
+.lr-index a { display: flex; flex-direction: column; gap: 6px; padding: 14px 10px 14px 0; color: var(--ink, #11110B); text-decoration: none; min-width: 0; }
+.lr-index a + a { border-left: 1px solid var(--line, #E0D9CC); padding-left: 14px; }
+.lr-index .n { font-family: var(--serif, Georgia, serif); font-size: clamp(2rem, 7vw, 2.75rem); line-height: 1; letter-spacing: -.02em; }
+.lr-index .t { font-family: var(--mono, monospace); font-size: .7rem; line-height: 1.35; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2, #6B6556); }
+.lr-index a:hover .n, .lr-index a:focus-visible .n { color: var(--forest, #3D5A3E); }
+.lr-index a:focus-visible { outline: 2px solid var(--green, #38B68B); outline-offset: 2px; }
+.lr-asof { margin: 10px 0 0; font-family: var(--mono, monospace); font-size: .72rem; color: var(--ink-3, #756E5A); }
+
+/* a plate of the app's drawings, like a page of a field guide */
+.lr-plate { width: 100%; max-width: 380px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 18px; background: var(--card, #FDF2DB); border: 1px solid var(--card-edge, #E8DFC9); border-radius: 22px; box-shadow: 0 1px 2px rgba(17,17,11,.05), 0 16px 40px rgba(17,17,11,.08); }
+.lr-plate img { width: 100%; height: auto; aspect-ratio: 1; }
+@media (max-width: 819px) {
+  .lr-plate { max-width: 300px; padding: 14px; }
+  .lr-plate img:nth-child(n+7) { display: none; }
+}
+
+/* ─── Sections ───────────────────────────────────────────────────────────── */
+.lr-head { margin-bottom: 26px; }
+.lr-head h2 { margin: 0; }
+.lr-head .eyebrow { margin-bottom: .6em; }
+.lr-note { margin: 18px 0 0; font-family: var(--mono, monospace); font-size: .72rem; color: var(--ink-3, #756E5A); }
+
+/* ─── Biomes: photo cards ────────────────────────────────────────────────── */
+.lr-biomes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+@media (min-width: 820px) { .lr-biomes { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 26px 18px; } }
+.lr-biomes li { min-width: 0; }
+.lr-biome { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.lr-biome .ph { position: relative; overflow: hidden; aspect-ratio: 16 / 10; border-radius: var(--r, 14px); background: var(--card, #FDF2DB); }
+.lr-biome .ph img { width: 100%; height: 100%; object-fit: cover; }
+.lr-biome .ph::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 62%; background: linear-gradient(to top, rgba(17,17,11,.66), rgba(17,17,11,0)); pointer-events: none; }
+.lr-biome .nm { position: absolute; left: 12px; right: 12px; bottom: 10px; z-index: 1; margin: 0; color: #fff; font-size: 1.02rem; line-height: 1.15; letter-spacing: 0; text-shadow: 0 1px 3px rgba(0,0,0,.35); }
+@media (min-width: 820px) { .lr-biome .nm { font-size: 1.22rem; left: 14px; bottom: 12px; } }
+.lr-biome figcaption { padding: 0 2px; font-family: var(--mono, monospace); font-size: .64rem; line-height: 1.5; color: var(--ink-3, #756E5A); overflow-wrap: break-word; }
+.lr-biome figcaption a { color: inherit; white-space: nowrap; }
+.lr-biome figcaption a:hover { color: var(--forest, #3D5A3E); }
+
+.lr-more-lbl { margin: 32px 0 10px; font-family: var(--mono, monospace); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2, #6B6556); }
+.lr-more { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.lr-more li { padding: 6px 12px; font-size: .88rem; line-height: 1.3; color: var(--ink, #11110B); background: var(--surface, #FDFAF4); border: 1px solid var(--line, #E0D9CC); border-radius: 999px; }
+
+/* ─── Families: the drawings under Flora, Fauna and Hongos ───────────────── */
+.lr-kingdom { margin-top: 16px; padding: 20px 14px 14px; background: var(--card, #FDF2DB); border: 1px solid var(--card-edge, #E8DFC9); border-radius: 20px; }
+@media (min-width: 820px) { .lr-kingdom { margin-top: 20px; padding: 28px 28px 22px; } }
+.lr-k { display: flex; align-items: baseline; gap: 10px; margin: 0 4px 10px; font-size: 1.6rem; }
+.lr-k .c { font-family: var(--mono, monospace); font-size: .78rem; letter-spacing: .04em; color: var(--ink-2, #6B6556); }
+.lr-g { margin: 22px 4px 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink, #11110B); font-family: var(--mono, monospace); font-size: .72rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--lr-gold); }
+.lr-k + .lr-g { margin-top: 6px; }
+.lr-fam { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 2px 6px; }
+@media (min-width: 820px) { .lr-fam { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px 10px; } }
+.lr-fam li { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 2px 10px; text-align: center; min-width: 0; }
+.lr-fam img { width: 60px; height: 60px; }
+@media (min-width: 820px) { .lr-fam img { width: 80px; height: 80px; } }
+.lr-fam span { font-size: .82rem; line-height: 1.28; color: var(--ink, #11110B); overflow-wrap: break-word; hyphens: manual; }
+.lr-fam i { font-family: var(--serif, Georgia, serif); }
+
+/* ─── Essays: a dark band ────────────────────────────────────────────────── */
+.lr-dark { background: var(--lr-dark); color: #F7F6F2; }
+section.lr-dark, .lr-dark + section { border-top-color: transparent; }
+.lr-dark .eyebrow { color: #D9D3C3; }
+.lr-dark h2 { color: #FDFAF4; }
+.lr-essays { list-style: none; margin: 0; padding: 0; }
+@media (min-width: 820px) { .lr-essays { columns: 2; column-gap: 48px; } }
+.lr-essays li { break-inside: avoid; padding: 14px 0 16px; border-top: 1px solid rgba(247,246,242,.18); }
+.lr-essays .eb { margin: 0 0 5px; font-family: var(--mono, monospace); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--lr-gold-on-dark); }
+.lr-essays .tt { margin: 0; font-size: 1.12rem; line-height: 1.3; letter-spacing: 0; color: #FDFAF4; }
+@media (min-width: 820px) { .lr-essays .tt { font-size: 1.2rem; } }
+
+/* ─── Closing call to action ─────────────────────────────────────────────── */
+.lr-cta { background: var(--card, #FDF2DB); border: 1px solid var(--card-edge, #E8DFC9); border-radius: 20px; padding: 28px 22px; }
+@media (min-width: 720px) { .lr-cta { padding: 40px; } }
+.lr-cta h2 { margin-bottom: .35em; }
+.lr-cta .lede { margin-bottom: 0; }
+.lr-cta .cta-row { margin: 22px 0 0; }

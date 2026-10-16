@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gincanas · Tawari</title>
+<meta name="description" content="Tres gincanas de Tawari para mirar sin instalar nada: el Jardín Botánico de Cali, la Laguna de Sonso y el Cerro de las Tres Cruces, especie por especie.">
+<link rel="canonical" href="https://tawari.id/gincanas.html">
+<link rel="alternate" hreflang="es" href="https://tawari.id/gincanas.html">
+<link rel="alternate" hreflang="en" href="https://tawari.id/en/field-finds.html">
+<link rel="alternate" hreflang="x-default" href="https://tawari.id/gincanas.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://tawari.id/gincanas.html">
+<meta property="og:site_name" content="Tawari">
+<meta property="og:title" content="Gincanas · Tawari">
+<meta property="og:description" content="Una gincana es la lista de quienes viven en un lugar. Mira tres, especie por especie.">
+<meta property="og:image" content="https://tawari.id/assets/og-es.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ilustración: un tucán, mariposas azules, un felino, helechos y hongos alrededor de una etiqueta que dice «TAWARI, Guía de campo viva».">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F7F6F2">
+<link rel="icon" href="assets/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/mark-morpho-180.png">
+<link rel="preload" href="assets/fonts/Gelasio-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="bar">
+  <a class="wordmark" href="./"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
+  <nav class="nav" aria-label="Secciones">
+    <a href="gincanas.html" aria-current="page">Gincanas</a>
+    <a href="aprender.html">Aprender</a>
+    <a href="./#app">La app</a>
+    <a href="./#lista">Lista de espera</a>
+  </nav>
+  <div class="lang"><a href="en/field-finds.html" hreflang="en" lang="en">English</a></div>
+</header>
+
+<main id="top">
+
+<div class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Las gincanas</p>
+    <h1>Conoce a tus vecinos.</h1>
+    <p class="lede">Una gincana es la lista de quienes viven en un lugar: las especies que más se ven ahí, y algunas de las más llamativas. No es un puntaje y no hace falta terminarla. Cada lista sale de registros reales, no de un catálogo.</p>
+  </div>
+</div>
+
+<section id="explorar">
+  <div class="wrap">
+    <div class="finds" id="finds" data-base="">
+      <div class="tabs" id="findTabs" role="group" aria-label="Gincanas"></div>
+      <div class="find-state" id="findLoading"><img class="hover" id="findLoadingImg" src="assets/eyebrow/state-loading.webp" alt="" width="60" height="60"><p role="status" id="findLoadingMsg">Cargando…</p></div>
+      <noscript><p class="find-note">Para ver las gincanas aquí hace falta JavaScript. También puedes verlas en la app.</p></noscript>
+      <div id="findBody" hidden>
+        <div class="controls">
+          <input type="search" id="findQ" placeholder="Busca un nombre…" aria-label="Buscar especie">
+        </div>
+        <div class="chips" id="findChips"></div>
+        <div class="sp-grid" id="findGrid"></div>
+        <button class="more" id="findMore" hidden></button>
+      </div>
+    </div>
+    <p class="credits">En la app hay 25 gincanas, del Santuario de Los Flamencos, en La Guajira, al Lago La Cocha, en Nariño, de 36 a 93 especies cada una. Aquí puedes mirar tres, en el Valle del Cauca. Toca una especie para ver su foto y su crédito.</p>
+    <div class="after"><a class="btn btn-primary" href="./#lista">Únete a la lista de espera</a></div>
+  </div>
+</section>
+
+</main>
+
+<div class="collage" aria-hidden="true">
+  <picture>
+    <source media="(min-width: 480px)" srcset="assets/collage/collage-1280.webp 1280w, assets/collage/collage-1920.webp 1920w, assets/collage/collage-2560.webp 2560w" sizes="(max-width: 1280px) 1280px, 100vw" width="1280" height="280">
+    <img src="assets/collage/collage-phone.webp" alt="" width="495" height="230" loading="lazy" decoding="async">
+  </picture>
+  <div class="tag"><div class="in"><span class="no">No. 001 · Col.</span><span class="mid"><span class="wm">TAWARI</span><span class="rule"></span><span class="sub">Guía de campo viva</span></span><span class="place">Colombia</span></div></div>
+</div>
+<footer class="foot">
+  <div class="wrap">
+    <p style="margin:0"><b>Tawari</b> · Una guía de campo viva de la biodiversidad de Colombia.</p>
+    <div class="links">
+      <a href="mailto:hola@tawari.id">hola@tawari.id</a>
+      <a href="https://www.instagram.com/tawari.id" rel="me noopener">Instagram @tawari.id</a>
+      <a href="estado.html">Estado del proyecto</a>
+      <a href="privacidad.html">Privacidad</a>
+      <a href="en/" hreflang="en" lang="en">English</a>
+    </div>
+    <p style="margin:6px 0 0;font-family:var(--mono);font-size:.76rem;color:var(--ink-3)">© 2026 Tawari · Hecho en Colombia</p>
+  </div>
+</footer>
+
+<dialog class="sp" id="dlgSp" aria-labelledby="dlgName">
+  <div id="dlgFig"></div>
+  <div class="dbody">
+    <div class="dname" id="dlgName"></div>
+    <div class="dsci" id="dlgSci"></div>
+    <div class="badges" id="dlgBadges" style="margin-top:12px"></div>
+    <p class="dcredit" id="dlgCredit"></p>
+    <button class="dclose" id="dlgClose">Cerrar</button>
+  </div>
+</dialog>
+
+<script src="assets/explorer.js" defer></script>
+</body>
+</html>

@@ -25,7 +25,7 @@ const [jsonPath, outDir] = process.argv.slice(2);
 if (!jsonPath || !outDir) { console.error('usage: fetch_find_photos.js <finds.json> <out-dir>'); process.exit(1); }
 fs.mkdirSync(outDir, { recursive: true });
 
-const UA = 'TawariSiteBuild/1.0 (+https://tawari.id; hello@tawari.app) Node';
+const UA = 'Tawari-research/1.0 (https://tawari.id)';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const WIDTH = 320, QUALITY = 72, CONCURRENCY = 1;
 
