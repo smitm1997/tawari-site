@@ -36,8 +36,12 @@
 * { box-sizing: border-box; }
 /* author display rules (.find-state is flex) must not beat the hidden attribute */
 [hidden] { display: none !important; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { -webkit-text-size-adjust: 100%; }
+/* smooth only once the reader has clicked something on the page: a page opened at a #section
+   (the Learn page's «Únete a la lista» opens ./#lista) must land there at once. With smooth on
+   the whole page, the browser's load-time jump was a slow glide that the page's own loading
+   cut short, and the reader was left at the top (seen 16 Oct 2026, live). */
+@media (prefers-reduced-motion: no-preference) { html:focus-within { scroll-behavior: smooth; } }
 /* the header is a 61px sticky bar; without this an anchored section parks its
    own eyebrow behind it */
 main [id] { scroll-margin-top: 76px; }
@@ -347,14 +351,78 @@ details.fold .list-plain { padding-bottom: 8px; }
 .page-head h1 { font-size: clamp(2rem, 5.4vw, 3.1rem); }
 .page-head + section { border-top: 0; padding-top: 20px; }
 
-/* motion */
+/* motion (16 Oct 2026, founder: «nice transitions as you scroll»)
+   assets/motion.js marks <html class="motion"> only when the reader allows motion and the
+   browser can watch the scroll; it then adds .in to each .reveal as it comes into view, with
+   --d, the block's turn among those arriving together. Every animation fills BACKWARDS only:
+   while it waits it shows its first frame, and once done the element is back to its own
+   style, so the hover lifts keep working and nothing stays hidden if an animation never runs. */
+.bar { transition: box-shadow .3s ease, background-color .3s ease; }
+.bar.lifted { box-shadow: 0 8px 24px -14px rgba(17,17,11,.28); background: rgba(247,246,242,.97); }
+
 @media (prefers-reduced-motion: no-preference) {
-  @keyframes tw-rise { from { opacity: .35; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-  .hero .grid > * { animation: tw-rise .7s cubic-bezier(.2,.7,.2,1) both; }
-  .hero .grid > *:nth-child(2) { animation-delay: .12s; }
-  @supports (animation-timeline: view()) {
-    .reveal { animation: tw-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @keyframes tw-in { from { opacity: 0; transform: translate3d(var(--fx, 0), var(--fy, 28px), 0) scale(var(--fs, 1)); } }
+  @keyframes tw-settle { from { transform: scale(1.09); } }
+  @keyframes tw-dash { from { width: 0; } }
+  @keyframes tw-drift { to { transform: translateY(-28px); } }
+
+  /* the hero arrives line by line on load (CSS only: it never waits for the script) */
+  .hero .grid > div:first-child > * { animation: tw-in .8s cubic-bezier(.2,.7,.2,1) backwards; --fy: 18px; }
+  .hero .grid > div:first-child > :nth-child(2) { animation-delay: .07s; }
+  .hero .grid > div:first-child > :nth-child(3) { animation-delay: .14s; }
+  .hero .grid > div:first-child > :nth-child(4) { animation-delay: .21s; }
+  .hero .grid > div:first-child > :nth-child(5) { animation-delay: .28s; }
+  .hero .grid > div:first-child > :nth-child(6) { animation-delay: .35s; }
+  .hero .phone { animation: tw-in 1s cubic-bezier(.2,.7,.2,1) .25s backwards; --fy: 36px; --fs: .97; }
+  .page-head .wrap > * { animation: tw-in .7s cubic-bezier(.2,.7,.2,1) backwards; --fy: 16px; }
+  .page-head .wrap > :nth-child(2) { animation-delay: .08s; }
+  .page-head .wrap > :nth-child(3) { animation-delay: .16s; }
+  .lr-hero-text > * { animation: tw-in .8s cubic-bezier(.2,.7,.2,1) backwards; --fy: 18px; }
+  .lr-hero-text > :nth-child(2) { animation-delay: .07s; }
+  .lr-hero-text > :nth-child(3) { animation-delay: .14s; }
+  .lr-hero-text > :nth-child(4) { animation-delay: .21s; }
+  .lr-hero-text > :nth-child(5) { animation-delay: .28s; }
+  /* the plate of drawings fills in one by one */
+  .lr-plate img { animation: tw-in .6s cubic-bezier(.2,.7,.2,1) backwards; --fy: 14px; --fs: .86; }
+  .lr-plate img:nth-child(1) { animation-delay: .20s; } .lr-plate img:nth-child(2) { animation-delay: .26s; }
+  .lr-plate img:nth-child(3) { animation-delay: .32s; } .lr-plate img:nth-child(4) { animation-delay: .38s; }
+  .lr-plate img:nth-child(5) { animation-delay: .44s; } .lr-plate img:nth-child(6) { animation-delay: .50s; }
+  .lr-plate img:nth-child(7) { animation-delay: .56s; } .lr-plate img:nth-child(8) { animation-delay: .62s; }
+  .lr-plate img:nth-child(9) { animation-delay: .68s; }
+  /* where the browser can tie it to the scroll, the phone drifts up a little as the page moves */
+  @supports (animation-timeline: scroll()) {
+    .hero .phone figure { animation: tw-drift linear both; animation-timeline: scroll(root); animation-range: 0 70vh; }
   }
+
+  /* a block waits out of sight, then rises in its turn */
+  html.motion .reveal:not(.in) { opacity: 0; }
+  html.motion .reveal.in { animation: tw-in .9s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+  /* the amber dash before an eyebrow draws itself */
+  html.motion .reveal.in .eyebrow::before { animation: tw-dash .6s ease calc(var(--d, 0ms) + .3s) backwards; }
+  /* a place's photo settles as its card lands */
+  html.motion .place.reveal.in .ph img { animation: tw-settle 1.6s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+  /* who eats whom: what it eats comes from the left, who eats it from the right, toward the species */
+  @media (min-width: 860px) {
+    html.motion .web .eats { --fx: -36px; --fy: 0; }
+    html.motion .web .eaten { --fx: 36px; --fy: 0; }
+    html.motion .web .who { --fs: .96; --fy: 18px; }
+  }
+  html.motion .side.in .mate { animation: tw-in .7s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0ms) + .25s) backwards; --fy: 12px; }
+  html.motion .side.in .mate + .mate { animation-delay: calc(var(--d, 0ms) + .4s); }
+  /* the three steps, one after another */
+  html.motion .reveal.in .steps3 li { animation: tw-in .7s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0ms) + .2s) backwards; --fy: 14px; }
+  html.motion .reveal.in .steps3 li:nth-child(2) { animation-delay: calc(var(--d, 0ms) + .34s); }
+  html.motion .reveal.in .steps3 li:nth-child(3) { animation-delay: calc(var(--d, 0ms) + .48s); }
+  html.motion .reveal.in .beta li { animation: tw-in .6s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0ms) + .2s) backwards; --fy: 10px; }
+  html.motion .reveal.in .beta li:nth-child(2) { animation-delay: calc(var(--d, 0ms) + .3s); }
+  html.motion .reveal.in .beta li:nth-child(3) { animation-delay: calc(var(--d, 0ms) + .4s); }
+  /* the app screenshot rises a little behind its text */
+  html.motion .shot.reveal { --fy: 44px; --fs: .97; }
+  /* Learn: a kingdom's families come in a few at a time (--i from motion.js) */
+  html.motion .lr-kingdom.in .lr-fam li { animation: tw-in .55s cubic-bezier(.2,.7,.2,1) calc(var(--d, 0ms) + .15s + var(--i, 0) * 35ms) backwards; --fy: 10px; --fs: .92; }
+  html.motion .lr-biomes > li.reveal.in .ph img { animation: tw-settle 1.6s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+  /* the Field-find grid deals its cards in whenever it draws them */
+  .sp-grid > .deal { animation: tw-in .5s cubic-bezier(.2,.7,.2,1) calc(var(--i, 0) * 28ms) backwards; --fy: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .place, .place .ph img, .mate { transition: none; }
