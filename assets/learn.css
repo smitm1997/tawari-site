@@ -3,7 +3,8 @@
    with lr- so nothing collides with site.css while the home page is redesigned.
    Tokens come from site.css (:root); each use carries the current value as a
    fallback, so the page keeps its look if a token is renamed there.
-   No motion: nothing animates, nothing waits for scroll. */
+   Motion lives in site.css and motion.js; here only the families' chevron turns, and a
+   closed group holds its drawings' rise until it is opened. */
 
 .lr {
   --lr-gold: #8B6914;      /* the app's accentInk: the group eyebrow colour, 4.9:1 on the card */
@@ -64,20 +65,43 @@
 .lr-more { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .lr-more li { padding: 6px 12px; font-size: .88rem; line-height: 1.3; color: var(--ink, #11110B); background: var(--surface, #FDFAF4); border: 1px solid var(--line, #E0D9CC); border-radius: 999px; }
 
-/* ─── Families: the drawings under Flora, Fauna and Hongos ───────────────── */
-.lr-kingdom { margin-top: 16px; padding: 20px 14px 14px; background: var(--card, #FDF2DB); border: 1px solid var(--card-edge, #E8DFC9); border-radius: 20px; }
-@media (min-width: 820px) { .lr-kingdom { margin-top: 20px; padding: 28px 28px 22px; } }
-.lr-k { display: flex; align-items: baseline; gap: 10px; margin: 0 4px 10px; font-size: 1.6rem; }
-.lr-k .c { font-family: var(--mono, monospace); font-size: .78rem; letter-spacing: .04em; color: var(--ink-2, #6B6556); }
-.lr-g { margin: 22px 4px 6px; padding-bottom: 8px; border-bottom: 1px solid var(--ink, #11110B); font-family: var(--mono, monospace); font-size: .72rem; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--lr-gold); }
-.lr-k + .lr-g { margin-top: 6px; }
+/* ─── Families: every drawing in the app, one folding card per group ─────── */
+/* Each group is a native <details class="lr-kingdom">: it opens and closes with no script, by
+   keyboard too, and a page without CSS still shows a working list. */
+.lr-kingdom { margin-top: 12px; background: var(--card, #FDF2DB); border: 1px solid var(--card-edge, #E8DFC9); border-radius: 20px; }
+@media (min-width: 820px) { .lr-kingdom { margin-top: 14px; } }
+.lr-kingdom > summary { display: flex; align-items: center; gap: 12px; padding: 14px 14px 14px 18px; border-radius: 19px; cursor: pointer; list-style: none; -webkit-tap-highlight-color: transparent; }
+.lr-kingdom > summary::-webkit-details-marker { display: none; }
+@media (min-width: 820px) { .lr-kingdom > summary { padding: 18px 22px 18px 28px; } }
+.lr-k { flex: 1; min-width: 0; margin: 0; font-size: 1.6rem; text-wrap: balance; }
+/* the count rides inline after the last word, so a name that wraps («Reptiles and amphibians»
+   at phone width) keeps its count beside it */
+.lr-k .c { margin-left: 6px; white-space: nowrap; font-family: var(--mono, monospace); font-size: .78rem; letter-spacing: .04em; color: var(--ink-2, #6B6556); }
+/* the affordance: a round button with a chevron that turns when the group opens */
+.lr-kingdom > summary::after { content: ""; flex: none; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--card-edge, #E8DFC9); background: var(--surface, #FDFAF4) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%2311110B' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 16px 16px no-repeat; transition: transform .25s cubic-bezier(.2,.7,.2,1), background-color .2s ease, border-color .2s ease; }
+.lr-kingdom[open] > summary::after { transform: rotate(180deg); }
+.lr-kingdom > summary:hover::after { border-color: var(--forest, #3D5A3E); background-color: #fff; }
+.lr-kingdom > summary:hover .lr-k { color: var(--forest, #3D5A3E); }
+.lr-kingdom > summary:focus-visible { outline: 2px solid var(--green, #38B68B); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .lr-kingdom > summary::after { transition: none; } }
+/* an open group: a hairline under its heading, then the drawings */
+.lr-kingdom > .lr-fam { margin: 0 8px; padding: 6px 0 14px; border-top: 1px solid var(--card-edge, #E8DFC9); }
+@media (min-width: 820px) { .lr-kingdom > .lr-fam { margin: 0 24px; padding: 10px 0 22px; } }
+.lr-kingdom > .lr-note { margin: -4px 18px 16px; }
+@media (min-width: 820px) { .lr-kingdom > .lr-note { margin: -8px 28px 22px; } }
 .lr-fam { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 2px 6px; }
 @media (min-width: 820px) { .lr-fam { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px 10px; } }
 .lr-fam li { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 2px 10px; text-align: center; min-width: 0; }
 .lr-fam img { width: 60px; height: 60px; }
 @media (min-width: 820px) { .lr-fam img { width: 80px; height: 80px; } }
 .lr-fam span { font-size: .82rem; line-height: 1.28; color: var(--ink, #11110B); overflow-wrap: break-word; hyphens: manual; }
-.lr-fam i { font-family: var(--serif, Georgia, serif); }
+/* the scientific name, in italics under the common one; alone, it is the name (no common name
+   has been reviewed for that group) and takes the name's size and ink */
+.lr-fam .sn { margin-top: -3px; font-family: var(--serif, Georgia, serif); font-style: italic; font-size: .78rem; line-height: 1.25; color: var(--ink-2, #6B6556); overflow-wrap: break-word; hyphens: manual; }
+.lr-fam img + .sn { margin-top: 0; font-size: .84rem; color: #403E34; color: color-mix(in srgb, var(--ink, #11110B) 80%, var(--card, #FDF2DB)); } /* a serif italic at full ink reads heavier than the sans names beside it */
+/* a closed group's drawings wait; opening it deals them in again (the rise is site.css's
+   .lr-kingdom.in .lr-fam li, staggered by --i from motion.js) */
+html.motion details.lr-kingdom:not([open]) .lr-fam li { animation: none; }
 
 /* ─── Essays: a dark band ────────────────────────────────────────────────── */
 .lr-dark { background: var(--lr-dark); color: #F7F6F2; }

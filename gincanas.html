@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gincanas · Tawari</title>
-<meta name="description" content="Tres gincanas de Tawari para mirar sin instalar nada: el Jardín Botánico de Cali, la Laguna de Sonso y el Cerro de las Tres Cruces, especie por especie.">
+<meta name="description" content="Las 25 gincanas de Tawari para mirar sin instalar nada, de La Guajira a Nariño y del Tayrona a la Macarena, especie por especie.">
 <link rel="canonical" href="https://tawari.id/gincanas.html">
 <link rel="alternate" hreflang="es" href="https://tawari.id/gincanas.html">
 <link rel="alternate" hreflang="en" href="https://tawari.id/en/field-finds.html">
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://tawari.id/gincanas.html">
 <meta property="og:site_name" content="Tawari">
 <meta property="og:title" content="Gincanas · Tawari">
-<meta property="og:description" content="Una gincana es la lista de quienes viven en un lugar. Mira tres, especie por especie.">
+<meta property="og:description" content="Una gincana es la lista de quienes viven en un lugar. Mira las 25, especie por especie.">
 <meta property="og:image" content="https://tawari.id/assets/og-es.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,19 +25,20 @@
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/mark-morpho-180.png">
 <link rel="preload" href="assets/fonts/Gelasio-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=01bbba7f">
+<link rel="stylesheet" href="assets/site.css?v=1e317277">
+<link rel="stylesheet" href="assets/finds.css?v=fbc364cc">
 </head>
 <body>
 
 <header class="bar">
   <a class="wordmark" href="./"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
   <nav class="nav" aria-label="Secciones">
+    <a href="./">Inicio</a>
     <a href="gincanas.html" aria-current="page">Gincanas</a>
+    <a href="ficha.html">La ficha</a>
     <a href="aprender.html">Aprender</a>
-    <a href="./#app">La app</a>
-    <a href="./#lista">Lista de espera</a>
   </nav>
-  <div class="lang"><a href="en/field-finds.html" hreflang="en" lang="en">English</a></div>
+  <div class="bar-end"><a class="join" href="#lista">Únete</a><div class="lang"><a href="en/field-finds.html" hreflang="en" lang="en">English</a></div></div>
 </header>
 
 <main id="top">
@@ -53,24 +54,63 @@
 <section id="explorar">
   <div class="wrap">
     <div class="finds" id="finds" data-base="">
-      <div class="tabs" id="findTabs" role="group" aria-label="Gincanas"></div>
+      <div class="picker" id="findTabs" role="group" aria-label="Gincanas por región"></div>
       <div class="find-state" id="findLoading"><img class="hover" id="findLoadingImg" src="assets/eyebrow/state-loading.webp" alt="" width="60" height="60"><p role="status" id="findLoadingMsg">Cargando…</p></div>
       <noscript><p class="find-note">Para ver las gincanas aquí hace falta JavaScript. También puedes verlas en la app.</p></noscript>
       <div id="findBody" hidden>
+        <div class="place-head"><h2 class="place-name" id="findName"></h2><p class="place-meta" id="findMeta"></p></div>
         <div class="controls">
           <input type="search" id="findQ" placeholder="Busca un nombre…" aria-label="Buscar especie">
         </div>
         <div class="chips" id="findChips"></div>
         <div class="sp-grid" id="findGrid"></div>
         <button class="more" id="findMore" hidden></button>
+        <p class="find-lic" id="findLic"></p>
       </div>
     </div>
-    <p class="credits">En la app hay 25 gincanas, del Santuario de Los Flamencos, en La Guajira, al Lago La Cocha, en Nariño, de 36 a 93 especies cada una. Aquí puedes mirar tres, en el Valle del Cauca. Toca una especie para ver su foto y su crédito.</p>
-    <div class="after"><a class="btn btn-primary" href="./#lista">Únete a la lista de espera</a></div>
+    <p class="credits">Aquí están las 25 gincanas de la app, con las mismas listas: del Santuario de Los Flamencos, en La Guajira, al Lago La Cocha, en Nariño, de 36 a 93 especies cada una.</p>
+    <div class="after"><a class="btn btn-primary" href="#lista">Únete a la lista de espera</a></div>
   </div>
 </section>
 
 </main>
+
+<!-- waitlist:start -->
+<span id="waitlist"></span>
+<section id="lista">
+  <div class="wrap">
+    <div class="wait">
+      <p class="eyebrow">Lista de espera</p>
+      <h2>Sé de los primeros en probarla.</h2>
+      <p class="lede" style="margin-bottom:0">Te escribimos una sola vez, cuando tu invitación a TestFlight esté lista.</p>
+      <form id="waitlist-form" novalidate>
+        <label class="field-label" for="email">Tu correo</label>
+        <div class="form-row">
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required>
+          <select id="country" name="country" aria-label="País" required>
+            <option value="CO" selected>Colombia</option>
+            <option value="EC">Ecuador</option>
+            <option value="PE">Perú</option>
+            <option value="VE">Venezuela</option>
+            <option value="PA">Panamá</option>
+            <option value="MX">México</option>
+            <option value="AR">Argentina</option>
+            <option value="CL">Chile</option>
+            <option value="BR">Brasil</option>
+            <option value="ES">España</option>
+            <option value="US">Estados Unidos</option>
+            <option value="XX">Otro</option>
+          </select>
+          <button type="submit" id="submit">Avísame</button>
+        </div>
+        <div class="hp" aria-hidden="true"><label>No llenes este campo <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" id="consent" required> <span>He leído la <a href="privacidad.html">política de privacidad</a> y autorizo recibir un correo sobre la beta de Tawari.</span></label>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- waitlist:end -->
 
 <div class="collage" aria-hidden="true">
   <picture>
@@ -104,7 +144,8 @@
   </div>
 </dialog>
 
-<script src="assets/explorer.js?v=14187b88" defer></script>
+<script src="assets/explorer.js?v=350d8d7a" defer></script>
 <script src="assets/motion.js?v=08419f19" defer></script>
+<script src="assets/waitlist.js?v=6331dd1f" defer></script>
 </body>
 </html>
