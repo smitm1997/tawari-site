@@ -1,0 +1,44 @@
+/* ─── Field-find explorer: the place picker ─────────────────────────────────
+   Every live Field-find, grouped by Colombia's natural region (assets/finds/index.json,
+   built by tools/build_finds.js). From 640 px: a chip grid that wraps, one small region
+   heading per group. Under 640 px: one native select, grouped by region with optgroups,
+   so twenty-five places never push the species off a phone screen. The open place is
+   filled in forest green, and named in full under the picker. Linked from gincanas.html
+   and en/field-finds.html only; the shared tokens (--forest, --line, --mono...) are
+   site.css's. */
+.picker { margin: 0 0 16px; }
+.picker-label { display: block; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
+.picker-select {
+  display: block; width: 100%; font: inherit; font-family: var(--mono); font-size: .9rem; color: var(--ink);
+  padding: 12px 40px 12px 14px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%233D5A3E' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center / 12px 8px;
+  -webkit-appearance: none; appearance: none;
+}
+.picker-select:focus { outline: 2px solid var(--green); outline-offset: 1px; border-color: var(--green); }
+.picker-grid { display: none; }
+
+.pchip { font: inherit; font-family: var(--mono); font-size: .78rem; line-height: 1.2; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--ground); color: var(--ink-2); cursor: pointer; }
+.pchip:hover { border-color: var(--forest); color: var(--ink); }
+.pchip:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.pchip[aria-pressed="true"] { background: var(--forest); border-color: var(--forest); color: #fff; }
+
+@media (min-width: 640px) {
+  .picker-label, .picker-select { display: none; }
+  .picker-grid { display: grid; gap: 10px; }
+  .picker-region { display: grid; grid-template-columns: 6.5rem 1fr; gap: 0 12px; align-items: start; }
+  .picker-h { margin: 0; padding-top: 8px; font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .picker-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+}
+
+/* the open place, in full, above its list */
+.place-head { padding-top: 16px; border-top: 1px solid var(--line); }
+.place-name { font-size: 1.45rem; margin: 0 0 4px; }
+.place-meta { font-family: var(--mono); font-size: .76rem; line-height: 1.5; color: var(--ink-2); margin: 0; }
+@media (min-width: 720px) { .place-name { font-size: 1.7rem; } }
+
+/* the licences of this place's photos, under its list */
+.find-lic { font-family: var(--mono); font-size: .72rem; line-height: 1.55; color: var(--ink-3); margin: 18px 0 0; max-width: 46em; }
+
+/* a place's list on its way: the previous one fades, never jumps */
+#findBody[aria-busy="true"] .sp-grid { opacity: .45; }
+@media (prefers-reduced-motion: no-preference) { .sp-grid { transition: opacity .2s; } }

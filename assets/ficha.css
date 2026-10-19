@@ -1,0 +1,27 @@
+/* La ficha (ficha.html, en/species-card.html): one long species card cut into its sections,
+   each beside a numbered label. On a wide screen the card is one continuous column on the left
+   (its cream fills any row where the label is taller than the band), labels on the right; on a
+   phone each label sits above its own slice of the card. */
+.anatomy { display: grid; margin-top: 8px; }
+.part { display: grid; gap: 12px; margin-bottom: 28px; }
+.pl { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; }
+.pn { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--amber-soft); border: 1px solid var(--card-edge); font-family: var(--mono); font-size: .8rem; color: var(--forest-deep); }
+.pl h2 { font-size: 1.3rem; margin: 2px 0 .3em; }
+.pl p { color: var(--ink-2); margin: 0; max-width: 46ch; }
+.pi { background: #FBF5E2; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; width: 100%; max-width: 400px; justify-self: center; }
+.pi img { display: block; width: 100%; height: auto; }
+@media (min-width: 880px) {
+  .anatomy { max-width: 860px; margin: 8px auto 0; }
+  .part { grid-template-columns: 360px 1fr; gap: 0 44px; margin-bottom: 0; }
+  .pi { order: 1; max-width: none; border-radius: 0; border-top: 0; border-bottom: 0; }
+  .pl { order: 2; padding: 16px 0 28px; }
+  .part:first-child .pi { border-top: 1px solid var(--line); border-radius: 28px 28px 0 0; }
+  .part:last-child .pi { border-bottom: 1px solid var(--line); border-radius: 0 0 28px 28px; }
+}
+.anat-credit { max-width: 860px; margin: 18px auto 0; }
+.also { max-width: 860px; margin: 40px auto 0; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 14px; }
+.also h2 { font-size: 1.35rem; margin-bottom: .5em; }
+.also ul { margin: 0; padding-left: 1.1em; color: var(--ink-2); }
+.also li { margin-bottom: .5em; }
+.also b { color: var(--ink); font-weight: 600; }
+.anatomy-sec .after { max-width: 860px; margin: 28px auto 0; }

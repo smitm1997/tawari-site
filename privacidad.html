@@ -9,12 +9,18 @@
 <link rel="alternate" hreflang="es" href="https://tawari.id/privacidad.html">
 <link rel="alternate" hreflang="en" href="https://tawari.id/privacy.html">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
-<link rel="stylesheet" href="assets/site.css?v=01bbba7f">
+<link rel="stylesheet" href="assets/site.css?v=1e317277">
 </head>
 <body class="doc">
 <header class="bar">
   <a class="wordmark" href="./"><img src="assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
-  <nav class="lang" aria-label="Idioma"><a href="privacy.html" hreflang="en" lang="en">English</a></nav>
+  <nav class="nav" aria-label="Secciones">
+    <a href="./">Inicio</a>
+    <a href="gincanas.html">Gincanas</a>
+    <a href="ficha.html">La ficha</a>
+    <a href="aprender.html">Aprender</a>
+  </nav>
+  <div class="bar-end"><a class="join" href="#lista">Únete</a><nav class="lang" aria-label="Idioma"><a href="privacy.html" hreflang="en" lang="en">English</a></nav></div>
 </header>
 <main class="prose">
 <p class="eyebrow"><a href="./">‹ Volver a Tawari</a></p>
@@ -61,6 +67,44 @@
 <p><strong><a href="mailto:hello@tawari.id">hello@tawari.id</a></strong></p>
 <p class="meta">Última actualización: 13 de octubre de 2026</p>
 </main>
+
+<!-- waitlist:start -->
+<span id="waitlist"></span>
+<section id="lista">
+  <div class="wrap">
+    <div class="wait">
+      <p class="eyebrow">Lista de espera</p>
+      <h2>Sé de los primeros en probarla.</h2>
+      <p class="lede" style="margin-bottom:0">Te escribimos una sola vez, cuando tu invitación a TestFlight esté lista.</p>
+      <form id="waitlist-form" novalidate>
+        <label class="field-label" for="email">Tu correo</label>
+        <div class="form-row">
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="tu@correo.com" required>
+          <select id="country" name="country" aria-label="País" required>
+            <option value="CO" selected>Colombia</option>
+            <option value="EC">Ecuador</option>
+            <option value="PE">Perú</option>
+            <option value="VE">Venezuela</option>
+            <option value="PA">Panamá</option>
+            <option value="MX">México</option>
+            <option value="AR">Argentina</option>
+            <option value="CL">Chile</option>
+            <option value="BR">Brasil</option>
+            <option value="ES">España</option>
+            <option value="US">Estados Unidos</option>
+            <option value="XX">Otro</option>
+          </select>
+          <button type="submit" id="submit">Avísame</button>
+        </div>
+        <div class="hp" aria-hidden="true"><label>No llenes este campo <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" id="consent" required> <span>He leído la <a href="privacidad.html">política de privacidad</a> y autorizo recibir un correo sobre la beta de Tawari.</span></label>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- waitlist:end -->
 <footer class="foot"><p>© 2026 Tawari · <a href="mailto:hello@tawari.id">hello@tawari.id</a></p></footer>
+<script src="assets/waitlist.js?v=6331dd1f" defer></script>
 </body>
 </html>

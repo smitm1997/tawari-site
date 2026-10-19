@@ -44,7 +44,7 @@ html { -webkit-text-size-adjust: 100%; }
 @media (prefers-reduced-motion: no-preference) { html:focus-within { scroll-behavior: smooth; } }
 /* the header is a 61px sticky bar; without this an anchored section parks its
    own eyebrow behind it */
-main [id] { scroll-margin-top: 76px; }
+main [id], #lista, #waitlist { scroll-margin-top: 76px; }
 body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.55; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--forest); text-decoration-thickness: 1px; text-underline-offset: 3px; }
@@ -66,6 +66,9 @@ p { margin: 0 0 1em; }
 .wordmark img { width: 28px; height: 28px; border-radius: 6px; }
 .nav { display: none; gap: 22px; font-family: var(--mono); font-size: .8rem; }
 .nav a { color: var(--ink-2); text-decoration: none; }
+.bar-end { display: flex; align-items: center; gap: 8px; }
+.join { font-family: var(--mono); font-size: .8rem; text-decoration: none; color: #fff; background: var(--forest); border: 1px solid var(--forest); border-radius: 999px; padding: 6px 12px; }
+.join:hover { background: var(--forest-deep); }
 .nav a:hover { color: var(--ink); }
 .lang a { font-family: var(--mono); font-size: .8rem; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; text-decoration: none; color: var(--ink); background: var(--surface); }
 @media (min-width: 820px) { .nav { display: flex; } }
@@ -267,7 +270,7 @@ dialog.sp img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius
   .nav { display: flex; order: 3; width: 100%; gap: 18px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; }
   .nav::-webkit-scrollbar { display: none; }
   .nav a { flex: 0 0 auto; }
-  main [id] { scroll-margin-top: 104px; }
+  main [id], #lista, #waitlist { scroll-margin-top: 104px; }
 }
 .nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; text-decoration-color: var(--amber-deep); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 
@@ -430,3 +433,28 @@ details.fold .list-plain { padding-bottom: 8px; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
 .prose .eyebrow::before { content: none; }
+
+/* Field journal (home, #diario / #journal): an example page of My List, drawn as a
+   notebook page. Notebook first on wide screens, so it does not repeat the #app layout. */
+@media (min-width: 820px) {
+  .step.journal-step { grid-template-columns: minmax(0, 420px) 1fr; }
+  .step.journal-step .txt { order: 2; }
+}
+.journal { margin: 0; width: 100%; max-width: 440px; justify-self: center; background-color: var(--surface);
+  border: 1px solid var(--card-edge); border-left: 6px solid var(--forest); border-radius: 6px 16px 16px 6px;
+  box-shadow: 0 10px 30px rgba(17,17,11,.07); padding: 18px 18px 14px 20px; }
+.jp-head { display: grid; gap: 2px; padding-bottom: 12px; margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+.jp-tag { justify-self: start; font-family: var(--mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--amber-deep); background: var(--amber-soft); border-radius: 999px; padding: 2px 10px; margin-bottom: 6px; }
+.jp-place { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--ink); }
+.jp-meta { font-family: var(--mono); font-size: .74rem; color: var(--ink-3); }
+.jp-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.jp-list li { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: start; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+.jp-list li:last-child { border-bottom: 0; }
+.jp-list img { width: 64px; height: 64px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); background: var(--card); }
+.jp-name { font-family: var(--serif); font-size: 1.08rem; color: var(--ink); }
+.jp-list .sci { display: block; font-family: var(--serif); font-style: italic; font-size: .88rem; color: var(--ink-2); }
+.jp-note { margin: 4px 0 0; color: var(--ink-2); font-size: .92rem; line-height: 1.45; }
+.jp-list time { font-family: var(--mono); font-size: .74rem; color: var(--ink-3); padding-top: 3px; }
+.journal figcaption { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); margin-top: 10px; line-height: 1.5; }
+.soon { margin-top: 18px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.soon-tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest-deep); border: 1px solid var(--forest); border-radius: 999px; padding: 1px 9px; }

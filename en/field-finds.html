@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Field-finds · Tawari</title>
-<meta name="description" content="Three Tawari Field-finds to browse without installing anything: Cali Botanical Garden, Sonso Lagoon and Cerro de las Tres Cruces, species by species.">
+<meta name="description" content="All 25 Tawari Field-finds to browse without installing anything, from La Guajira to Nariño and from Tayrona to La Macarena, species by species.">
 <link rel="canonical" href="https://tawari.id/en/field-finds.html">
 <link rel="alternate" hreflang="es" href="https://tawari.id/gincanas.html">
 <link rel="alternate" hreflang="en" href="https://tawari.id/en/field-finds.html">
@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://tawari.id/en/field-finds.html">
 <meta property="og:site_name" content="Tawari">
 <meta property="og:title" content="Field-finds · Tawari">
-<meta property="og:description" content="A Field-find is the list of who lives in one place. Browse three, species by species.">
+<meta property="og:description" content="A Field-find is the list of who lives in one place. Browse all 25, species by species.">
 <meta property="og:image" content="https://tawari.id/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,7 +25,8 @@
 <link rel="icon" href="../assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="../assets/mark-morpho-180.png">
 <link rel="preload" href="../assets/fonts/Gelasio-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=01bbba7f">
+<link rel="stylesheet" href="../assets/site.css?v=1e317277">
+<link rel="stylesheet" href="../assets/finds.css?v=fbc364cc">
 <style>@font-face{font-family:"Gelasio";src:url("../assets/fonts/Gelasio-400.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}@font-face{font-family:"Gelasio";src:url("../assets/fonts/Gelasio-400-italic.woff2") format("woff2");font-weight:400;font-style:italic;font-display:swap}@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/IBMPlexMono-400.woff2") format("woff2");font-weight:400;font-display:swap}@font-face{font-family:"IBM Plex Mono";src:url("../assets/fonts/IBMPlexMono-600.woff2") format("woff2");font-weight:600;font-display:swap}</style>
 </head>
 <body>
@@ -33,12 +34,12 @@
 <header class="bar">
   <a class="wordmark" href="./"><img src="../assets/mark-morpho-56.webp" alt="" width="28" height="28">Tawari</a>
   <nav class="nav" aria-label="Sections">
+    <a href="./">Home</a>
     <a href="field-finds.html" aria-current="page">Field-finds</a>
+    <a href="species-card.html">Species card</a>
     <a href="learn.html">Learn</a>
-    <a href="./#app">The app</a>
-    <a href="./#waitlist">Waitlist</a>
   </nav>
-  <div class="lang"><a href="../gincanas.html" hreflang="es" lang="es">Español</a></div>
+  <div class="bar-end"><a class="join" href="#waitlist">Join</a><div class="lang"><a href="../gincanas.html" hreflang="es" lang="es">Español</a></div></div>
 </header>
 
 <main id="top">
@@ -54,24 +55,63 @@
 <section id="explore">
   <div class="wrap">
     <div class="finds" id="finds" data-base="../">
-      <div class="tabs" id="findTabs" role="group" aria-label="Field-finds"></div>
+      <div class="picker" id="findTabs" role="group" aria-label="Field-finds by region"></div>
       <div class="find-state" id="findLoading"><img class="hover" id="findLoadingImg" src="../assets/eyebrow/state-loading.webp" alt="" width="60" height="60"><p role="status" id="findLoadingMsg">Loading…</p></div>
       <noscript><p class="find-note">Looking through the Field-finds here needs JavaScript. You can also see them in the app.</p></noscript>
       <div id="findBody" hidden>
+        <div class="place-head"><h2 class="place-name" id="findName"></h2><p class="place-meta" id="findMeta"></p></div>
         <div class="controls">
           <input type="search" id="findQ" placeholder="Search for a name…" aria-label="Search species">
         </div>
         <div class="chips" id="findChips"></div>
         <div class="sp-grid" id="findGrid"></div>
         <button class="more" id="findMore" hidden></button>
+        <p class="find-lic" id="findLic"></p>
       </div>
     </div>
-    <p class="credits">The app has 25 Field-finds, from Los Flamencos Sanctuary in La Guajira to La Cocha Lake in Nariño, with 36 to 93 species each. Here you can browse three, in Valle del Cauca. Tap a species to see its photo and credit.</p>
-    <div class="after"><a class="btn btn-primary" href="./#waitlist">Join the waitlist</a></div>
+    <p class="credits">Here are all 25 of the app's Field-finds, with the same lists: from Los Flamencos Sanctuary in La Guajira to La Cocha Lake in Nariño, with 36 to 93 species each.</p>
+    <div class="after"><a class="btn btn-primary" href="#waitlist">Join the waitlist</a></div>
   </div>
 </section>
 
 </main>
+
+<!-- waitlist:start -->
+<section id="waitlist">
+  <div class="wrap">
+    <div class="wait">
+      <p class="eyebrow">Waitlist</p>
+      <h2>Be among the first to try it.</h2>
+      <p class="lede" style="margin-bottom:0">We write to you once, when your TestFlight invitation is ready.</p>
+      <form id="waitlist-form" novalidate>
+        <label class="field-label" for="email">Your email</label>
+        <div class="form-row">
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required>
+          <select id="country" name="country" aria-label="Country" required>
+            <option value="CO" selected>Colombia</option>
+            <option value="US">United States</option>
+            <option value="EC">Ecuador</option>
+            <option value="PE">Peru</option>
+            <option value="VE">Venezuela</option>
+            <option value="PA">Panama</option>
+            <option value="MX">Mexico</option>
+            <option value="AR">Argentina</option>
+            <option value="CL">Chile</option>
+            <option value="BR">Brazil</option>
+            <option value="ES">Spain</option>
+            <option value="GB">United Kingdom</option>
+            <option value="XX">Other</option>
+          </select>
+          <button type="submit" id="submit">Notify me</button>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Leave this field empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" id="consent" required> <span>I have read the <a href="../privacy.html">privacy policy</a> and agree to receive one email about the Tawari beta.</span></label>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+<!-- waitlist:end -->
 
 <div class="collage" aria-hidden="true">
   <picture>
@@ -105,7 +145,8 @@
   </div>
 </dialog>
 
-<script src="../assets/explorer.js?v=14187b88" defer></script>
+<script src="../assets/explorer.js?v=350d8d7a" defer></script>
 <script src="../assets/motion.js?v=08419f19" defer></script>
+<script src="../assets/waitlist.js?v=6331dd1f" defer></script>
 </body>
 </html>
