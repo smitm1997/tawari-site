@@ -458,3 +458,12 @@ details.fold .list-plain { padding-bottom: 8px; }
 .journal figcaption { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); margin-top: 10px; line-height: 1.5; }
 .soon { margin-top: 18px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
 .soon-tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--forest-deep); border: 1px solid var(--forest); border-radius: 999px; padding: 1px 9px; }
+
+/* 20 Oct 2026 (WP-258, the founder's 19 Oct wording): the three relationships of the spine
+   are defined above the monarch's web (.spine/.slot), with one line leading into the example;
+   the Mi Lista section carries one titled line under its lede; the road ahead tags its phases. */
+#columna .spine, #spine .spine { margin: 0 0 8px; }
+.lede.bridge { margin: 26px 0 18px; }
+.step .item { color: var(--ink-2); margin: 0 0 1em; }
+.step .item b { color: var(--ink); font-weight: 600; }
+.beta .soon-tag { margin-right: 4px; }
