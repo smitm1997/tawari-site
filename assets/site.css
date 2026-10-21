@@ -280,6 +280,8 @@ dialog.sp img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius
 
 /* hero */
 .hero h1 em { color: var(--forest); }
+/* D-SITE-H1 (20 Oct): the longer headline wraps balanced, never one word on a line */
+.hero h1 { text-wrap: balance; font-size: clamp(1.9rem, 5.2vw, 3rem); }
 .hero .sub { font-family: var(--serif); font-size: clamp(1.25rem, 2.6vw, 1.55rem); line-height: 1.3; color: var(--ink); margin: -.1em 0 .7em; max-width: 26em; }
 .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .facts li { font-family: var(--mono); font-size: .76rem; color: var(--ink-2); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; }
