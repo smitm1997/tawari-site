@@ -31,11 +31,19 @@ PAGE = {
     "es": dict(file="privacidad.html", lang="es", other="privacy.html", other_lang="en",
                other_label="English", back="‹ Volver a Tawari", home="./", lang_nav="Idioma",
                updated="Última actualización", title="Política de privacidad · Tawari",
-               desc="Qué datos recoge la aplicación Tawari, para qué y qué puedes hacer al respecto."),
+               desc="Qué datos recoge la aplicación Tawari, para qué y qué puedes hacer al respecto.",
+               delete_para="<p><strong>Eliminación de tus datos.</strong>", delete_href="eliminar-cuenta.html",
+               delete_anchor="eliminar-cuenta",
+               delete_lead="Los pasos, con la app o sin ella, y lo que se borra y lo que se conserva:",
+               delete_label="Eliminar tu cuenta de Tawari", delete_foot="Eliminar tu cuenta"),
     "en": dict(file="privacy.html", lang="en", other="privacidad.html", other_lang="es",
                other_label="Español", back="‹ Back to Tawari", home="en/", lang_nav="Language",
                updated="Last updated", title="Privacy policy · Tawari",
-               desc="What the Tawari app collects, what it is used for, and what you can do about it."),
+               desc="What the Tawari app collects, what it is used for, and what you can do about it.",
+               delete_para="<p><strong>Deleting your data.</strong>", delete_href="delete-account.html",
+               delete_anchor="delete-account",
+               delete_lead="The steps, with or without the app, and what is deleted and what is kept:",
+               delete_label="Delete your Tawari account", delete_foot="Delete your account"),
 }
 
 
@@ -94,6 +102,21 @@ def md_to_html(md: str) -> str:
     return "\n".join(out)
 
 
+def add_delete_link(body: str, p: dict, path: str) -> str:
+    """The account-deletion page (eliminar-cuenta.html / delete-account.html), linked right after the
+    policy's own deletion paragraph in section 6, with an anchor, as Google Play asks of a policy that
+    mentions deletion (WP-253). Fail-closed: if the paragraph has moved or been reworded, stop rather
+    than publish a policy without the link."""
+    i = body.find(p["delete_para"])
+    if i < 0:
+        sys.exit(f"REFUSED: {os.path.basename(path)} has no {p['delete_para']!r} paragraph to hang the "
+                 f"deletion-page link on. Update PAGE in this tool. Nothing was written.")
+    j = body.find("</p>", i) + len("</p>")
+    link = (f'\n<p id="{p["delete_anchor"]}">{p["delete_lead"]} '
+            f'<a href="{p["delete_href"]}"><strong>{p["delete_label"]}</strong></a>.</p>')
+    return body[:j] + link + body[j:]
+
+
 def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
     p = PAGE[lang]
     path = os.path.join(src_dir, f"privacy-policy.{lang}.md")
@@ -104,7 +127,7 @@ def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
                      f"Resolve it in the Markdown, then rebuild. Nothing was written.")
     # Drop the "Versión / Version" metadata line — the page carries its own date.
     md = re.sub(r"^\*\*Versi[oó]n:\*\*.*$|^\*\*Version:\*\*.*$", "", md, flags=re.M)
-    body = md_to_html(md)
+    body = add_delete_link(md_to_html(md), p, path)
     return f"""<!DOCTYPE html>
 <html lang="{p['lang']}">
 <head>
@@ -128,7 +151,7 @@ def build(lang: str, src_dir: str, date: str, css_href: str) -> str:
 {body}
 <p class="meta">{p['updated']}: {date}</p>
 </main>
-<footer class="foot"><p>© 2026 Tawari · <a href="mailto:{CONTACT}">{CONTACT}</a></p></footer>
+<footer class="foot"><p>© 2026 Tawari · <a href="mailto:{CONTACT}">{CONTACT}</a> · <a href="{p['delete_href']}">{p['delete_foot']}</a></p></footer>
 </body>
 </html>
 """

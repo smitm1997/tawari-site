@@ -14,6 +14,7 @@ Custom domain via `CNAME` (`tawari.id`), HTTPS enforced.
 | `aprender.html` / `en/learn.html` | ES / EN | Learn: biomes, the families and groups, the essays |
 | `estado.html` / `en/status.html` | ES / EN | Every counted figure. Linked from the footer, not the front page. |
 | `privacidad.html` / `privacy.html` | ES / EN | **Generated** — see below |
+| `eliminar-cuenta.html` / `delete-account.html` | ES / EN | Account deletion, the web link Google Play asks for (WP-253). Hand-written; `build_privacy.py` links it from the policy's deletion paragraph (anchor `#eliminar-cuenta` / `#delete-account`) and its footer. |
 
 **The header and the waitlist come from one place**, `tools/build_chrome.py`. Founder,
 17 Oct 2026: only the first tab goes to the home page. The tabs are Inicio · Gincanas ·

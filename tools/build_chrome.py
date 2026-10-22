@@ -34,12 +34,14 @@ PAGES = {
     'aprender.html': ('es', 'aprender', '', 'assets/'),
     'estado.html': ('es', None, '', 'assets/'),
     'privacidad.html': ('es', None, '', 'assets/'),
+    'eliminar-cuenta.html': ('es', None, '', 'assets/'),
     'en/index.html': ('en', 'home', '', '../assets/'),
     'en/field-finds.html': ('en', 'gincanas', '', '../assets/'),
     'en/species-card.html': ('en', 'ficha', '', '../assets/'),
     'en/learn.html': ('en', 'aprender', '', '../assets/'),
     'en/status.html': ('en', None, '', '../assets/'),
     'privacy.html': ('en', None, 'en/', 'assets/'),
+    'delete-account.html': ('en', None, 'en/', 'assets/'),
 }
 HOME = {'es': 'index.html', 'en': 'en/index.html'}
 START, END = '<!-- waitlist:start -->', '<!-- waitlist:end -->'
@@ -94,8 +96,9 @@ def main(only=None):
         s = s[:old.start()] + header(page, old.group(0)) + s[old.end():]
         if page != HOME[lang]:
             block = blocks[lang]
-            # links inside the block are relative to the home page of that language
-            if page == 'privacy.html':
+            # links inside the block are relative to the home page of that language; an English
+            # page at the site root (privacy.html, delete-account.html) sits one level up from it
+            if lang == 'en' and '/' not in page:
                 block = block.replace('href="../privacy.html"', 'href="privacy.html"')
             if START in s:
                 i, j = s.find(START), s.find(END)
